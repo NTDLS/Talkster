@@ -61,9 +61,9 @@ namespace Talkster.Client
         /// If the chunk is out of order, it will be buffered until the previous chunk is received.
         /// </summary>
         /// <returns>True when the file is fully received, otherwise false.</returns>
-        public bool AppendChunk(long sequence, byte[] data)
+        public bool AppendChunk(byte[] data, long sequence)
         {
-            _sequenceBuffer.Process(sequence, data, (data) =>
+            _sequenceBuffer.Process(data, sequence, (data) =>
             {
                 _stream.Write(_crypto.Cipher(data), 0, data.Length);
                 ReceivedByteCount += data.Length;
