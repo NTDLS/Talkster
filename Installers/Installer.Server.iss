@@ -1,10 +1,10 @@
-#define AppVersion "1.1.1"
+#define AppVersion "1.2.1"
 
 [Setup]
  AppName                          = Talkster Server
  AppVersion                       = {#AppVersion}
  AppVerName                       = Talkster Server {#AppVersion}
- AppCopyright                     = Copyright © 1995-2025 NetworkDLS.
+ AppCopyright                     = Copyright © 1995-2026 NetworkDLS.
  DefaultDirName                   = {commonpf}\NetworkDLS\Talkster Server
  DefaultGroupName                 = NetworkDLS\Talkster Server
  UninstallDisplayIcon             = {app}\Talkster.Server.exe
