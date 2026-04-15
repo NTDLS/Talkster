@@ -45,35 +45,24 @@ namespace Talkster.Client.Forms
                         {
                             dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Sending";
 
-                            ServerConnection.Current.Connection.Client.Query(new InviteContactQuery(account.Id)).ContinueWith(o =>
+                            ServerConnection.Current.Connection.Client.Query(new InviteContactQuery(account.Id));
+                            Invoke(() =>
                             {
-                                if (!o.IsFaulted && o.Result.IsSuccess)
-                                {
-                                    Invoke(() =>
-                                    {
-                                        dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Remove";
-                                    });
-
-                                    ServerConnection.Current.FormHome.Repopulate();
-                                }
+                                dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Remove";
                             });
+
+                            ServerConnection.Current.FormHome.Repopulate();
                         }
                         else if (dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() == "Remove")
                         {
                             dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Removing";
 
-                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(account.Id)).ContinueWith(o =>
+                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(account.Id));
+                            Invoke(() =>
                             {
-                                if (!o.IsFaulted && o.Result.IsSuccess)
-                                {
-                                    Invoke(() =>
-                                    {
-                                        dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Invite";
-                                    });
-                                    ServerConnection.Current.FormHome.Repopulate();
-                                }
+                                dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Invite";
                             });
-
+                            ServerConnection.Current.FormHome.Repopulate();
                         }
                     }
                 }
@@ -110,44 +99,40 @@ namespace Talkster.Client.Forms
                     return;
                 }
 
-                ServerConnection.Current.Connection.Client.Query(new AccountSearchQuery(displayName)).ContinueWith(o =>
+                var results = ServerConnection.Current.Connection.Client.Query(new AccountSearchQuery(displayName));
+                Invoke(() =>
                 {
-                    if (!o.IsFaulted && o.Result.IsSuccess)
+                    foreach (var account in results.Accounts)
                     {
-                        Invoke(() =>
+                        var button = new DataGridViewButtonCell();
+
+                        if (account.Id == ServerConnection.Current.AccountId)
                         {
-                            foreach (var account in o.Result.Accounts)
-                            {
-                                var button = new DataGridViewButtonCell();
+                            button.Value = "You";
+                        }
+                        else if (account.IsExitingContact)
+                        {
+                            button.Value = "Remove";
+                        }
+                        else
+                        {
+                            button.Value = "Invite";
+                        }
 
-                                if (account.Id == ServerConnection.Current.AccountId)
-                                {
-                                    button.Value = "You";
-                                }
-                                else if (account.IsExitingContact)
-                                {
-                                    button.Value = "Remove";
-                                }
-                                else
-                                {
-                                    button.Value = "Invite";
-                                }
+                        var row = new DataGridViewRow()
+                        {
+                            Tag = account
+                        };
+                        row.Cells.AddRange(
+                            new DataGridViewTextBoxCell { Value = account.DisplayName },
+                            new DataGridViewTextBoxCell { Value = account.State },
+                            button
+                        );
 
-                                var row = new DataGridViewRow()
-                                {
-                                    Tag = account
-                                };
-                                row.Cells.AddRange(
-                                    new DataGridViewTextBoxCell { Value = account.DisplayName },
-                                    new DataGridViewTextBoxCell { Value = account.State },
-                                    button
-                                );
-
-                                dataGridViewAccounts.Rows.Add(row);
-                            }
-                        });
+                        dataGridViewAccounts.Rows.Add(row);
                     }
                 });
+
             }
             catch (Exception ex)
             {

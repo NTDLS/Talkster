@@ -240,7 +240,7 @@ namespace Talkster.Client
             _audioPump.OnFrameProduced += (byte[] bytes, int byteCount) =>
             {
                 //Sends the recorded audio to the server, for dispatch to the correct client.
-                ServerConnection.Current?.DatagramClient?.Dispatch(new VoicePacketDatagram(SessionId, PeerConnectionId, Cipher(bytes)));
+                ServerConnection.Current?.DatagramContext?.Dispatch(new VoicePacketDatagram(SessionId, PeerConnectionId, Cipher(bytes)));
             };
 
             _audioPump.StartCapture();

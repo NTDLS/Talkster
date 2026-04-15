@@ -295,7 +295,7 @@ namespace Talkster.Server
             try
             {
                 var accountConnection = VerifyAndGetAccountConnection(context);
-                return _chatService.RmServer.Query(param.PeerConnectionId, param).Result;
+                return _chatService.RmServer.Query(param.PeerConnectionId, param);
             }
             catch (Exception ex)
             {
@@ -467,7 +467,7 @@ namespace Talkster.Server
 
                 //Relay the query to the requested client connection and reply to the requester with the other clients reply.
                 //This can be found in: ClientReliableMessageHandlers
-                var reply = _chatService.RmServer.Query(accountConnection.ConnectionId, param).Result;
+                var reply = _chatService.RmServer.Query(accountConnection.ConnectionId, param);
 
                 //Reply with the ConnectionId to the requested peer.
                 reply.PeerConnectionId = accountConnection.ConnectionId;

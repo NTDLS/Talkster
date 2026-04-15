@@ -2,6 +2,7 @@
 using NTDLS.Helpers;
 using System.Diagnostics;
 using System.Reflection;
+using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
@@ -42,7 +43,7 @@ namespace Talkster.Client.Forms
             CancelButton = buttonOk;
 
             var serverVersion = (Assembly.GetEntryAssembly()?.GetName().Version).EnsureNotNull();
-            labelVersion.Text = $"v{serverVersion}";
+            Text = $"{ScConstants.AppName} v{serverVersion}";
 
             if (assembly == null || assembly.Location == null)
             {
@@ -65,6 +66,13 @@ namespace Talkster.Client.Forms
 
             listViewVersions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewVersions.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            listViewVersions.ForeColor = KryptonManager.CurrentGlobalPalette
+                .GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
+            foreach (ListViewItem item in listViewVersions.Items)
+            {
+                item.ForeColor = listViewVersions.ForeColor;
+            }
         }
 
         private void AddApplication(string appPath)
@@ -85,7 +93,7 @@ namespace Talkster.Client.Forms
             }
         }
 
-        private void LinkWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkWebsite_LinkClicked(object sender, EventArgs e)
         {
             try
             {

@@ -13,14 +13,14 @@ namespace Talkster.Server
     internal class ChatService
     {
         private readonly RmServer _rmServer;
-        private readonly DmServer _dmServer;
+        private readonly DmMessenger _dmServer;
         private readonly IConfiguration _configuration;
         private readonly DatabaseRepository _dbRepository;
         private readonly Dictionary<Guid, AccountConnection> _accountConnections = new();
         public delegate void OnLogEvent(ChatService server, ScErrorLevel errorLevel, string message, Exception? ex = null);
 
         public RmServer RmServer { get => _rmServer; }
-        public DmServer DmServer { get => _dmServer; }
+        public DmMessenger DmServer { get => _dmServer; }
         public event OnLogEvent? OnLog;
 
         public ChatService(IConfiguration configuration)
@@ -42,7 +42,9 @@ namespace Talkster.Server
             _rmServer.OnDisconnected += RmServer_OnDisconnected;
             _rmServer.AddHandler(new ServerReliableMessageHandlers(configuration, this));
 
-            _dmServer = new DmServer();
+            var listenPort = _configuration.GetValue<int>("ListenPort");
+
+            _dmServer = new DmMessenger(listenPort);
             _dmServer.AddHandler(new ServerDatagramMessageHandlers(configuration, this));
 
             _dmServer.OnException += (DmContext? context, Exception ex) =>
@@ -76,7 +78,6 @@ namespace Talkster.Server
             Log.Information($"Starting TCP/IP service on port: {listenPort:n0}.");
             _rmServer.Start(listenPort);
             Log.Information($"Starting UDP service on port: {listenPort:n0}.");
-            _dmServer.Start(listenPort);
             Log.Information("Service started successfully.");
         }
 

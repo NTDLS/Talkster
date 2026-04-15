@@ -57,20 +57,11 @@ namespace Talkster.Client.Forms
                     Biography = textBoxBiography.TextBox.GetAndValidateText(0, 2500, "If a biography is supplied, it must not exceed [max] characters.")
                 };
 
-                ServerConnection.Current.Connection.Client.Query(new UpdateAccountProfileQuery(displayName, profile)).ContinueWith(o =>
-                {
-                    if (!o.IsFaulted && o.Result.IsSuccess)
-                    {
-                        ServerConnection.Current.DisplayName = displayName;
-                        ServerConnection.Current.Profile = profile;
+                var result = ServerConnection.Current.Connection.Client.Query(new UpdateAccountProfileQuery(displayName, profile));
+                ServerConnection.Current.DisplayName = displayName;
+                ServerConnection.Current.Profile = profile;
 
-                        this.InvokeClose(DialogResult.OK);
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to update profile.");
-                    }
-                });
+                this.InvokeClose(DialogResult.OK);
             }
             catch (Exception ex)
             {

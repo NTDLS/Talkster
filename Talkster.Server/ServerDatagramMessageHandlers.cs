@@ -21,9 +21,9 @@ namespace Talkster.Server
             var accountConnection = _chatService.GetAccountConnectionByConnectionId(datagram.PeerConnectionId)
                 ?? throw new Exception("Session not found.");
 
-            if (_chatService.DmServer.Client != null && accountConnection.DmEndpoint != null)
+            if (accountConnection.DmEndpoint != null)
             {
-                _chatService.DmServer.Client.Dispatch(context, accountConnection.DmEndpoint, datagram);
+                context.Dispatch(datagram, accountConnection.DmEndpoint);
             }
         }
 

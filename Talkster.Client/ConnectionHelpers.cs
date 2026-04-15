@@ -23,15 +23,7 @@ namespace Talkster.Client
                 throw new Exception("Connection to the server was lost.");
             }
 
-            var accountProfile = ServerConnection.Current.Connection.Client.Query(new GetAccountProfileQuery(accountId))
-                .ContinueWith(o =>
-                {
-                    if (!o.IsFaulted && o.Result.IsSuccess)
-                    {
-                        return o.Result;
-                    }
-                    return null;
-                }).Result;
+            var accountProfile = ServerConnection.Current.Connection.Client.Query(new GetAccountProfileQuery(accountId));
             if (accountProfile?.Account == null)
             {
                 throw new Exception("The requested account was not found.");
@@ -46,15 +38,7 @@ namespace Talkster.Client
 
             //The first thing we do when we get a connection is start a new key exchange process.
             var queryRequestKeyExchangeReply = ServerConnection.Current.Connection.Client.Query(
-                new InitiatePeerToPeerSessionQuery(sessionId, ServerConnection.Current.AccountId, accountId, ServerConnection.Current.DisplayName, negotiationToken))
-                .ContinueWith(o =>
-                {
-                    if (!o.IsFaulted && o.Result.IsSuccess)
-                    {
-                        return o.Result;
-                    }
-                    return null;
-                }).Result;
+                new InitiatePeerToPeerSessionQuery(sessionId, ServerConnection.Current.AccountId, accountId, ServerConnection.Current.DisplayName, negotiationToken));
 
             if (queryRequestKeyExchangeReply != null)
             {
@@ -72,22 +56,6 @@ namespace Talkster.Client
             }
 
             return activeChat;
-        }
-
-        /// <summary>
-        /// Creates a new datagram client and adds the default handlers to it.
-        /// </summary>
-        internal static DmClient CreateDmClient()
-        {
-            var dmClient = new DmClient(Settings.Instance.ServerAddress, Settings.Instance.ServerPort);
-            dmClient.AddHandler(new ClientDatagramMessageHandlers());
-
-            dmClient.OnException += (DmContext? context, Exception ex) =>
-            {
-                Program.Log.Error(ex);
-            };
-
-            return dmClient;
         }
 
         /// <summary>
@@ -113,7 +81,7 @@ namespace Talkster.Client
 
                 progressForm?.SetHeaderText("Logging in...");
 
-                var loginReply = connection.Client.Query(new LoginQuery(username, passwordHash, explicitAway)).Result;
+                var loginReply = connection.Client.Query(new LoginQuery(username, passwordHash, explicitAway));
                 if (!loginReply.IsSuccess)
                 {
                     connection.Client.Disconnect();
@@ -174,7 +142,7 @@ namespace Talkster.Client
 
                 //Send our public key to the server and wait on a reply of their public key.
                 var keyExchangeResult = rmClient.Query(new ExchangePublicKeyQuery(rmClient.ConnectionId.EnsureNotNull(), clientVersion,
-                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize)).Result;
+                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize));
 
                 if (!keyExchangeResult.IsSuccess)
                 {

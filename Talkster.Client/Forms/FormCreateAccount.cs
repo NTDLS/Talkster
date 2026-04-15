@@ -84,19 +84,10 @@ namespace Talkster.Client.Forms
                         {
                             progressForm.SetHeaderText("Creating account...");
 
-                            var isSuccess = connection.Client.Query(new CreateAccountQuery(username, displayName, passwordHash)).ContinueWith(o =>
-                            {
-                                if (string.IsNullOrEmpty(o.Result.ErrorMessage) == false)
-                                {
-                                    throw new Exception(o.Result.ErrorMessage);
-                                }
+                            var result = connection.Client.Query(new CreateAccountQuery(username, displayName, passwordHash));
+                            _username = result.IsSuccess ? username : string.Empty;
 
-                                return !o.IsFaulted && o.Result.IsSuccess;
-                            }).Result;
-
-                            _username = isSuccess ? username : string.Empty;
-
-                            this.InvokeClose(isSuccess ? DialogResult.OK : DialogResult.Cancel);
+                            this.InvokeClose(result.IsSuccess ? DialogResult.OK : DialogResult.Cancel);
                         }
                         finally
                         {

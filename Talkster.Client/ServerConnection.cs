@@ -26,7 +26,9 @@ namespace Talkster.Client
         }
 
         public bool IsTerminated { get; private set; } = false;
-        public DmClient DatagramClient { get; private set; }
+        public DmMessenger DatagramMessenger { get; private set; }
+        public DmContext DatagramContext { get; private set; }
+
         public NegotiatedConnection Connection { get; private set; }
         public Guid AccountId { get; private set; }
         public string Username { get; private set; }
@@ -47,7 +49,15 @@ namespace Talkster.Client
             DisplayName = displayName;
             AccountId = accountId;
 
-            DatagramClient = ConnectionHelpers.CreateDmClient();
+            // Creates a new datagram client and adds the default handlers to it.
+            DatagramMessenger = new DmMessenger(0);
+            DatagramMessenger.AddHandler(new ClientDatagramMessageHandlers());
+            DatagramMessenger.OnException += (DmContext? context, Exception ex) =>
+            {
+                Program.Log.Error(ex);
+            };
+
+            DatagramContext = DatagramMessenger.GetEndpointContext(Settings.Instance.ServerAddress, Settings.Instance.ServerPort);
 
             new Thread(() =>
             {
@@ -55,7 +65,7 @@ namespace Talkster.Client
                 {
                     try
                     {
-                        DatagramClient.Dispatch(new ConnectionKeepAliveDatagram(connection.Client.ConnectionId.EnsureNotNull()));
+                        DatagramContext.Dispatch(new ConnectionKeepAliveDatagram(connection.Client.ConnectionId.EnsureNotNull()));
                     }
                     catch (Exception ex)
                     {
@@ -104,7 +114,7 @@ namespace Talkster.Client
             ActiveChats.Clear();
 
             Exceptions.Ignore(() => IsTerminated = true);
-            Exceptions.Ignore(() => DatagramClient.Stop());
+            Exceptions.Ignore(() => DatagramMessenger.Stop());
             Exceptions.Ignore(() => Connection?.Client.Disconnect(false));
             Exceptions.Ignore(() => FormHome?.Invoke(() => FormHome.Close()));
         }

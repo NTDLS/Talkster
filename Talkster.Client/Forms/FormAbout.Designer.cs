@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Forms
+﻿using Krypton.Toolkit;
+
+namespace Talkster.Client.Forms
 {
     partial class FormAbout
     {
@@ -29,13 +31,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
-            pictureBox1 = new PictureBox();
-            buttonOk = new Button();
-            listViewVersions = new ListView();
+            pictureBox1 = new KryptonPictureBox();
+            buttonOk = new KryptonButton();
+            linkWebsite = new KryptonLinkLabel();
+            listViewVersions = new KryptonListView();
             columnHeaderApplication = new ColumnHeader();
             columnHeaderVersion = new ColumnHeader();
-            linkWebsite = new LinkLabel();
-            labelVersion = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -58,64 +59,46 @@
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(88, 27);
             buttonOk.TabIndex = 7;
-            buttonOk.Text = "Ok";
-            buttonOk.UseVisualStyleBackColor = true;
+            buttonOk.Values.DropDownArrowColor = Color.Empty;
+            buttonOk.Values.Text = "Ok";
             buttonOk.Click += ButtonOk_Click;
+            // 
+            // linkWebsite
+            // 
+            linkWebsite.Location = new Point(170, 171);
+            linkWebsite.Margin = new Padding(4, 0, 4, 0);
+            linkWebsite.Name = "linkWebsite";
+            linkWebsite.Size = new Size(164, 20);
+            linkWebsite.TabIndex = 9;
+            linkWebsite.Values.Text = "www.NetworkDLS.com";
+            linkWebsite.LinkClicked += LinkWebsite_LinkClicked;
             // 
             // listViewVersions
             // 
             listViewVersions.Columns.AddRange(new ColumnHeader[] { columnHeaderApplication, columnHeaderVersion });
-            listViewVersions.FullRowSelect = true;
-            listViewVersions.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            listViewVersions.Location = new Point(174, 14);
-            listViewVersions.Margin = new Padding(4, 3, 4, 3);
-            listViewVersions.MultiSelect = false;
+            listViewVersions.HideSelection = false;
+            listViewVersions.Location = new Point(170, 12);
             listViewVersions.Name = "listViewVersions";
-            listViewVersions.Size = new Size(332, 149);
-            listViewVersions.Sorting = SortOrder.Ascending;
-            listViewVersions.TabIndex = 8;
-            listViewVersions.UseCompatibleStateImageBehavior = false;
+            listViewVersions.Size = new Size(337, 153);
+            listViewVersions.TabIndex = 12;
             listViewVersions.View = View.Details;
             // 
             // columnHeaderApplication
             // 
             columnHeaderApplication.Text = "Application";
-            columnHeaderApplication.Width = 100;
+            columnHeaderApplication.Width = 150;
             // 
             // columnHeaderVersion
             // 
             columnHeaderVersion.Text = "Version";
-            columnHeaderVersion.Width = 75;
-            // 
-            // linkWebsite
-            // 
-            linkWebsite.AutoSize = true;
-            linkWebsite.Font = new Font("Microsoft Sans Serif", 11F);
-            linkWebsite.Location = new Point(170, 171);
-            linkWebsite.Margin = new Padding(4, 0, 4, 0);
-            linkWebsite.Name = "linkWebsite";
-            linkWebsite.Size = new Size(164, 18);
-            linkWebsite.TabIndex = 9;
-            linkWebsite.TabStop = true;
-            linkWebsite.Text = "www.NetworkDLS.com";
-            linkWebsite.LinkClicked += LinkWebsite_LinkClicked;
-            // 
-            // labelVersion
-            // 
-            labelVersion.Location = new Point(12, 178);
-            labelVersion.Name = "labelVersion";
-            labelVersion.Size = new Size(42, 20);
-            labelVersion.TabIndex = 10;
-            labelVersion.Values.Text = "v0.0.0";
             // 
             // FormAbout
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(545, 204);
-            Controls.Add(labelVersion);
-            Controls.Add(linkWebsite);
             Controls.Add(listViewVersions);
+            Controls.Add(linkWebsite);
             Controls.Add(buttonOk);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -135,12 +118,11 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private Button buttonOk;
-        private ListView listViewVersions;
+        private KryptonPictureBox pictureBox1;
+        private KryptonButton buttonOk;
+        private KryptonLinkLabel linkWebsite;
+        private KryptonListView listViewVersions;
         private ColumnHeader columnHeaderApplication;
         private ColumnHeader columnHeaderVersion;
-        private LinkLabel linkWebsite;
-        private Krypton.Toolkit.KryptonLabel labelVersion;
     }
 }

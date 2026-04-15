@@ -183,18 +183,7 @@ namespace Talkster.Client.Forms
                     {
                         try
                         {
-                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(contact.Id)).ContinueWith(o =>
-                            {
-                                if (string.IsNullOrEmpty(o.Result.ErrorMessage) == false)
-                                {
-                                    throw new Exception(o.Result.ErrorMessage);
-                                }
-
-                                if (!o.IsFaulted && o.Result.IsSuccess)
-                                {
-                                    Repopulate();
-                                }
-                            });
+                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(contact.Id));
                         }
                         catch (Exception ex)
                         {
@@ -226,18 +215,7 @@ namespace Talkster.Client.Forms
                     {
                         try
                         {
-                            ServerConnection.Current.Connection.Client.Query(new AcceptContactInviteQuery(contact.Id)).ContinueWith(o =>
-                            {
-                                if (string.IsNullOrEmpty(o.Result.ErrorMessage) == false)
-                                {
-                                    throw new Exception(o.Result.ErrorMessage);
-                                }
-
-                                if (!o.IsFaulted && o.Result.IsSuccess)
-                                {
-                                    Repopulate();
-                                }
-                            });
+                            ServerConnection.Current.Connection.Client.Query(new AcceptContactInviteQuery(contact.Id));
                         }
                         catch (Exception ex)
                         {
@@ -515,22 +493,9 @@ namespace Talkster.Client.Forms
                 {
                     try
                     {
-                        ServerConnection.Current.Connection.Client.Query(new GetContactsQuery(), TimeSpan.FromSeconds(5)).ContinueWith(o =>
-                        {
-                            try
-                            {
-                                if (!o.IsFaulted && o.Result.IsSuccess)
-                                {
-                                    DeltaRepopulateTree(o.Result.Contacts);
-                                }
-
-                                return !o.IsFaulted && o.Result.IsSuccess;
-                            }
-                            finally
-                            {
-                                _repopulateInProgress = false;
-                            }
-                        });
+                        var results = ServerConnection.Current.Connection.Client.Query(new GetContactsQuery(), TimeSpan.FromSeconds(5));
+                        DeltaRepopulateTree(results.Contacts);
+                        _repopulateInProgress = false;
                     }
                     catch (Exception ex)
                     {
