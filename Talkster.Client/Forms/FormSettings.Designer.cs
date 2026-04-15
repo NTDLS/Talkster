@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,595 +35,782 @@ namespace Talkster.Client.Forms
         {
             components = new Container();
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FormSettings));
-            buttonSave = new KryptonButton();
-            buttonCancel = new KryptonButton();
-            textBoxFontSample = new KryptonTextBox();
-            labelFontAndSize = new KryptonLabel();
-            numericUpDownFontSize = new KryptonNumericUpDown();
-            comboBoxFont = new KryptonComboBox();
-            checkBoxFlashWindowWhenMessageReceived = new KryptonCheckBox();
-            checkBoxPlaySoundWhenMessageReceived = new KryptonCheckBox();
-            checkBoxPlaySoundWhenContactComesOnline = new KryptonCheckBox();
-            textBoxAutoAwayIdleMinutes = new KryptonTextBox();
-            checkBoxAlertToastWhenMessageReceived = new KryptonCheckBox();
-            labelAutoAwayIdleSeconds = new KryptonLabel();
-            checkBoxAlertToastWhenContactComesOnline = new KryptonCheckBox();
-            labelServerPort = new KryptonLabel();
-            labelServerAddress = new KryptonLabel();
-            textBoxServerPort = new KryptonTextBox();
-            textBoxServerAddress = new KryptonTextBox();
-            checkBoxAutoStartAtWindowsLogin = new KryptonCheckBox();
-            textBoxFileTransferChunkSize = new KryptonTextBox();
-            textBoxMaxMessages = new KryptonTextBox();
-            labelFileTransferChunkSize = new KryptonLabel();
-            labelMaxMessages = new KryptonLabel();
-            labelRsaKeySize = new KryptonLabel();
-            textBoxEndToEndKeySize = new KryptonTextBox();
-            textBoxAesKeySize = new KryptonTextBox();
-            labelEndToEndKeySize = new KryptonLabel();
-            labelAesKeySize = new KryptonLabel();
-            textBoxRsaKeySize = new KryptonTextBox();
-            kryptonManager1 = new KryptonManager(components);
-            kryptonNavigator = new Krypton.Navigator.KryptonNavigator();
-            kryptonPageNotifications = new Krypton.Navigator.KryptonPage();
-            textBoxToastTimeoutSeconds = new KryptonTextBox();
-            labelToastTimeoutSeconds = new KryptonLabel();
-            checkBoxAlertToastErrorMessages = new KryptonCheckBox();
-            checkBoxAlertToastWhenMyOnlineStatusChanges = new KryptonCheckBox();
-            kryptonPageMessages = new Krypton.Navigator.KryptonPage();
-            kryptonPageUI = new Krypton.Navigator.KryptonPage();
-            kryptonComboBoxTheme = new KryptonComboBox();
-            labelTheme = new KryptonLabel();
-            kryptonPageServer = new Krypton.Navigator.KryptonPage();
-            kryptonPageAdvanced = new Krypton.Navigator.KryptonPage();
-            kryptonPageCryptography = new Krypton.Navigator.KryptonPage();
-            splitContainer1 = new SplitContainer();
-            ((ISupportInitialize)comboBoxFont).BeginInit();
-            ((ISupportInitialize)kryptonNavigator).BeginInit();
-            ((ISupportInitialize)kryptonPageNotifications).BeginInit();
-            kryptonPageNotifications.SuspendLayout();
-            ((ISupportInitialize)kryptonPageMessages).BeginInit();
-            kryptonPageMessages.SuspendLayout();
-            ((ISupportInitialize)kryptonPageUI).BeginInit();
-            kryptonPageUI.SuspendLayout();
-            ((ISupportInitialize)kryptonComboBoxTheme).BeginInit();
-            ((ISupportInitialize)kryptonPageServer).BeginInit();
-            kryptonPageServer.SuspendLayout();
-            ((ISupportInitialize)kryptonPageAdvanced).BeginInit();
-            kryptonPageAdvanced.SuspendLayout();
-            ((ISupportInitialize)kryptonPageCryptography).BeginInit();
-            kryptonPageCryptography.SuspendLayout();
-            ((ISupportInitialize)splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.Panel2.SuspendLayout();
-            splitContainer1.SuspendLayout();
+            buttonSave = new PoisonButton();
+            buttonCancel = new PoisonButton();
+            textBoxFontSample = new PoisonTextBox();
+            labelFontAndSize = new PoisonLabel();
+            numericUpDownFontSize = new HopeNumeric();
+            comboBoxFont = new PoisonComboBox();
+            checkBoxFlashWindowWhenMessageReceived = new PoisonCheckBox();
+            checkBoxPlaySoundWhenMessageReceived = new PoisonCheckBox();
+            checkBoxPlaySoundWhenContactComesOnline = new PoisonCheckBox();
+            textBoxAutoAwayIdleMinutes = new PoisonTextBox();
+            checkBoxAlertToastWhenMessageReceived = new PoisonCheckBox();
+            labelAutoAwayIdleSeconds = new PoisonLabel();
+            checkBoxAlertToastWhenContactComesOnline = new PoisonCheckBox();
+            labelServerPort = new PoisonLabel();
+            labelServerAddress = new PoisonLabel();
+            textBoxServerPort = new PoisonTextBox();
+            textBoxServerAddress = new PoisonTextBox();
+            checkBoxAutoStartAtWindowsLogin = new PoisonCheckBox();
+            textBoxFileTransferChunkSize = new PoisonTextBox();
+            textBoxMaxMessages = new PoisonTextBox();
+            labelFileTransferChunkSize = new PoisonLabel();
+            labelMaxMessages = new PoisonLabel();
+            labelRsaKeySize = new PoisonLabel();
+            textBoxEndToEndKeySize = new PoisonTextBox();
+            textBoxAesKeySize = new PoisonTextBox();
+            labelEndToEndKeySize = new PoisonLabel();
+            labelAesKeySize = new PoisonLabel();
+            textBoxRsaKeySize = new PoisonTextBox();
+            textBoxToastTimeoutSeconds = new PoisonTextBox();
+            labelToastTimeoutSeconds = new PoisonLabel();
+            checkBoxAlertToastErrorMessages = new PoisonCheckBox();
+            checkBoxAlertToastWhenMyOnlineStatusChanges = new PoisonCheckBox();
+            comboBoxTheme = new PoisonComboBox();
+            labelTheme = new PoisonLabel();
+            poisonTabControl1 = new PoisonTabControl();
+            tabPage1 = new PoisonTabPage();
+            tabPage2 = new PoisonTabPage();
+            tabPage3 = new PoisonTabPage();
+            tabPage4 = new PoisonTabPage();
+            tabPage5 = new PoisonTabPage();
+            tabPage6 = new PoisonTabPage();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
+            poisonTabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
+            tabPage6.SuspendLayout();
+            ((ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(281, 8);
+            buttonSave.Location = new Point(352, 402);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(75, 23);
             buttonSave.TabIndex = 3;
-            buttonSave.Values.DropDownArrowColor = Color.Empty;
-            buttonSave.Values.Text = "Save";
+            buttonSave.Text = "Save";
+            buttonSave.UseSelectable = true;
             buttonSave.Click += ButtonSave_Click;
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(362, 8);
+            buttonCancel.Location = new Point(433, 402);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 23);
             buttonCancel.TabIndex = 4;
-            buttonCancel.Values.DropDownArrowColor = Color.Empty;
-            buttonCancel.Values.Text = "Cancel";
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseSelectable = true;
             buttonCancel.Click += ButtonCancel_Click;
             // 
             // textBoxFontSample
             // 
-            textBoxFontSample.Location = new Point(5, 50);
+            // 
+            // 
+            // 
+            textBoxFontSample.CustomButton.Image = null;
+            textBoxFontSample.CustomButton.Location = new Point(220, 1);
+            textBoxFontSample.CustomButton.Name = "";
+            textBoxFontSample.CustomButton.Size = new Size(203, 203);
+            textBoxFontSample.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxFontSample.CustomButton.TabIndex = 1;
+            textBoxFontSample.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxFontSample.CustomButton.UseSelectable = true;
+            textBoxFontSample.CustomButton.Visible = false;
+            textBoxFontSample.Location = new Point(0, 68);
+            textBoxFontSample.MaxLength = 32767;
             textBoxFontSample.Multiline = true;
             textBoxFontSample.Name = "textBoxFontSample";
+            textBoxFontSample.PasswordChar = '\0';
+            textBoxFontSample.ScrollBars = ScrollBars.None;
+            textBoxFontSample.SelectedText = "";
+            textBoxFontSample.SelectionLength = 0;
+            textBoxFontSample.SelectionStart = 0;
+            textBoxFontSample.ShortcutsEnabled = true;
             textBoxFontSample.Size = new Size(424, 205);
             textBoxFontSample.TabIndex = 2;
+            textBoxFontSample.UseSelectable = true;
+            textBoxFontSample.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxFontSample.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelFontAndSize
             // 
-            labelFontAndSize.Location = new Point(3, 3);
+            labelFontAndSize.Location = new Point(-4, 10);
             labelFontAndSize.Name = "labelFontAndSize";
-            labelFontAndSize.Size = new Size(84, 20);
+            labelFontAndSize.Size = new Size(202, 20);
             labelFontAndSize.TabIndex = 3;
-            labelFontAndSize.Values.Text = "Font and Size";
+            labelFontAndSize.Text = "Font and Size";
             // 
             // numericUpDownFontSize
             // 
-            numericUpDownFontSize.AllowDecimals = true;
-            numericUpDownFontSize.DecimalPlaces = 2;
-            numericUpDownFontSize.Increment = new decimal(new int[] { 25, 0, 0, 131072 });
-            numericUpDownFontSize.Location = new Point(367, 22);
-            numericUpDownFontSize.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
-            numericUpDownFontSize.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownFontSize.BackColor = Color.White;
+            numericUpDownFontSize.BaseColor = Color.FromArgb(242, 246, 252);
+            numericUpDownFontSize.BorderColorA = Color.FromArgb(192, 196, 204);
+            numericUpDownFontSize.BorderColorB = Color.FromArgb(192, 196, 204);
+            numericUpDownFontSize.BorderHoverColorA = Color.FromArgb(64, 158, 255);
+            numericUpDownFontSize.ButtonTextColorA = Color.FromArgb(144, 147, 153);
+            numericUpDownFontSize.ButtonTextColorB = Color.FromArgb(144, 147, 153);
+            numericUpDownFontSize.EnterKey = true;
+            numericUpDownFontSize.Font = new Font("Segoe UI", 12F);
+            numericUpDownFontSize.ForeColor = Color.Black;
+            numericUpDownFontSize.HoverButtonTextColorA = Color.FromArgb(64, 158, 255);
+            numericUpDownFontSize.HoverButtonTextColorB = Color.FromArgb(64, 158, 255);
+            numericUpDownFontSize.Location = new Point(362, 33);
+            numericUpDownFontSize.MaxNum = 10F;
+            numericUpDownFontSize.MinNum = 0F;
             numericUpDownFontSize.Name = "numericUpDownFontSize";
-            numericUpDownFontSize.Size = new Size(62, 22);
+            numericUpDownFontSize.Precision = 0;
+            numericUpDownFontSize.Size = new Size(62, 32);
+            numericUpDownFontSize.Step = 1F;
+            numericUpDownFontSize.Style = HopeNumeric.NumericStyle.LeftRight;
             numericUpDownFontSize.TabIndex = 1;
-            numericUpDownFontSize.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownFontSize.ValueNumber = 0F;
             // 
             // comboBoxFont
             // 
-            comboBoxFont.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxFont.DropDownWidth = 351;
             comboBoxFont.FormattingEnabled = true;
-            comboBoxFont.Location = new Point(5, 22);
+            comboBoxFont.ItemHeight = 23;
+            comboBoxFont.Location = new Point(0, 33);
             comboBoxFont.Name = "comboBoxFont";
-            comboBoxFont.Size = new Size(356, 22);
+            comboBoxFont.Size = new Size(356, 29);
             comboBoxFont.TabIndex = 0;
+            comboBoxFont.UseSelectable = true;
             // 
             // checkBoxFlashWindowWhenMessageReceived
             // 
-            checkBoxFlashWindowWhenMessageReceived.Location = new Point(11, 57);
+            checkBoxFlashWindowWhenMessageReceived.Location = new Point(6, 58);
             checkBoxFlashWindowWhenMessageReceived.Name = "checkBoxFlashWindowWhenMessageReceived";
             checkBoxFlashWindowWhenMessageReceived.Size = new Size(241, 20);
             checkBoxFlashWindowWhenMessageReceived.TabIndex = 0;
-            checkBoxFlashWindowWhenMessageReceived.Values.Text = "Flash window when message is received";
+            checkBoxFlashWindowWhenMessageReceived.Text = "Flash window when message is received";
+            checkBoxFlashWindowWhenMessageReceived.UseSelectable = true;
             // 
             // checkBoxPlaySoundWhenMessageReceived
             // 
-            checkBoxPlaySoundWhenMessageReceived.Location = new Point(11, 31);
+            checkBoxPlaySoundWhenMessageReceived.Location = new Point(6, 32);
             checkBoxPlaySoundWhenMessageReceived.Name = "checkBoxPlaySoundWhenMessageReceived";
             checkBoxPlaySoundWhenMessageReceived.Size = new Size(226, 20);
             checkBoxPlaySoundWhenMessageReceived.TabIndex = 2;
-            checkBoxPlaySoundWhenMessageReceived.Values.Text = "Audible alert when message received";
+            checkBoxPlaySoundWhenMessageReceived.Text = "Audible alert when message received";
+            checkBoxPlaySoundWhenMessageReceived.UseSelectable = true;
             // 
             // checkBoxPlaySoundWhenContactComesOnline
             // 
-            checkBoxPlaySoundWhenContactComesOnline.Location = new Point(11, 5);
+            checkBoxPlaySoundWhenContactComesOnline.Location = new Point(6, 6);
             checkBoxPlaySoundWhenContactComesOnline.Name = "checkBoxPlaySoundWhenContactComesOnline";
             checkBoxPlaySoundWhenContactComesOnline.Size = new Size(245, 20);
             checkBoxPlaySoundWhenContactComesOnline.TabIndex = 1;
-            checkBoxPlaySoundWhenContactComesOnline.Values.Text = "Audible alert when contact comes online";
+            checkBoxPlaySoundWhenContactComesOnline.Text = "Audible alert when contact comes online";
+            checkBoxPlaySoundWhenContactComesOnline.UseSelectable = true;
             // 
             // textBoxAutoAwayIdleMinutes
             // 
-            textBoxAutoAwayIdleMinutes.Location = new Point(284, 72);
+            // 
+            // 
+            // 
+            textBoxAutoAwayIdleMinutes.CustomButton.Image = null;
+            textBoxAutoAwayIdleMinutes.CustomButton.Location = new Point(78, 1);
+            textBoxAutoAwayIdleMinutes.CustomButton.Name = "";
+            textBoxAutoAwayIdleMinutes.CustomButton.Size = new Size(21, 21);
+            textBoxAutoAwayIdleMinutes.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxAutoAwayIdleMinutes.CustomButton.TabIndex = 1;
+            textBoxAutoAwayIdleMinutes.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxAutoAwayIdleMinutes.CustomButton.UseSelectable = true;
+            textBoxAutoAwayIdleMinutes.CustomButton.Visible = false;
+            textBoxAutoAwayIdleMinutes.Location = new Point(279, 81);
+            textBoxAutoAwayIdleMinutes.MaxLength = 32767;
             textBoxAutoAwayIdleMinutes.Name = "textBoxAutoAwayIdleMinutes";
+            textBoxAutoAwayIdleMinutes.PasswordChar = '\0';
+            textBoxAutoAwayIdleMinutes.ScrollBars = ScrollBars.None;
+            textBoxAutoAwayIdleMinutes.SelectedText = "";
+            textBoxAutoAwayIdleMinutes.SelectionLength = 0;
+            textBoxAutoAwayIdleMinutes.SelectionStart = 0;
+            textBoxAutoAwayIdleMinutes.ShortcutsEnabled = true;
             textBoxAutoAwayIdleMinutes.Size = new Size(100, 23);
             textBoxAutoAwayIdleMinutes.TabIndex = 8;
+            textBoxAutoAwayIdleMinutes.UseSelectable = true;
+            textBoxAutoAwayIdleMinutes.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxAutoAwayIdleMinutes.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // checkBoxAlertToastWhenMessageReceived
             // 
-            checkBoxAlertToastWhenMessageReceived.Location = new Point(11, 135);
+            checkBoxAlertToastWhenMessageReceived.Location = new Point(6, 136);
             checkBoxAlertToastWhenMessageReceived.Name = "checkBoxAlertToastWhenMessageReceived";
             checkBoxAlertToastWhenMessageReceived.Size = new Size(228, 20);
             checkBoxAlertToastWhenMessageReceived.TabIndex = 5;
-            checkBoxAlertToastWhenMessageReceived.Values.Text = "Visual alert when message is received";
+            checkBoxAlertToastWhenMessageReceived.Text = "Visual alert when message is received";
+            checkBoxAlertToastWhenMessageReceived.UseSelectable = true;
             // 
             // labelAutoAwayIdleSeconds
             // 
-            labelAutoAwayIdleSeconds.Location = new Point(280, 54);
+            labelAutoAwayIdleSeconds.Location = new Point(275, 55);
             labelAutoAwayIdleSeconds.Name = "labelAutoAwayIdleSeconds";
-            labelAutoAwayIdleSeconds.Size = new Size(152, 20);
+            labelAutoAwayIdleSeconds.Size = new Size(202, 20);
             labelAutoAwayIdleSeconds.TabIndex = 7;
-            labelAutoAwayIdleSeconds.Values.Text = "Auto-away after (minutes)";
+            labelAutoAwayIdleSeconds.Text = "Auto-away after (minutes)";
             // 
             // checkBoxAlertToastWhenContactComesOnline
             // 
-            checkBoxAlertToastWhenContactComesOnline.Location = new Point(11, 109);
+            checkBoxAlertToastWhenContactComesOnline.Location = new Point(6, 110);
             checkBoxAlertToastWhenContactComesOnline.Name = "checkBoxAlertToastWhenContactComesOnline";
             checkBoxAlertToastWhenContactComesOnline.Size = new Size(236, 20);
             checkBoxAlertToastWhenContactComesOnline.TabIndex = 4;
-            checkBoxAlertToastWhenContactComesOnline.Values.Text = "Visual alert when contact comes online";
+            checkBoxAlertToastWhenContactComesOnline.Text = "Visual alert when contact comes online";
+            checkBoxAlertToastWhenContactComesOnline.UseSelectable = true;
             // 
             // labelServerPort
             // 
-            labelServerPort.Location = new Point(220, 3);
+            labelServerPort.Location = new Point(229, 12);
             labelServerPort.Name = "labelServerPort";
-            labelServerPort.Size = new Size(71, 20);
+            labelServerPort.Size = new Size(112, 20);
             labelServerPort.TabIndex = 3;
-            labelServerPort.Values.Text = "Server Port";
+            labelServerPort.Text = "Server Port";
             // 
             // labelServerAddress
             // 
-            labelServerAddress.Location = new Point(3, 3);
+            labelServerAddress.Location = new Point(12, 12);
             labelServerAddress.Name = "labelServerAddress";
-            labelServerAddress.Size = new Size(92, 20);
+            labelServerAddress.Size = new Size(157, 20);
             labelServerAddress.TabIndex = 2;
-            labelServerAddress.Values.Text = "Server Address";
+            labelServerAddress.Text = "Server Address";
             // 
             // textBoxServerPort
             // 
-            textBoxServerPort.Location = new Point(224, 25);
+            // 
+            // 
+            // 
+            textBoxServerPort.CustomButton.Image = null;
+            textBoxServerPort.CustomButton.Location = new Point(58, 1);
+            textBoxServerPort.CustomButton.Name = "";
+            textBoxServerPort.CustomButton.Size = new Size(21, 21);
+            textBoxServerPort.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxServerPort.CustomButton.TabIndex = 1;
+            textBoxServerPort.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxServerPort.CustomButton.UseSelectable = true;
+            textBoxServerPort.CustomButton.Visible = false;
+            textBoxServerPort.Location = new Point(233, 34);
+            textBoxServerPort.MaxLength = 32767;
             textBoxServerPort.Name = "textBoxServerPort";
+            textBoxServerPort.PasswordChar = '\0';
+            textBoxServerPort.ScrollBars = ScrollBars.None;
+            textBoxServerPort.SelectedText = "";
+            textBoxServerPort.SelectionLength = 0;
+            textBoxServerPort.SelectionStart = 0;
+            textBoxServerPort.ShortcutsEnabled = true;
             textBoxServerPort.Size = new Size(80, 23);
             textBoxServerPort.TabIndex = 1;
+            textBoxServerPort.UseSelectable = true;
+            textBoxServerPort.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxServerPort.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // textBoxServerAddress
             // 
-            textBoxServerAddress.Location = new Point(7, 25);
+            // 
+            // 
+            // 
+            textBoxServerAddress.CustomButton.Image = null;
+            textBoxServerAddress.CustomButton.Location = new Point(189, 1);
+            textBoxServerAddress.CustomButton.Name = "";
+            textBoxServerAddress.CustomButton.Size = new Size(21, 21);
+            textBoxServerAddress.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxServerAddress.CustomButton.TabIndex = 1;
+            textBoxServerAddress.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxServerAddress.CustomButton.UseSelectable = true;
+            textBoxServerAddress.CustomButton.Visible = false;
+            textBoxServerAddress.Location = new Point(16, 34);
+            textBoxServerAddress.MaxLength = 32767;
             textBoxServerAddress.Name = "textBoxServerAddress";
+            textBoxServerAddress.PasswordChar = '\0';
+            textBoxServerAddress.ScrollBars = ScrollBars.None;
+            textBoxServerAddress.SelectedText = "";
+            textBoxServerAddress.SelectionLength = 0;
+            textBoxServerAddress.SelectionStart = 0;
+            textBoxServerAddress.ShortcutsEnabled = true;
             textBoxServerAddress.Size = new Size(211, 23);
             textBoxServerAddress.TabIndex = 0;
+            textBoxServerAddress.UseSelectable = true;
+            textBoxServerAddress.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxServerAddress.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // checkBoxAutoStartAtWindowsLogin
             // 
-            checkBoxAutoStartAtWindowsLogin.Location = new Point(7, 54);
+            checkBoxAutoStartAtWindowsLogin.Location = new Point(3, 68);
             checkBoxAutoStartAtWindowsLogin.Name = "checkBoxAutoStartAtWindowsLogin";
             checkBoxAutoStartAtWindowsLogin.Size = new Size(180, 20);
             checkBoxAutoStartAtWindowsLogin.TabIndex = 2;
-            checkBoxAutoStartAtWindowsLogin.Values.Text = "Auto-start at windows login?";
+            checkBoxAutoStartAtWindowsLogin.Text = "Auto-start at windows login?";
+            checkBoxAutoStartAtWindowsLogin.UseSelectable = true;
             // 
             // textBoxFileTransferChunkSize
             // 
-            textBoxFileTransferChunkSize.Location = new Point(7, 71);
+            // 
+            // 
+            // 
+            textBoxFileTransferChunkSize.CustomButton.Image = null;
+            textBoxFileTransferChunkSize.CustomButton.Location = new Point(95, 1);
+            textBoxFileTransferChunkSize.CustomButton.Name = "";
+            textBoxFileTransferChunkSize.CustomButton.Size = new Size(21, 21);
+            textBoxFileTransferChunkSize.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxFileTransferChunkSize.CustomButton.TabIndex = 1;
+            textBoxFileTransferChunkSize.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxFileTransferChunkSize.CustomButton.UseSelectable = true;
+            textBoxFileTransferChunkSize.CustomButton.Visible = false;
+            textBoxFileTransferChunkSize.Location = new Point(7, 82);
+            textBoxFileTransferChunkSize.MaxLength = 32767;
             textBoxFileTransferChunkSize.Name = "textBoxFileTransferChunkSize";
+            textBoxFileTransferChunkSize.PasswordChar = '\0';
+            textBoxFileTransferChunkSize.ScrollBars = ScrollBars.None;
+            textBoxFileTransferChunkSize.SelectedText = "";
+            textBoxFileTransferChunkSize.SelectionLength = 0;
+            textBoxFileTransferChunkSize.SelectionStart = 0;
+            textBoxFileTransferChunkSize.ShortcutsEnabled = true;
             textBoxFileTransferChunkSize.Size = new Size(117, 23);
             textBoxFileTransferChunkSize.TabIndex = 3;
+            textBoxFileTransferChunkSize.UseSelectable = true;
+            textBoxFileTransferChunkSize.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxFileTransferChunkSize.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // textBoxMaxMessages
             // 
-            textBoxMaxMessages.Location = new Point(7, 23);
+            // 
+            // 
+            // 
+            textBoxMaxMessages.CustomButton.Image = null;
+            textBoxMaxMessages.CustomButton.Location = new Point(95, 1);
+            textBoxMaxMessages.CustomButton.Name = "";
+            textBoxMaxMessages.CustomButton.Size = new Size(21, 21);
+            textBoxMaxMessages.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxMaxMessages.CustomButton.TabIndex = 1;
+            textBoxMaxMessages.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxMaxMessages.CustomButton.UseSelectable = true;
+            textBoxMaxMessages.CustomButton.Visible = false;
+            textBoxMaxMessages.Location = new Point(7, 33);
+            textBoxMaxMessages.MaxLength = 32767;
             textBoxMaxMessages.Name = "textBoxMaxMessages";
+            textBoxMaxMessages.PasswordChar = '\0';
+            textBoxMaxMessages.ScrollBars = ScrollBars.None;
+            textBoxMaxMessages.SelectedText = "";
+            textBoxMaxMessages.SelectionLength = 0;
+            textBoxMaxMessages.SelectionStart = 0;
+            textBoxMaxMessages.ShortcutsEnabled = true;
             textBoxMaxMessages.Size = new Size(117, 23);
             textBoxMaxMessages.TabIndex = 1;
+            textBoxMaxMessages.UseSelectable = true;
+            textBoxMaxMessages.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxMaxMessages.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelFileTransferChunkSize
             // 
-            labelFileTransferChunkSize.Location = new Point(3, 51);
+            labelFileTransferChunkSize.Location = new Point(7, 59);
             labelFileTransferChunkSize.Name = "labelFileTransferChunkSize";
-            labelFileTransferChunkSize.Size = new Size(92, 20);
+            labelFileTransferChunkSize.Size = new Size(151, 20);
             labelFileTransferChunkSize.TabIndex = 2;
-            labelFileTransferChunkSize.Values.Text = "File Chunk Size";
+            labelFileTransferChunkSize.Text = "File Chunk Size";
             // 
             // labelMaxMessages
             // 
-            labelMaxMessages.Location = new Point(3, 3);
+            labelMaxMessages.Location = new Point(7, 10);
             labelMaxMessages.Name = "labelMaxMessages";
-            labelMaxMessages.Size = new Size(90, 20);
+            labelMaxMessages.Size = new Size(151, 20);
             labelMaxMessages.TabIndex = 0;
-            labelMaxMessages.Values.Text = "Max Messages";
+            labelMaxMessages.Text = "Max Messages";
             // 
             // labelRsaKeySize
             // 
-            labelRsaKeySize.Location = new Point(3, 3);
+            labelRsaKeySize.Location = new Point(7, 10);
             labelRsaKeySize.Name = "labelRsaKeySize";
-            labelRsaKeySize.Size = new Size(78, 20);
+            labelRsaKeySize.Size = new Size(201, 20);
             labelRsaKeySize.TabIndex = 0;
-            labelRsaKeySize.Values.Text = "RSA Key Bits";
+            labelRsaKeySize.Text = "RSA Key Bits";
             // 
             // textBoxEndToEndKeySize
             // 
-            textBoxEndToEndKeySize.Location = new Point(7, 120);
+            // 
+            // 
+            // 
+            textBoxEndToEndKeySize.CustomButton.Image = null;
+            textBoxEndToEndKeySize.CustomButton.Location = new Point(100, 1);
+            textBoxEndToEndKeySize.CustomButton.Name = "";
+            textBoxEndToEndKeySize.CustomButton.Size = new Size(21, 21);
+            textBoxEndToEndKeySize.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxEndToEndKeySize.CustomButton.TabIndex = 1;
+            textBoxEndToEndKeySize.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxEndToEndKeySize.CustomButton.UseSelectable = true;
+            textBoxEndToEndKeySize.CustomButton.Visible = false;
+            textBoxEndToEndKeySize.Location = new Point(7, 131);
+            textBoxEndToEndKeySize.MaxLength = 32767;
             textBoxEndToEndKeySize.Name = "textBoxEndToEndKeySize";
+            textBoxEndToEndKeySize.PasswordChar = '\0';
+            textBoxEndToEndKeySize.ScrollBars = ScrollBars.None;
+            textBoxEndToEndKeySize.SelectedText = "";
+            textBoxEndToEndKeySize.SelectionLength = 0;
+            textBoxEndToEndKeySize.SelectionStart = 0;
+            textBoxEndToEndKeySize.ShortcutsEnabled = true;
             textBoxEndToEndKeySize.Size = new Size(122, 23);
             textBoxEndToEndKeySize.TabIndex = 5;
+            textBoxEndToEndKeySize.UseSelectable = true;
+            textBoxEndToEndKeySize.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxEndToEndKeySize.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // textBoxAesKeySize
             // 
-            textBoxAesKeySize.Location = new Point(7, 71);
+            // 
+            // 
+            // 
+            textBoxAesKeySize.CustomButton.Image = null;
+            textBoxAesKeySize.CustomButton.Location = new Point(100, 1);
+            textBoxAesKeySize.CustomButton.Name = "";
+            textBoxAesKeySize.CustomButton.Size = new Size(21, 21);
+            textBoxAesKeySize.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxAesKeySize.CustomButton.TabIndex = 1;
+            textBoxAesKeySize.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxAesKeySize.CustomButton.UseSelectable = true;
+            textBoxAesKeySize.CustomButton.Visible = false;
+            textBoxAesKeySize.Location = new Point(7, 82);
+            textBoxAesKeySize.MaxLength = 32767;
             textBoxAesKeySize.Name = "textBoxAesKeySize";
+            textBoxAesKeySize.PasswordChar = '\0';
+            textBoxAesKeySize.ScrollBars = ScrollBars.None;
+            textBoxAesKeySize.SelectedText = "";
+            textBoxAesKeySize.SelectionLength = 0;
+            textBoxAesKeySize.SelectionStart = 0;
+            textBoxAesKeySize.ShortcutsEnabled = true;
             textBoxAesKeySize.Size = new Size(122, 23);
             textBoxAesKeySize.TabIndex = 3;
+            textBoxAesKeySize.UseSelectable = true;
+            textBoxAesKeySize.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxAesKeySize.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelEndToEndKeySize
             // 
-            labelEndToEndKeySize.Location = new Point(3, 100);
+            labelEndToEndKeySize.Location = new Point(7, 108);
             labelEndToEndKeySize.Name = "labelEndToEndKeySize";
-            labelEndToEndKeySize.Size = new Size(119, 20);
+            labelEndToEndKeySize.Size = new Size(201, 20);
             labelEndToEndKeySize.TabIndex = 4;
-            labelEndToEndKeySize.Values.Text = "End-to-End Key Bits";
+            labelEndToEndKeySize.Text = "End-to-End Key Bits";
             // 
             // labelAesKeySize
             // 
-            labelAesKeySize.Location = new Point(3, 51);
+            labelAesKeySize.Location = new Point(7, 59);
             labelAesKeySize.Name = "labelAesKeySize";
-            labelAesKeySize.Size = new Size(77, 20);
+            labelAesKeySize.Size = new Size(201, 20);
             labelAesKeySize.TabIndex = 2;
-            labelAesKeySize.Values.Text = "AES Key Bits";
+            labelAesKeySize.Text = "AES Key Bits";
             // 
             // textBoxRsaKeySize
             // 
-            textBoxRsaKeySize.Location = new Point(7, 23);
+            // 
+            // 
+            // 
+            textBoxRsaKeySize.CustomButton.Image = null;
+            textBoxRsaKeySize.CustomButton.Location = new Point(100, 1);
+            textBoxRsaKeySize.CustomButton.Name = "";
+            textBoxRsaKeySize.CustomButton.Size = new Size(21, 21);
+            textBoxRsaKeySize.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxRsaKeySize.CustomButton.TabIndex = 1;
+            textBoxRsaKeySize.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxRsaKeySize.CustomButton.UseSelectable = true;
+            textBoxRsaKeySize.CustomButton.Visible = false;
+            textBoxRsaKeySize.Location = new Point(7, 33);
+            textBoxRsaKeySize.MaxLength = 32767;
             textBoxRsaKeySize.Name = "textBoxRsaKeySize";
+            textBoxRsaKeySize.PasswordChar = '\0';
+            textBoxRsaKeySize.ScrollBars = ScrollBars.None;
+            textBoxRsaKeySize.SelectedText = "";
+            textBoxRsaKeySize.SelectionLength = 0;
+            textBoxRsaKeySize.SelectionStart = 0;
+            textBoxRsaKeySize.ShortcutsEnabled = true;
             textBoxRsaKeySize.Size = new Size(122, 23);
             textBoxRsaKeySize.TabIndex = 1;
-            // 
-            // kryptonNavigator
-            // 
-            kryptonNavigator.AllowPageDrag = true;
-            kryptonNavigator.AllowPageReorder = false;
-            kryptonNavigator.Button.ButtonDisplayLogic = Krypton.Navigator.ButtonDisplayLogic.Context;
-            kryptonNavigator.Button.CloseButtonAction = Krypton.Navigator.CloseButtonAction.RemovePageAndDispose;
-            kryptonNavigator.Button.CloseButtonDisplay = Krypton.Navigator.ButtonDisplay.Hide;
-            kryptonNavigator.Button.ContextButtonAction = Krypton.Navigator.ContextButtonAction.SelectPage;
-            kryptonNavigator.Button.ContextButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
-            kryptonNavigator.Button.ContextMenuMapImage = Krypton.Navigator.MapKryptonPageImage.Small;
-            kryptonNavigator.Button.ContextMenuMapText = Krypton.Navigator.MapKryptonPageText.TextTitle;
-            kryptonNavigator.Button.NextButtonAction = Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
-            kryptonNavigator.Button.NextButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
-            kryptonNavigator.Button.PreviousButtonAction = Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
-            kryptonNavigator.Button.PreviousButtonDisplay = Krypton.Navigator.ButtonDisplay.Logic;
-            kryptonNavigator.ControlKryptonFormFeatures = false;
-            kryptonNavigator.Dock = DockStyle.Fill;
-            kryptonNavigator.Location = new Point(0, 0);
-            kryptonNavigator.NavigatorMode = Krypton.Navigator.NavigatorMode.BarRibbonTabGroup;
-            kryptonNavigator.Owner = null;
-            kryptonNavigator.PageBackStyle = PaletteBackStyle.PanelClient;
-            kryptonNavigator.Pages.AddRange(new Krypton.Navigator.KryptonPage[] { kryptonPageNotifications, kryptonPageMessages, kryptonPageUI, kryptonPageServer, kryptonPageAdvanced, kryptonPageCryptography });
-            kryptonNavigator.PopupPages.AllowPopupPages = Krypton.Navigator.PopupPageAllow.Never;
-            kryptonNavigator.PopupPages.Element = Krypton.Navigator.PopupPageElement.Item;
-            kryptonNavigator.PopupPages.Position = Krypton.Navigator.PopupPagePosition.ModeAppropriate;
-            kryptonNavigator.SelectedIndex = 0;
-            kryptonNavigator.Size = new Size(468, 288);
-            kryptonNavigator.TabIndex = 5;
-            // 
-            // kryptonPageNotifications
-            // 
-            kryptonPageNotifications.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageNotifications.Controls.Add(textBoxToastTimeoutSeconds);
-            kryptonPageNotifications.Controls.Add(labelToastTimeoutSeconds);
-            kryptonPageNotifications.Controls.Add(checkBoxAlertToastErrorMessages);
-            kryptonPageNotifications.Controls.Add(checkBoxAlertToastWhenMyOnlineStatusChanges);
-            kryptonPageNotifications.Controls.Add(checkBoxFlashWindowWhenMessageReceived);
-            kryptonPageNotifications.Controls.Add(checkBoxAlertToastWhenContactComesOnline);
-            kryptonPageNotifications.Controls.Add(checkBoxPlaySoundWhenMessageReceived);
-            kryptonPageNotifications.Controls.Add(checkBoxPlaySoundWhenContactComesOnline);
-            kryptonPageNotifications.Controls.Add(checkBoxAlertToastWhenMessageReceived);
-            kryptonPageNotifications.Controls.Add(textBoxAutoAwayIdleMinutes);
-            kryptonPageNotifications.Controls.Add(labelAutoAwayIdleSeconds);
-            kryptonPageNotifications.Flags = 65534;
-            kryptonPageNotifications.LastVisibleSet = true;
-            kryptonPageNotifications.MinimumSize = new Size(150, 50);
-            kryptonPageNotifications.Name = "kryptonPageNotifications";
-            kryptonPageNotifications.Size = new Size(466, 259);
-            kryptonPageNotifications.Text = "Notifications";
-            kryptonPageNotifications.TextDescription = "Notifications";
-            kryptonPageNotifications.TextTitle = "Notifications";
-            kryptonPageNotifications.ToolTipTitle = "Notifications";
-            kryptonPageNotifications.UniqueName = "c7d547960feb40a6ab6e1917d01c78ac";
+            textBoxRsaKeySize.UseSelectable = true;
+            textBoxRsaKeySize.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxRsaKeySize.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // textBoxToastTimeoutSeconds
             // 
-            textBoxToastTimeoutSeconds.Location = new Point(284, 25);
+            // 
+            // 
+            // 
+            textBoxToastTimeoutSeconds.CustomButton.Image = null;
+            textBoxToastTimeoutSeconds.CustomButton.Location = new Point(78, 1);
+            textBoxToastTimeoutSeconds.CustomButton.Name = "";
+            textBoxToastTimeoutSeconds.CustomButton.Size = new Size(21, 21);
+            textBoxToastTimeoutSeconds.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxToastTimeoutSeconds.CustomButton.TabIndex = 1;
+            textBoxToastTimeoutSeconds.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxToastTimeoutSeconds.CustomButton.UseSelectable = true;
+            textBoxToastTimeoutSeconds.CustomButton.Visible = false;
+            textBoxToastTimeoutSeconds.Location = new Point(279, 26);
+            textBoxToastTimeoutSeconds.MaxLength = 32767;
             textBoxToastTimeoutSeconds.Name = "textBoxToastTimeoutSeconds";
+            textBoxToastTimeoutSeconds.PasswordChar = '\0';
+            textBoxToastTimeoutSeconds.ScrollBars = ScrollBars.None;
+            textBoxToastTimeoutSeconds.SelectedText = "";
+            textBoxToastTimeoutSeconds.SelectionLength = 0;
+            textBoxToastTimeoutSeconds.SelectionStart = 0;
+            textBoxToastTimeoutSeconds.ShortcutsEnabled = true;
             textBoxToastTimeoutSeconds.Size = new Size(100, 23);
             textBoxToastTimeoutSeconds.TabIndex = 7;
+            textBoxToastTimeoutSeconds.UseSelectable = true;
+            textBoxToastTimeoutSeconds.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxToastTimeoutSeconds.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelToastTimeoutSeconds
             // 
-            labelToastTimeoutSeconds.Location = new Point(280, 5);
+            labelToastTimeoutSeconds.Location = new Point(275, 6);
             labelToastTimeoutSeconds.Name = "labelToastTimeoutSeconds";
-            labelToastTimeoutSeconds.Size = new Size(175, 20);
+            labelToastTimeoutSeconds.Size = new Size(206, 20);
             labelToastTimeoutSeconds.TabIndex = 7;
-            labelToastTimeoutSeconds.Values.Text = "Visual alert duration (seconds)";
+            labelToastTimeoutSeconds.Text = "Visual alert duration (seconds)";
             // 
             // checkBoxAlertToastErrorMessages
             // 
-            checkBoxAlertToastErrorMessages.Location = new Point(11, 83);
+            checkBoxAlertToastErrorMessages.Location = new Point(6, 84);
             checkBoxAlertToastErrorMessages.Name = "checkBoxAlertToastErrorMessages";
             checkBoxAlertToastErrorMessages.Size = new Size(179, 20);
             checkBoxAlertToastErrorMessages.TabIndex = 3;
-            checkBoxAlertToastErrorMessages.Values.Text = "Visual alert on various errors";
+            checkBoxAlertToastErrorMessages.Text = "Visual alert on various errors";
+            checkBoxAlertToastErrorMessages.UseSelectable = true;
             // 
             // checkBoxAlertToastWhenMyOnlineStatusChanges
             // 
-            checkBoxAlertToastWhenMyOnlineStatusChanges.Location = new Point(11, 161);
+            checkBoxAlertToastWhenMyOnlineStatusChanges.Location = new Point(6, 162);
             checkBoxAlertToastWhenMyOnlineStatusChanges.Name = "checkBoxAlertToastWhenMyOnlineStatusChanges";
             checkBoxAlertToastWhenMyOnlineStatusChanges.Size = new Size(257, 20);
             checkBoxAlertToastWhenMyOnlineStatusChanges.TabIndex = 6;
-            checkBoxAlertToastWhenMyOnlineStatusChanges.Values.Text = "Visual alert when my online status changes";
+            checkBoxAlertToastWhenMyOnlineStatusChanges.Text = "Visual alert when my online status changes";
+            checkBoxAlertToastWhenMyOnlineStatusChanges.UseSelectable = true;
             // 
-            // kryptonPageMessages
+            // comboBoxTheme
             // 
-            kryptonPageMessages.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageMessages.Controls.Add(textBoxFontSample);
-            kryptonPageMessages.Controls.Add(comboBoxFont);
-            kryptonPageMessages.Controls.Add(numericUpDownFontSize);
-            kryptonPageMessages.Controls.Add(labelFontAndSize);
-            kryptonPageMessages.Flags = 65534;
-            kryptonPageMessages.LastVisibleSet = true;
-            kryptonPageMessages.MinimumSize = new Size(150, 50);
-            kryptonPageMessages.Name = "kryptonPageMessages";
-            kryptonPageMessages.Size = new Size(458, 259);
-            kryptonPageMessages.Text = "Messages";
-            kryptonPageMessages.TextDescription = "Messages";
-            kryptonPageMessages.TextTitle = "Messages";
-            kryptonPageMessages.ToolTipTitle = "Messages";
-            kryptonPageMessages.UniqueName = "e020213f7d4e4417a1a5ab280b43a603";
-            // 
-            // kryptonPageUI
-            // 
-            kryptonPageUI.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageUI.Controls.Add(checkBoxAutoStartAtWindowsLogin);
-            kryptonPageUI.Controls.Add(kryptonComboBoxTheme);
-            kryptonPageUI.Controls.Add(labelTheme);
-            kryptonPageUI.Flags = 65534;
-            kryptonPageUI.LastVisibleSet = true;
-            kryptonPageUI.MinimumSize = new Size(150, 50);
-            kryptonPageUI.Name = "kryptonPageUI";
-            kryptonPageUI.Size = new Size(458, 259);
-            kryptonPageUI.Text = "UI";
-            kryptonPageUI.TextDescription = "UI";
-            kryptonPageUI.TextTitle = "UI";
-            kryptonPageUI.ToolTipTitle = "UI";
-            kryptonPageUI.UniqueName = "7bf4e67f9d584f3ab4761a9eb625f6eb";
-            // 
-            // kryptonComboBoxTheme
-            // 
-            kryptonComboBoxTheme.DropDownStyle = ComboBoxStyle.DropDownList;
-            kryptonComboBoxTheme.DropDownWidth = 351;
-            kryptonComboBoxTheme.FormattingEnabled = true;
-            kryptonComboBoxTheme.Location = new Point(7, 23);
-            kryptonComboBoxTheme.Name = "kryptonComboBoxTheme";
-            kryptonComboBoxTheme.Size = new Size(413, 22);
-            kryptonComboBoxTheme.TabIndex = 1;
-            kryptonComboBoxTheme.SelectedIndexChanged += kryptonComboBoxTheme_SelectedIndexChanged;
+            comboBoxTheme.DropDownWidth = 351;
+            comboBoxTheme.FormattingEnabled = true;
+            comboBoxTheme.ItemHeight = 23;
+            comboBoxTheme.Location = new Point(3, 33);
+            comboBoxTheme.Name = "comboBoxTheme";
+            comboBoxTheme.Size = new Size(413, 29);
+            comboBoxTheme.TabIndex = 1;
+            comboBoxTheme.UseSelectable = true;
+            comboBoxTheme.SelectedIndexChanged += ComboBoxTheme_SelectedIndexChanged;
             // 
             // labelTheme
             // 
-            labelTheme.Location = new Point(3, 3);
+            labelTheme.Location = new Point(3, 10);
             labelTheme.Name = "labelTheme";
-            labelTheme.Size = new Size(48, 20);
+            labelTheme.Size = new Size(211, 20);
             labelTheme.TabIndex = 2;
-            labelTheme.Values.Text = "Theme";
+            labelTheme.Text = "Theme";
             // 
-            // kryptonPageServer
+            // poisonTabControl1
             // 
-            kryptonPageServer.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageServer.Controls.Add(textBoxServerAddress);
-            kryptonPageServer.Controls.Add(textBoxServerPort);
-            kryptonPageServer.Controls.Add(labelServerPort);
-            kryptonPageServer.Controls.Add(labelServerAddress);
-            kryptonPageServer.Flags = 65534;
-            kryptonPageServer.LastVisibleSet = true;
-            kryptonPageServer.MinimumSize = new Size(150, 50);
-            kryptonPageServer.Name = "kryptonPageServer";
-            kryptonPageServer.Size = new Size(458, 259);
-            kryptonPageServer.Text = "Server";
-            kryptonPageServer.TextDescription = "Server";
-            kryptonPageServer.TextTitle = "Server";
-            kryptonPageServer.ToolTipTitle = "Server";
-            kryptonPageServer.UniqueName = "2d61d89bb1d64529b3ad59d7442561b6";
+            poisonTabControl1.Controls.Add(tabPage1);
+            poisonTabControl1.Controls.Add(tabPage2);
+            poisonTabControl1.Controls.Add(tabPage3);
+            poisonTabControl1.Controls.Add(tabPage4);
+            poisonTabControl1.Controls.Add(tabPage5);
+            poisonTabControl1.Controls.Add(tabPage6);
+            poisonTabControl1.Location = new Point(23, 63);
+            poisonTabControl1.Name = "poisonTabControl1";
+            poisonTabControl1.Padding = new Point(6, 8);
+            poisonTabControl1.SelectedIndex = 0;
+            poisonTabControl1.Size = new Size(485, 333);
+            poisonTabControl1.TabIndex = 6;
+            poisonTabControl1.UseSelectable = true;
             // 
-            // kryptonPageAdvanced
+            // tabPage1
             // 
-            kryptonPageAdvanced.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageAdvanced.Controls.Add(textBoxFileTransferChunkSize);
-            kryptonPageAdvanced.Controls.Add(textBoxMaxMessages);
-            kryptonPageAdvanced.Controls.Add(labelMaxMessages);
-            kryptonPageAdvanced.Controls.Add(labelFileTransferChunkSize);
-            kryptonPageAdvanced.Flags = 65534;
-            kryptonPageAdvanced.LastVisibleSet = true;
-            kryptonPageAdvanced.MinimumSize = new Size(150, 50);
-            kryptonPageAdvanced.Name = "kryptonPageAdvanced";
-            kryptonPageAdvanced.Size = new Size(458, 259);
-            kryptonPageAdvanced.Text = "Advanced";
-            kryptonPageAdvanced.TextDescription = "Advanced";
-            kryptonPageAdvanced.TextTitle = "Advanced";
-            kryptonPageAdvanced.ToolTipTitle = "Advanced";
-            kryptonPageAdvanced.UniqueName = "a22720113dbb43ada04c650390e2a0b3";
+            tabPage1.Controls.Add(textBoxToastTimeoutSeconds);
+            tabPage1.Controls.Add(checkBoxPlaySoundWhenContactComesOnline);
+            tabPage1.Controls.Add(labelToastTimeoutSeconds);
+            tabPage1.Controls.Add(labelAutoAwayIdleSeconds);
+            tabPage1.Controls.Add(checkBoxAlertToastErrorMessages);
+            tabPage1.Controls.Add(textBoxAutoAwayIdleMinutes);
+            tabPage1.Controls.Add(checkBoxAlertToastWhenMyOnlineStatusChanges);
+            tabPage1.Controls.Add(checkBoxAlertToastWhenMessageReceived);
+            tabPage1.Controls.Add(checkBoxFlashWindowWhenMessageReceived);
+            tabPage1.Controls.Add(checkBoxPlaySoundWhenMessageReceived);
+            tabPage1.Controls.Add(checkBoxAlertToastWhenContactComesOnline);
+            tabPage1.HorizontalScrollbarBarColor = true;
+            tabPage1.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage1.HorizontalScrollbarSize = 10;
+            tabPage1.Location = new Point(4, 38);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(477, 291);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Notifications";
+            tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.VerticalScrollbarBarColor = true;
+            tabPage1.VerticalScrollbarHighlightOnWheel = false;
+            tabPage1.VerticalScrollbarSize = 10;
             // 
-            // kryptonPageCryptography
+            // tabPage2
             // 
-            kryptonPageCryptography.AutoHiddenSlideSize = new Size(200, 200);
-            kryptonPageCryptography.Controls.Add(textBoxEndToEndKeySize);
-            kryptonPageCryptography.Controls.Add(textBoxRsaKeySize);
-            kryptonPageCryptography.Controls.Add(textBoxAesKeySize);
-            kryptonPageCryptography.Controls.Add(labelAesKeySize);
-            kryptonPageCryptography.Controls.Add(labelEndToEndKeySize);
-            kryptonPageCryptography.Controls.Add(labelRsaKeySize);
-            kryptonPageCryptography.Flags = 65534;
-            kryptonPageCryptography.LastVisibleSet = true;
-            kryptonPageCryptography.MinimumSize = new Size(150, 50);
-            kryptonPageCryptography.Name = "kryptonPageCryptography";
-            kryptonPageCryptography.Size = new Size(458, 259);
-            kryptonPageCryptography.Text = "Cryptography";
-            kryptonPageCryptography.TextDescription = "Cryptography";
-            kryptonPageCryptography.TextTitle = "Cryptography";
-            kryptonPageCryptography.ToolTipTitle = "Cryptography";
-            kryptonPageCryptography.UniqueName = "7e87f954d3c5433fade882e370a2c59b";
+            tabPage2.Controls.Add(textBoxFontSample);
+            tabPage2.Controls.Add(labelFontAndSize);
+            tabPage2.Controls.Add(comboBoxFont);
+            tabPage2.Controls.Add(numericUpDownFontSize);
+            tabPage2.HorizontalScrollbarBarColor = true;
+            tabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage2.HorizontalScrollbarSize = 10;
+            tabPage2.Location = new Point(4, 35);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new Size(477, 294);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Messages";
+            tabPage2.VerticalScrollbarBarColor = true;
+            tabPage2.VerticalScrollbarHighlightOnWheel = false;
+            tabPage2.VerticalScrollbarSize = 10;
             // 
-            // splitContainer1
+            // tabPage3
             // 
-            splitContainer1.BackColor = Color.Transparent;
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.FixedPanel = FixedPanel.Panel2;
-            splitContainer1.IsSplitterFixed = true;
-            splitContainer1.Location = new Point(0, 0);
-            splitContainer1.Name = "splitContainer1";
-            splitContainer1.Orientation = Orientation.Horizontal;
+            tabPage3.Controls.Add(checkBoxAutoStartAtWindowsLogin);
+            tabPage3.Controls.Add(labelTheme);
+            tabPage3.Controls.Add(comboBoxTheme);
+            tabPage3.HorizontalScrollbarBarColor = true;
+            tabPage3.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage3.HorizontalScrollbarSize = 10;
+            tabPage3.Location = new Point(4, 35);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(477, 294);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "UI";
+            tabPage3.VerticalScrollbarBarColor = true;
+            tabPage3.VerticalScrollbarHighlightOnWheel = false;
+            tabPage3.VerticalScrollbarSize = 10;
             // 
-            // splitContainer1.Panel1
+            // tabPage4
             // 
-            splitContainer1.Panel1.Controls.Add(kryptonNavigator);
+            tabPage4.Controls.Add(textBoxServerAddress);
+            tabPage4.Controls.Add(labelServerAddress);
+            tabPage4.Controls.Add(textBoxServerPort);
+            tabPage4.Controls.Add(labelServerPort);
+            tabPage4.HorizontalScrollbarBarColor = true;
+            tabPage4.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage4.HorizontalScrollbarSize = 10;
+            tabPage4.Location = new Point(4, 35);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(477, 294);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Server";
+            tabPage4.VerticalScrollbarBarColor = true;
+            tabPage4.VerticalScrollbarHighlightOnWheel = false;
+            tabPage4.VerticalScrollbarSize = 10;
             // 
-            // splitContainer1.Panel2
+            // tabPage5
             // 
-            splitContainer1.Panel2.Controls.Add(buttonSave);
-            splitContainer1.Panel2.Controls.Add(buttonCancel);
-            splitContainer1.Size = new Size(468, 335);
-            splitContainer1.SplitterDistance = 288;
-            splitContainer1.TabIndex = 6;
+            tabPage5.Controls.Add(textBoxFileTransferChunkSize);
+            tabPage5.Controls.Add(labelMaxMessages);
+            tabPage5.Controls.Add(textBoxMaxMessages);
+            tabPage5.Controls.Add(labelFileTransferChunkSize);
+            tabPage5.HorizontalScrollbarBarColor = true;
+            tabPage5.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage5.HorizontalScrollbarSize = 10;
+            tabPage5.Location = new Point(4, 35);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(477, 294);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Advanced";
+            tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.VerticalScrollbarBarColor = true;
+            tabPage5.VerticalScrollbarHighlightOnWheel = false;
+            tabPage5.VerticalScrollbarSize = 10;
+            // 
+            // tabPage6
+            // 
+            tabPage6.Controls.Add(textBoxEndToEndKeySize);
+            tabPage6.Controls.Add(labelRsaKeySize);
+            tabPage6.Controls.Add(textBoxRsaKeySize);
+            tabPage6.Controls.Add(labelEndToEndKeySize);
+            tabPage6.Controls.Add(textBoxAesKeySize);
+            tabPage6.Controls.Add(labelAesKeySize);
+            tabPage6.HorizontalScrollbarBarColor = true;
+            tabPage6.HorizontalScrollbarHighlightOnWheel = false;
+            tabPage6.HorizontalScrollbarSize = 10;
+            tabPage6.Location = new Point(4, 35);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Size = new Size(477, 294);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "Cryptography";
+            tabPage6.VerticalScrollbarBarColor = true;
+            tabPage6.VerticalScrollbarHighlightOnWheel = false;
+            tabPage6.VerticalScrollbarSize = 10;
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
             // 
             // FormSettings
             // 
-            ClientSize = new Size(468, 335);
-            Controls.Add(splitContainer1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            ClientSize = new Size(534, 449);
+            Controls.Add(poisonTabControl1);
+            Controls.Add(buttonSave);
+            Controls.Add(buttonCancel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
+            MinimizeBox = false;
             MinimumSize = new Size(450, 380);
             Name = "FormSettings";
+            Resizable = false;
             ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Talkster";
-            ((ISupportInitialize)comboBoxFont).EndInit();
-            ((ISupportInitialize)kryptonNavigator).EndInit();
-            ((ISupportInitialize)kryptonPageNotifications).EndInit();
-            kryptonPageNotifications.ResumeLayout(false);
-            kryptonPageNotifications.PerformLayout();
-            ((ISupportInitialize)kryptonPageMessages).EndInit();
-            kryptonPageMessages.ResumeLayout(false);
-            kryptonPageMessages.PerformLayout();
-            ((ISupportInitialize)kryptonPageUI).EndInit();
-            kryptonPageUI.ResumeLayout(false);
-            kryptonPageUI.PerformLayout();
-            ((ISupportInitialize)kryptonComboBoxTheme).EndInit();
-            ((ISupportInitialize)kryptonPageServer).EndInit();
-            kryptonPageServer.ResumeLayout(false);
-            kryptonPageServer.PerformLayout();
-            ((ISupportInitialize)kryptonPageAdvanced).EndInit();
-            kryptonPageAdvanced.ResumeLayout(false);
-            kryptonPageAdvanced.PerformLayout();
-            ((ISupportInitialize)kryptonPageCryptography).EndInit();
-            kryptonPageCryptography.ResumeLayout(false);
-            kryptonPageCryptography.PerformLayout();
-            splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel2.ResumeLayout(false);
-            ((ISupportInitialize)splitContainer1).EndInit();
-            splitContainer1.ResumeLayout(false);
+            Text = "Talkster : Settings";
+            poisonTabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
+            tabPage6.ResumeLayout(false);
+            ((ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
         }
-        private KryptonButton buttonSave;
-        private KryptonButton buttonCancel;
-        private KryptonComboBox comboBoxFont;
-        private KryptonNumericUpDown numericUpDownFontSize;
-        private KryptonLabel labelFontAndSize;
-        private KryptonTextBox textBoxFontSample;
-        private KryptonLabel labelServerPort;
-        private KryptonLabel labelServerAddress;
-        private KryptonTextBox textBoxServerPort;
-        private KryptonTextBox textBoxServerAddress;
-        private KryptonTextBox textBoxFileTransferChunkSize;
-        private KryptonTextBox textBoxMaxMessages;
-        private KryptonTextBox textBoxAutoAwayIdleMinutes;
-        private KryptonLabel labelFileTransferChunkSize;
-        private KryptonLabel labelMaxMessages;
-        private KryptonLabel labelAutoAwayIdleSeconds;
-        private KryptonCheckBox checkBoxAutoStartAtWindowsLogin;
-        private KryptonCheckBox checkBoxFlashWindowWhenMessageReceived;
-        private KryptonCheckBox checkBoxPlaySoundWhenMessageReceived;
-        private KryptonCheckBox checkBoxPlaySoundWhenContactComesOnline;
-        private KryptonCheckBox checkBoxAlertToastWhenMessageReceived;
-        private KryptonCheckBox checkBoxAlertToastWhenContactComesOnline;
-        private KryptonLabel labelRsaKeySize;
-        private KryptonTextBox textBoxEndToEndKeySize;
-        private KryptonTextBox textBoxAesKeySize;
-        private KryptonLabel labelEndToEndKeySize;
-        private KryptonLabel labelAesKeySize;
-        private KryptonTextBox textBoxRsaKeySize;
-        private Krypton.Toolkit.KryptonManager kryptonManager1;
-        private Krypton.Navigator.KryptonNavigator kryptonNavigator;
-        private Krypton.Navigator.KryptonPage kryptonPageMessages;
-        private Krypton.Navigator.KryptonPage kryptonPageUI;
-        private Krypton.Navigator.KryptonPage kryptonPageNotifications;
-        private Krypton.Navigator.KryptonPage kryptonPageServer;
-        private Krypton.Navigator.KryptonPage kryptonPageAdvanced;
-        private Krypton.Navigator.KryptonPage kryptonPageCryptography;
-        private KryptonComboBox kryptonComboBoxTheme;
-        private KryptonLabel labelTheme;
-        private SplitContainer splitContainer1;
-        private KryptonCheckBox checkBoxAlertToastErrorMessages;
-        private KryptonCheckBox checkBoxAlertToastWhenMyOnlineStatusChanges;
-        private KryptonTextBox textBoxToastTimeoutSeconds;
-        private KryptonLabel labelToastTimeoutSeconds;
+        private PoisonButton buttonSave;
+        private PoisonButton buttonCancel;
+        private PoisonComboBox comboBoxFont;
+        private HopeNumeric numericUpDownFontSize;
+        private PoisonLabel labelFontAndSize;
+        private PoisonTextBox textBoxFontSample;
+        private PoisonLabel labelServerPort;
+        private PoisonLabel labelServerAddress;
+        private PoisonTextBox textBoxServerPort;
+        private PoisonTextBox textBoxServerAddress;
+        private PoisonTextBox textBoxFileTransferChunkSize;
+        private PoisonTextBox textBoxMaxMessages;
+        private PoisonTextBox textBoxAutoAwayIdleMinutes;
+        private PoisonLabel labelFileTransferChunkSize;
+        private PoisonLabel labelMaxMessages;
+        private PoisonLabel labelAutoAwayIdleSeconds;
+        private PoisonCheckBox checkBoxAutoStartAtWindowsLogin;
+        private PoisonCheckBox checkBoxFlashWindowWhenMessageReceived;
+        private PoisonCheckBox checkBoxPlaySoundWhenMessageReceived;
+        private PoisonCheckBox checkBoxPlaySoundWhenContactComesOnline;
+        private PoisonCheckBox checkBoxAlertToastWhenMessageReceived;
+        private PoisonCheckBox checkBoxAlertToastWhenContactComesOnline;
+        private PoisonLabel labelRsaKeySize;
+        private PoisonTextBox textBoxEndToEndKeySize;
+        private PoisonTextBox textBoxAesKeySize;
+        private PoisonLabel labelEndToEndKeySize;
+        private PoisonLabel labelAesKeySize;
+        private PoisonTextBox textBoxRsaKeySize;
+        private PoisonComboBox comboBoxTheme;
+        private PoisonLabel labelTheme;
+        private PoisonCheckBox checkBoxAlertToastErrorMessages;
+        private PoisonCheckBox checkBoxAlertToastWhenMyOnlineStatusChanges;
+        private PoisonTextBox textBoxToastTimeoutSeconds;
+        private PoisonLabel labelToastTimeoutSeconds;
+        private ReaLTaiizor.Controls.PoisonTabControl poisonTabControl1;
+        private PoisonTabPage tabPage1;
+        private PoisonTabPage tabPage2;
+        private PoisonTabPage tabPage3;
+        private PoisonTabPage tabPage4;
+        private PoisonTabPage tabPage5;
+        private PoisonTabPage tabPage6;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

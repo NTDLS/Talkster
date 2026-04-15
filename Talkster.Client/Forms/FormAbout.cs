@@ -8,7 +8,7 @@ namespace Talkster.Client.Forms
 {
     public partial class FormAbout : KryptonForm
     {
-        readonly Assembly assembly = Assembly.GetExecutingAssembly();
+        private readonly Assembly _assembly = Assembly.GetExecutingAssembly();
 
         public FormAbout()
         {
@@ -45,12 +45,12 @@ namespace Talkster.Client.Forms
             var serverVersion = (Assembly.GetEntryAssembly()?.GetName().Version).EnsureNotNull();
             Text = $"{ScConstants.AppName} v{serverVersion}";
 
-            if (assembly == null || assembly.Location == null)
+            if (_assembly == null || _assembly.Location == null)
             {
                 return;
             }
 
-            string? path = Path.GetDirectoryName(assembly.Location);
+            string? path = Path.GetDirectoryName(_assembly.Location);
             if (path == null)
             {
                 return;
@@ -67,8 +67,7 @@ namespace Talkster.Client.Forms
             listViewVersions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewVersions.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            listViewVersions.ForeColor = KryptonManager.CurrentGlobalPalette
-                .GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
+            listViewVersions.ForeColor = Theming.InvertColor(listViewVersions.BackColor);
             foreach (ListViewItem item in listViewVersions.Items)
             {
                 item.ForeColor = listViewVersions.ForeColor;
