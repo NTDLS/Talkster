@@ -1,5 +1,4 @@
-﻿using NTDLS.DatagramMessaging;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
 using NTDLS.ReliableMessaging;
 using NTDLS.SecureKeyExchange;
 using System.Reflection;

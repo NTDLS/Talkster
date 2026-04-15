@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NTDLS.DatagramMessaging;
-using NTDLS.DatagramMessaging.Framing;
 using Talkster.Library.DatagramMessages;
 
 namespace Talkster.Server
