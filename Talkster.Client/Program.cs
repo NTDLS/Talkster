@@ -33,8 +33,6 @@ namespace Talkster.Client
 
             Settings.Save(); //Create a default persisted state if one does not exist.
 
-            ThemeManager.GlobalPaletteMode = Settings.Instance.Theme;
-
             Notifications.InitializeToast();
 
             Application.Run(new TrayApp());

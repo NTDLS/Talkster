@@ -39,7 +39,6 @@ namespace Talkster.Client.Forms
             buttonCancel = new PoisonButton();
             textBoxFontSample = new PoisonTextBox();
             labelFontAndSize = new PoisonLabel();
-            numericUpDownFontSize = new HopeNumeric();
             comboBoxFont = new PoisonComboBox();
             checkBoxFlashWindowWhenMessageReceived = new PoisonCheckBox();
             checkBoxPlaySoundWhenMessageReceived = new PoisonCheckBox();
@@ -67,16 +66,19 @@ namespace Talkster.Client.Forms
             labelToastTimeoutSeconds = new PoisonLabel();
             checkBoxAlertToastErrorMessages = new PoisonCheckBox();
             checkBoxAlertToastWhenMyOnlineStatusChanges = new PoisonCheckBox();
-            comboBoxTheme = new PoisonComboBox();
-            labelTheme = new PoisonLabel();
             poisonTabControl1 = new PoisonTabControl();
             tabPage1 = new PoisonTabPage();
             tabPage2 = new PoisonTabPage();
             tabPage3 = new PoisonTabPage();
+            poisonRadioButtonLight = new PoisonRadioButton();
+            poisonRadioButtonDark = new PoisonRadioButton();
             tabPage4 = new PoisonTabPage();
             tabPage5 = new PoisonTabPage();
             tabPage6 = new PoisonTabPage();
             poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
+            poisonPanel1 = new PoisonPanel();
+            poisonLabelTheme = new PoisonLabel();
+            poisonComboBoxFontSize = new PoisonComboBox();
             poisonTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -85,6 +87,7 @@ namespace Talkster.Client.Forms
             tabPage5.SuspendLayout();
             tabPage6.SuspendLayout();
             ((ISupportInitialize)poisonStyleManager).BeginInit();
+            poisonPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonSave
@@ -144,31 +147,6 @@ namespace Talkster.Client.Forms
             labelFontAndSize.Size = new Size(202, 20);
             labelFontAndSize.TabIndex = 3;
             labelFontAndSize.Text = "Font and Size";
-            // 
-            // numericUpDownFontSize
-            // 
-            numericUpDownFontSize.BackColor = Color.White;
-            numericUpDownFontSize.BaseColor = Color.FromArgb(242, 246, 252);
-            numericUpDownFontSize.BorderColorA = Color.FromArgb(192, 196, 204);
-            numericUpDownFontSize.BorderColorB = Color.FromArgb(192, 196, 204);
-            numericUpDownFontSize.BorderHoverColorA = Color.FromArgb(64, 158, 255);
-            numericUpDownFontSize.ButtonTextColorA = Color.FromArgb(144, 147, 153);
-            numericUpDownFontSize.ButtonTextColorB = Color.FromArgb(144, 147, 153);
-            numericUpDownFontSize.EnterKey = true;
-            numericUpDownFontSize.Font = new Font("Segoe UI", 12F);
-            numericUpDownFontSize.ForeColor = Color.Black;
-            numericUpDownFontSize.HoverButtonTextColorA = Color.FromArgb(64, 158, 255);
-            numericUpDownFontSize.HoverButtonTextColorB = Color.FromArgb(64, 158, 255);
-            numericUpDownFontSize.Location = new Point(362, 33);
-            numericUpDownFontSize.MaxNum = 10F;
-            numericUpDownFontSize.MinNum = 0F;
-            numericUpDownFontSize.Name = "numericUpDownFontSize";
-            numericUpDownFontSize.Precision = 0;
-            numericUpDownFontSize.Size = new Size(62, 32);
-            numericUpDownFontSize.Step = 1F;
-            numericUpDownFontSize.Style = HopeNumeric.NumericStyle.LeftRight;
-            numericUpDownFontSize.TabIndex = 1;
-            numericUpDownFontSize.ValueNumber = 0F;
             // 
             // comboBoxFont
             // 
@@ -339,7 +317,7 @@ namespace Talkster.Client.Forms
             // 
             // checkBoxAutoStartAtWindowsLogin
             // 
-            checkBoxAutoStartAtWindowsLogin.Location = new Point(3, 68);
+            checkBoxAutoStartAtWindowsLogin.Location = new Point(0, 89);
             checkBoxAutoStartAtWindowsLogin.Name = "checkBoxAutoStartAtWindowsLogin";
             checkBoxAutoStartAtWindowsLogin.Size = new Size(180, 20);
             checkBoxAutoStartAtWindowsLogin.TabIndex = 2;
@@ -586,26 +564,6 @@ namespace Talkster.Client.Forms
             checkBoxAlertToastWhenMyOnlineStatusChanges.Text = "Visual alert when my online status changes";
             checkBoxAlertToastWhenMyOnlineStatusChanges.UseSelectable = true;
             // 
-            // comboBoxTheme
-            // 
-            comboBoxTheme.DropDownWidth = 351;
-            comboBoxTheme.FormattingEnabled = true;
-            comboBoxTheme.ItemHeight = 23;
-            comboBoxTheme.Location = new Point(3, 33);
-            comboBoxTheme.Name = "comboBoxTheme";
-            comboBoxTheme.Size = new Size(413, 29);
-            comboBoxTheme.TabIndex = 1;
-            comboBoxTheme.UseSelectable = true;
-            comboBoxTheme.SelectedIndexChanged += ComboBoxTheme_SelectedIndexChanged;
-            // 
-            // labelTheme
-            // 
-            labelTheme.Location = new Point(3, 10);
-            labelTheme.Name = "labelTheme";
-            labelTheme.Size = new Size(211, 20);
-            labelTheme.TabIndex = 2;
-            labelTheme.Text = "Theme";
-            // 
             // poisonTabControl1
             // 
             poisonTabControl1.Controls.Add(tabPage1);
@@ -651,16 +609,16 @@ namespace Talkster.Client.Forms
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(poisonComboBoxFontSize);
             tabPage2.Controls.Add(textBoxFontSample);
             tabPage2.Controls.Add(labelFontAndSize);
             tabPage2.Controls.Add(comboBoxFont);
-            tabPage2.Controls.Add(numericUpDownFontSize);
             tabPage2.HorizontalScrollbarBarColor = true;
             tabPage2.HorizontalScrollbarHighlightOnWheel = false;
             tabPage2.HorizontalScrollbarSize = 10;
-            tabPage2.Location = new Point(4, 35);
+            tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
-            tabPage2.Size = new Size(477, 294);
+            tabPage2.Size = new Size(477, 291);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Messages";
             tabPage2.VerticalScrollbarBarColor = true;
@@ -669,20 +627,39 @@ namespace Talkster.Client.Forms
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(poisonPanel1);
             tabPage3.Controls.Add(checkBoxAutoStartAtWindowsLogin);
-            tabPage3.Controls.Add(labelTheme);
-            tabPage3.Controls.Add(comboBoxTheme);
             tabPage3.HorizontalScrollbarBarColor = true;
             tabPage3.HorizontalScrollbarHighlightOnWheel = false;
             tabPage3.HorizontalScrollbarSize = 10;
-            tabPage3.Location = new Point(4, 35);
+            tabPage3.Location = new Point(4, 38);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(477, 294);
+            tabPage3.Size = new Size(477, 291);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "UI";
             tabPage3.VerticalScrollbarBarColor = true;
             tabPage3.VerticalScrollbarHighlightOnWheel = false;
             tabPage3.VerticalScrollbarSize = 10;
+            // 
+            // poisonRadioButtonLight
+            // 
+            poisonRadioButtonLight.AutoSize = true;
+            poisonRadioButtonLight.Location = new Point(7, 22);
+            poisonRadioButtonLight.Name = "poisonRadioButtonLight";
+            poisonRadioButtonLight.Size = new Size(50, 15);
+            poisonRadioButtonLight.TabIndex = 4;
+            poisonRadioButtonLight.Text = "Light";
+            poisonRadioButtonLight.UseSelectable = true;
+            // 
+            // poisonRadioButtonDark
+            // 
+            poisonRadioButtonDark.AutoSize = true;
+            poisonRadioButtonDark.Location = new Point(7, 43);
+            poisonRadioButtonDark.Name = "poisonRadioButtonDark";
+            poisonRadioButtonDark.Size = new Size(47, 15);
+            poisonRadioButtonDark.TabIndex = 3;
+            poisonRadioButtonDark.Text = "Dark";
+            poisonRadioButtonDark.UseSelectable = true;
             // 
             // tabPage4
             // 
@@ -693,9 +670,9 @@ namespace Talkster.Client.Forms
             tabPage4.HorizontalScrollbarBarColor = true;
             tabPage4.HorizontalScrollbarHighlightOnWheel = false;
             tabPage4.HorizontalScrollbarSize = 10;
-            tabPage4.Location = new Point(4, 35);
+            tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(477, 294);
+            tabPage4.Size = new Size(477, 291);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Server";
             tabPage4.VerticalScrollbarBarColor = true;
@@ -711,9 +688,9 @@ namespace Talkster.Client.Forms
             tabPage5.HorizontalScrollbarBarColor = true;
             tabPage5.HorizontalScrollbarHighlightOnWheel = false;
             tabPage5.HorizontalScrollbarSize = 10;
-            tabPage5.Location = new Point(4, 35);
+            tabPage5.Location = new Point(4, 38);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(477, 294);
+            tabPage5.Size = new Size(477, 291);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Advanced";
             tabPage5.UseVisualStyleBackColor = true;
@@ -732,9 +709,9 @@ namespace Talkster.Client.Forms
             tabPage6.HorizontalScrollbarBarColor = true;
             tabPage6.HorizontalScrollbarHighlightOnWheel = false;
             tabPage6.HorizontalScrollbarSize = 10;
-            tabPage6.Location = new Point(4, 35);
+            tabPage6.Location = new Point(4, 38);
             tabPage6.Name = "tabPage6";
-            tabPage6.Size = new Size(477, 294);
+            tabPage6.Size = new Size(477, 291);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Cryptography";
             tabPage6.VerticalScrollbarBarColor = true;
@@ -745,6 +722,42 @@ namespace Talkster.Client.Forms
             // 
             poisonStyleManager.Owner = this;
             poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            // 
+            // poisonPanel1
+            // 
+            poisonPanel1.Controls.Add(poisonLabelTheme);
+            poisonPanel1.Controls.Add(poisonRadioButtonDark);
+            poisonPanel1.Controls.Add(poisonRadioButtonLight);
+            poisonPanel1.HorizontalScrollbarBarColor = true;
+            poisonPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            poisonPanel1.HorizontalScrollbarSize = 10;
+            poisonPanel1.Location = new Point(3, 3);
+            poisonPanel1.Name = "poisonPanel1";
+            poisonPanel1.Size = new Size(100, 69);
+            poisonPanel1.TabIndex = 5;
+            poisonPanel1.VerticalScrollbarBarColor = true;
+            poisonPanel1.VerticalScrollbarHighlightOnWheel = false;
+            poisonPanel1.VerticalScrollbarSize = 10;
+            // 
+            // poisonLabelTheme
+            // 
+            poisonLabelTheme.AutoSize = true;
+            poisonLabelTheme.Location = new Point(3, 0);
+            poisonLabelTheme.Name = "poisonLabelTheme";
+            poisonLabelTheme.Size = new Size(49, 19);
+            poisonLabelTheme.TabIndex = 6;
+            poisonLabelTheme.Text = "Theme";
+            // 
+            // poisonComboBoxFontSize
+            // 
+            poisonComboBoxFontSize.FormattingEnabled = true;
+            poisonComboBoxFontSize.ItemHeight = 23;
+            poisonComboBoxFontSize.Items.AddRange(new object[] { "5", "6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28" });
+            poisonComboBoxFontSize.Location = new Point(363, 33);
+            poisonComboBoxFontSize.Name = "poisonComboBoxFontSize";
+            poisonComboBoxFontSize.Size = new Size(61, 29);
+            poisonComboBoxFontSize.TabIndex = 4;
+            poisonComboBoxFontSize.UseSelectable = true;
             // 
             // FormSettings
             // 
@@ -768,12 +781,13 @@ namespace Talkster.Client.Forms
             tabPage5.ResumeLayout(false);
             tabPage6.ResumeLayout(false);
             ((ISupportInitialize)poisonStyleManager).EndInit();
+            poisonPanel1.ResumeLayout(false);
+            poisonPanel1.PerformLayout();
             ResumeLayout(false);
         }
         private PoisonButton buttonSave;
         private PoisonButton buttonCancel;
         private PoisonComboBox comboBoxFont;
-        private HopeNumeric numericUpDownFontSize;
         private PoisonLabel labelFontAndSize;
         private PoisonTextBox textBoxFontSample;
         private PoisonLabel labelServerPort;
@@ -798,8 +812,6 @@ namespace Talkster.Client.Forms
         private PoisonLabel labelEndToEndKeySize;
         private PoisonLabel labelAesKeySize;
         private PoisonTextBox textBoxRsaKeySize;
-        private PoisonComboBox comboBoxTheme;
-        private PoisonLabel labelTheme;
         private PoisonCheckBox checkBoxAlertToastErrorMessages;
         private PoisonCheckBox checkBoxAlertToastWhenMyOnlineStatusChanges;
         private PoisonTextBox textBoxToastTimeoutSeconds;
@@ -812,5 +824,10 @@ namespace Talkster.Client.Forms
         private PoisonTabPage tabPage5;
         private PoisonTabPage tabPage6;
         private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
+        private PoisonRadioButton poisonRadioButtonLight;
+        private PoisonRadioButton poisonRadioButtonDark;
+        private PoisonLabel poisonLabelTheme;
+        private PoisonPanel poisonPanel1;
+        private PoisonComboBox poisonComboBoxFontSize;
     }
 }

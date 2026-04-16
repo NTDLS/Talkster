@@ -1,6 +1,4 @@
 ﻿using Microsoft.Win32;
-using ReaLTaiizor.Controls;
-using System.Reflection;
 
 namespace Talkster.Client
 {
@@ -15,12 +13,6 @@ namespace Talkster.Client
         /// Color used for display name when message are from remote clients.
         /// </summary>
         public readonly static Color FromRemoteColor = Color.DeepSkyBlue;
-
-        public static TextBox TextBox(this PoisonTextBox poisonTextBox)
-        {
-            return (TextBox?)typeof(PoisonTextBox) ?.GetField("baseTextBox", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(poisonTextBox)
-                ?? throw new InvalidOperationException("Failed to access inner TextBox of PoisonTextBox.");
-        }
 
         public static bool IsWindowsDarkMode()
         {

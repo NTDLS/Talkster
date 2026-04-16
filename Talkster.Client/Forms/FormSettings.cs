@@ -3,7 +3,6 @@ using NTDLS.Persistence;
 using NTDLS.WinFormsHelpers;
 using ReaLTaiizor.Forms;
 using System.Diagnostics;
-using Talkster.Client.Controls;
 using Talkster.Client.Helpers;
 using Talkster.Library;
 
@@ -17,7 +16,6 @@ namespace Talkster.Client.Forms
             Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
             Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             InitializeComponent();
-            //poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
 
             if (showInTaskbar)
             {
@@ -53,6 +51,8 @@ namespace Talkster.Client.Forms
             checkBoxFlashWindowWhenMessageReceived.Checked = Settings.Instance.FlashWindowWhenMessageReceived;
             checkBoxAlertToastWhenMyOnlineStatusChanges.Checked = Settings.Instance.AlertToastWhenMyOnlineStatusChanges;
             checkBoxAlertToastErrorMessages.Checked = Settings.Instance.AlertToastErrorMessages;
+            poisonRadioButtonDark.Checked = Settings.Instance.IsthemeDark;
+            poisonRadioButtonLight.Checked = !Settings.Instance.IsthemeDark;
 
             textBoxFontSample.Text = "John: Hey, how's is been going?\r\nJane: Pretty good. I've about to head out.\r\nJohn: Wanna grab some lunch?\r\nJane: Thai?\r\nJohn: Are you kidding me? Absolutely!\r\n";
 
@@ -61,25 +61,10 @@ namespace Talkster.Client.Forms
                 comboBoxFont.Items.Add(font.Name);
             }
             comboBoxFont.Text = Settings.Instance.Font;
-            numericUpDownFontSize.ValueNumber = Settings.Instance.FontSize;
+            poisonComboBoxFontSize.SelectedValue = Settings.Instance.FontSize;
 
-            numericUpDownFontSize.Validated += (object? sender, EventArgs e) => UpdateFontSample();
+            poisonComboBoxFontSize.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
             comboBoxFont.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
-
-            #region Themes.
-
-            //comboBoxTheme.Items.Add(new ThemeComboItem("Cloud Black (Dark)", PaletteMode.Microsoft365BlackDarkMode));
-
-            foreach (var item in comboBoxTheme.Items)
-            {
-                if (item is ThemeComboItem themeItem && themeItem.Mode == Settings.Instance.Theme)
-                {
-                    comboBoxTheme.SelectedItem = item;
-                    break;
-                }
-            }
-
-            #endregion
 
             UpdateFontSample();
         }
@@ -91,7 +76,7 @@ namespace Talkster.Client.Forms
             {
                 try
                 {
-                    var fontSize = numericUpDownFontSize.ValueNumber;
+                    var fontSize = poisonComboBoxFontSize.SelectedValue as int?;
                     if (fontSize > 0)
                     {
                         textBoxFontSample.Font = new Font(selectedFontName, (float)fontSize);
@@ -107,20 +92,18 @@ namespace Talkster.Client.Forms
             {
                 var settings = LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
 
-                settings.Theme = (comboBoxTheme.SelectedItem as ThemeComboItem)?.Mode
-                    ?? throw new ArgumentNullException("Theme must be selected.");
-
-                settings.ServerAddress = textBoxServerAddress.TextBox().GetAndValidateText("Server address must not be empty.");
+                settings.IsthemeDark = poisonRadioButtonDark.Checked;
+                settings.ServerAddress = textBoxServerAddress.GetAndValidateText("Server address must not be empty.");
                 settings.Font = comboBoxFont.Text;
-                settings.FontSize = numericUpDownFontSize.ValueNumber;
-                settings.ServerPort = textBoxServerPort.TextBox().GetAndValidateNumeric(1, 65535, "Server port must be between [min] and [max].");
-                settings.AutoAwayIdleMinutes = textBoxAutoAwayIdleMinutes.TextBox().GetAndValidateNumeric(1, 1440, "Auto-away idle minutes must be between [min] and [max].");
-                settings.MaxMessages = textBoxMaxMessages.TextBox().GetAndValidateNumeric(10, 10000, "Max messages must be between [min] and [max].");
-                settings.RsaKeySize = textBoxRsaKeySize.TextBox().GetAndValidateNumeric(1024, 4096, "Max messages must be between [min] and [max].");
-                settings.AesKeySize = textBoxAesKeySize.TextBox().GetAndValidateNumeric(128, 256, "Max messages must be between [min] and [max].");
-                settings.EndToEndKeySize = textBoxEndToEndKeySize.TextBox().GetAndValidateNumeric(128, 10240, "Max messages must be between [min] and [max].");
-                settings.FileTransferChunkSize = textBoxFileTransferChunkSize.TextBox().GetAndValidateNumeric(128, 1024 * 1024, "File transfer chunk size must be between [min] and [max].");
-                settings.ToastTimeoutSeconds = textBoxToastTimeoutSeconds.TextBox().GetAndValidateNumeric(1, 300, "Duration of visual alerts (seconds) must be between [min] and [max].");
+                settings.FontSize = (poisonComboBoxFontSize.SelectedValue as int?) ?? ScConstants.DefaultFontSize;
+                settings.ServerPort = textBoxServerPort.GetAndValidateNumeric(1, 65535, "Server port must be between [min] and [max].");
+                settings.AutoAwayIdleMinutes = textBoxAutoAwayIdleMinutes.GetAndValidateNumeric(1, 1440, "Auto-away idle minutes must be between [min] and [max].");
+                settings.MaxMessages = textBoxMaxMessages.GetAndValidateNumeric(10, 10000, "Max messages must be between [min] and [max].");
+                settings.RsaKeySize = textBoxRsaKeySize.GetAndValidateNumeric(1024, 4096, "Max messages must be between [min] and [max].");
+                settings.AesKeySize = textBoxAesKeySize.GetAndValidateNumeric(128, 256, "Max messages must be between [min] and [max].");
+                settings.EndToEndKeySize = textBoxEndToEndKeySize.GetAndValidateNumeric(128, 10240, "Max messages must be between [min] and [max].");
+                settings.FileTransferChunkSize = textBoxFileTransferChunkSize.GetAndValidateNumeric(128, 1024 * 1024, "File transfer chunk size must be between [min] and [max].");
+                settings.ToastTimeoutSeconds = textBoxToastTimeoutSeconds.GetAndValidateNumeric(1, 300, "Duration of visual alerts (seconds) must be between [min] and [max].");
 
                 settings.AlertToastWhenContactComesOnline = checkBoxAlertToastWhenContactComesOnline.Checked;
                 settings.AlertToastWhenMessageReceived = checkBoxAlertToastWhenMessageReceived.Checked;
@@ -171,40 +154,12 @@ namespace Talkster.Client.Forms
         {
             try
             {
-                /*
-                //On cancel, we need to reset the theme to the original value.
-                Program.ThemeManager.GlobalPaletteMode = Settings.Instance.Theme;
-                foreach (Form form in Application.OpenForms)
-                {
-                    form.BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-                }
-                */
             }
             catch
             {
             }
 
             this.InvokeClose(DialogResult.Cancel);
-        }
-
-        private void ComboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxTheme.SelectedItem is ThemeComboItem item)
-            {
-                /*
-                Program.ThemeManager.GlobalPaletteMode = item.Mode;
-                try
-                {
-                    foreach (Form form in Application.OpenForms)
-                    {
-                        form.BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-                    }
-                }
-                catch
-                {
-                }
-                */
-            }
         }
     }
 }
