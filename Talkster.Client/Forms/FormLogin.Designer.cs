@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -30,56 +30,104 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
-            labelUsername = new KryptonLabel();
-            textBoxUsername = new KryptonTextBox();
-            labelPassword = new KryptonLabel();
-            textBoxPassword = new KryptonTextBox();
-            pictureBoxLogo = new KryptonPictureBox();
-            buttonLogin = new KryptonButton();
-            buttonCancel = new KryptonButton();
-            linkLabelCreateAccount = new KryptonLinkLabel();
-            checkBoxStayLoggedIn = new KryptonCheckBox();
-            buttonSettings = new KryptonButton();
+            labelUsername = new PoisonLabel();
+            textBoxUsername = new PoisonTextBox();
+            labelPassword = new PoisonLabel();
+            textBoxPassword = new PoisonTextBox();
+            pictureBoxLogo = new PictureBox();
+            buttonLogin = new PoisonButton();
+            buttonCancel = new PoisonButton();
+            linkLabelCreateAccount = new PoisonLinkLabel();
+            checkBoxStayLoggedIn = new PoisonCheckBox();
+            buttonSettings = new PoisonButton();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // labelUsername
             // 
-            labelUsername.Location = new Point(96, 13);
+            labelUsername.AutoSize = true;
+            labelUsername.Location = new Point(107, 59);
             labelUsername.Name = "labelUsername";
-            labelUsername.Size = new Size(65, 20);
+            labelUsername.Size = new Size(68, 19);
             labelUsername.TabIndex = 0;
-            labelUsername.Values.Text = "Username";
+            labelUsername.Text = "Username";
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(100, 31);
+            // 
+            // 
+            // 
+            textBoxUsername.CustomButton.Image = null;
+            textBoxUsername.CustomButton.Location = new Point(175, 1);
+            textBoxUsername.CustomButton.Name = "";
+            textBoxUsername.CustomButton.Size = new Size(21, 21);
+            textBoxUsername.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxUsername.CustomButton.TabIndex = 1;
+            textBoxUsername.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxUsername.CustomButton.UseSelectable = true;
+            textBoxUsername.CustomButton.Visible = false;
+            textBoxUsername.Location = new Point(111, 77);
+            textBoxUsername.MaxLength = 32767;
             textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.PasswordChar = '\0';
+            textBoxUsername.ScrollBars = ScrollBars.None;
+            textBoxUsername.SelectedText = "";
+            textBoxUsername.SelectionLength = 0;
+            textBoxUsername.SelectionStart = 0;
+            textBoxUsername.ShortcutsEnabled = true;
             textBoxUsername.Size = new Size(197, 23);
             textBoxUsername.TabIndex = 0;
+            textBoxUsername.UseSelectable = true;
+            textBoxUsername.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxUsername.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelPassword
             // 
-            labelPassword.Location = new Point(96, 61);
+            labelPassword.AutoSize = true;
+            labelPassword.Location = new Point(107, 107);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(62, 20);
+            labelPassword.Size = new Size(63, 19);
             labelPassword.TabIndex = 2;
-            labelPassword.Values.Text = "Password";
+            labelPassword.Text = "Password";
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(100, 79);
+            // 
+            // 
+            // 
+            textBoxPassword.CustomButton.Image = null;
+            textBoxPassword.CustomButton.Location = new Point(175, 1);
+            textBoxPassword.CustomButton.Name = "";
+            textBoxPassword.CustomButton.Size = new Size(21, 21);
+            textBoxPassword.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxPassword.CustomButton.TabIndex = 1;
+            textBoxPassword.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxPassword.CustomButton.UseSelectable = true;
+            textBoxPassword.CustomButton.Visible = false;
+            textBoxPassword.Location = new Point(111, 125);
+            textBoxPassword.MaxLength = 32767;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
+            textBoxPassword.ScrollBars = ScrollBars.None;
+            textBoxPassword.SelectedText = "";
+            textBoxPassword.SelectionLength = 0;
+            textBoxPassword.SelectionStart = 0;
+            textBoxPassword.ShortcutsEnabled = true;
             textBoxPassword.Size = new Size(197, 23);
             textBoxPassword.TabIndex = 1;
+            textBoxPassword.UseSelectable = true;
+            textBoxPassword.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxPassword.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // pictureBoxLogo
             // 
             pictureBoxLogo.BackgroundImage = (Image)resources.GetObject("pictureBoxLogo.BackgroundImage");
             pictureBoxLogo.BackgroundImageLayout = ImageLayout.Center;
-            pictureBoxLogo.Location = new Point(12, 31);
+            pictureBoxLogo.Location = new Point(23, 77);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.Size = new Size(73, 70);
             pictureBoxLogo.TabIndex = 4;
@@ -87,56 +135,65 @@ namespace Talkster.Client.Forms
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(132, 162);
+            buttonLogin.Location = new Point(152, 206);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(75, 25);
             buttonLogin.TabIndex = 4;
-            buttonLogin.Values.DropDownArrowColor = Color.Empty;
-            buttonLogin.Values.Text = "Login";
+            buttonLogin.Text = "Login";
+            buttonLogin.UseSelectable = true;
             buttonLogin.Click += ButtonLogin_Click;
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(213, 162);
+            buttonCancel.Location = new Point(233, 206);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 25);
             buttonCancel.TabIndex = 5;
-            buttonCancel.Values.DropDownArrowColor = Color.Empty;
-            buttonCancel.Values.Text = "Cancel";
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseSelectable = true;
             buttonCancel.Click += ButtonCancel_Click;
             // 
             // linkLabelCreateAccount
             // 
-            linkLabelCreateAccount.Location = new Point(96, 134);
+            linkLabelCreateAccount.AutoSize = true;
+            linkLabelCreateAccount.Location = new Point(107, 175);
             linkLabelCreateAccount.Name = "linkLabelCreateAccount";
-            linkLabelCreateAccount.Size = new Size(205, 20);
+            linkLabelCreateAccount.Size = new Size(205, 25);
             linkLabelCreateAccount.TabIndex = 3;
-            linkLabelCreateAccount.Values.Text = "Don't have an account? Create one!";
-            linkLabelCreateAccount.LinkClicked += LinkLabelCreateAccount_LinkClicked;
+            linkLabelCreateAccount.Text = "Don't have an account? Create one!";
+            linkLabelCreateAccount.UseSelectable = true;
+            linkLabelCreateAccount.Click += LinkLabelCreateAccount_LinkClicked;
             // 
             // checkBoxStayLoggedIn
             // 
-            checkBoxStayLoggedIn.Location = new Point(100, 108);
+            checkBoxStayLoggedIn.AutoSize = true;
+            checkBoxStayLoggedIn.Location = new Point(111, 154);
             checkBoxStayLoggedIn.Name = "checkBoxStayLoggedIn";
-            checkBoxStayLoggedIn.Size = new Size(107, 20);
+            checkBoxStayLoggedIn.Size = new Size(103, 15);
             checkBoxStayLoggedIn.TabIndex = 2;
-            checkBoxStayLoggedIn.Values.Text = "Stay logged in?";
+            checkBoxStayLoggedIn.Text = "Stay logged in?";
+            checkBoxStayLoggedIn.UseSelectable = true;
             // 
             // buttonSettings
             // 
-            buttonSettings.Location = new Point(36, 162);
+            buttonSettings.Location = new Point(56, 206);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Size = new Size(90, 25);
             buttonSettings.TabIndex = 6;
-            buttonSettings.Values.DropDownArrowColor = Color.Empty;
-            buttonSettings.Values.Text = "Settings";
+            buttonSettings.Text = "Settings";
+            buttonSettings.UseSelectable = true;
             buttonSettings.Click += ButtonSettings_Click;
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(325, 195);
+            ClientSize = new Size(335, 260);
             Controls.Add(buttonSettings);
             Controls.Add(checkBoxStayLoggedIn);
             Controls.Add(linkLabelCreateAccount);
@@ -147,15 +204,15 @@ namespace Talkster.Client.Forms
             Controls.Add(labelPassword);
             Controls.Add(textBoxUsername);
             Controls.Add(labelUsername);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             MinimumSize = new Size(335, 240);
             Name = "FormLogin";
-            StartPosition = FormStartPosition.CenterScreen;
+            SizeGripStyle = SizeGripStyle.Hide;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,15 +220,16 @@ namespace Talkster.Client.Forms
 
         #endregion
 
-        private KryptonLabel labelUsername;
-        private KryptonTextBox textBoxUsername;
-        private KryptonLabel labelPassword;
-        private KryptonTextBox textBoxPassword;
-        private KryptonPictureBox pictureBoxLogo;
-        private KryptonButton buttonLogin;
-        private KryptonButton buttonCancel;
-        private KryptonLinkLabel linkLabelCreateAccount;
-        private KryptonCheckBox checkBoxStayLoggedIn;
-        private KryptonButton buttonSettings;
+        private PoisonLabel labelUsername;
+        private PoisonTextBox textBoxUsername;
+        private PoisonLabel labelPassword;
+        private PoisonTextBox textBoxPassword;
+        private PictureBox pictureBoxLogo;
+        private PoisonButton buttonLogin;
+        private PoisonButton buttonCancel;
+        private PoisonLinkLabel linkLabelCreateAccount;
+        private PoisonCheckBox checkBoxStayLoggedIn;
+        private PoisonButton buttonSettings;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

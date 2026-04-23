@@ -1,12 +1,13 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using System.Reflection;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormAbout : KryptonForm
+    public partial class FormAbout
+        : PoisonForm
     {
         private readonly Assembly _assembly = Assembly.GetExecutingAssembly();
 
@@ -14,14 +15,20 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
         }
 
         public FormAbout(bool showInTaskbar)
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             if (showInTaskbar)
             {

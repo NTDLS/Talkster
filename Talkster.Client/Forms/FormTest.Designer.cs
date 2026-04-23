@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Forms
+﻿using ReaLTaiizor.Controls;
+
+namespace Talkster.Client.Forms
 {
     partial class FormTest
     {
@@ -28,23 +30,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTest));
-            splitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
+            splitContainer1 = new SplitContainer();
             flowLayoutPanelChat = new FlowLayoutPanel();
-            kryptonTextBoxMessage = new Krypton.Toolkit.KryptonTextBox();
-            kryptonButtonSend = new Krypton.Toolkit.KryptonButton();
+            textBoxMessage = new PoisonTextBox();
+            buttonSend = new PoisonButton();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            (splitContainer1.Panel1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
-            (splitContainer1.Panel2).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel2;
-            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Location = new Point(20, 60);
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // 
@@ -53,10 +56,10 @@
             // 
             // 
             // 
-            splitContainer1.Panel2.Controls.Add(kryptonTextBoxMessage);
-            splitContainer1.Panel2.Controls.Add(kryptonButtonSend);
-            splitContainer1.Size = new Size(584, 404);
-            splitContainer1.SplitterDistance = 353;
+            splitContainer1.Panel2.Controls.Add(textBoxMessage);
+            splitContainer1.Panel2.Controls.Add(buttonSend);
+            splitContainer1.Size = new Size(544, 324);
+            splitContainer1.SplitterDistance = 273;
             splitContainer1.TabIndex = 2;
             // 
             // flowLayoutPanelChat
@@ -67,29 +70,32 @@
             flowLayoutPanelChat.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelChat.Location = new Point(0, 0);
             flowLayoutPanelChat.Name = "flowLayoutPanelChat";
-            flowLayoutPanelChat.Size = new Size(584, 353);
+            flowLayoutPanelChat.Size = new Size(544, 273);
             flowLayoutPanelChat.TabIndex = 0;
             flowLayoutPanelChat.WrapContents = false;
             // 
             // kryptonTextBoxMessage
             // 
-            kryptonTextBoxMessage.Dock = DockStyle.Fill;
-            kryptonTextBoxMessage.Location = new Point(0, 0);
-            kryptonTextBoxMessage.Multiline = true;
-            kryptonTextBoxMessage.Name = "kryptonTextBoxMessage";
-            kryptonTextBoxMessage.Size = new Size(531, 46);
-            kryptonTextBoxMessage.TabIndex = 1;
+            textBoxMessage.Dock = DockStyle.Fill;
+            textBoxMessage.Location = new Point(0, 0);
+            textBoxMessage.Multiline = true;
+            textBoxMessage.Name = "kryptonTextBoxMessage";
+            textBoxMessage.Size = new Size(491, 46);
+            textBoxMessage.TabIndex = 1;
             // 
             // kryptonButtonSend
             // 
-            kryptonButtonSend.Dock = DockStyle.Right;
-            kryptonButtonSend.Location = new Point(531, 0);
-            kryptonButtonSend.Name = "kryptonButtonSend";
-            kryptonButtonSend.Size = new Size(53, 46);
-            kryptonButtonSend.TabIndex = 2;
-            kryptonButtonSend.Values.DropDownArrowColor = Color.Empty;
-            kryptonButtonSend.Values.Text = "Send";
-            kryptonButtonSend.Click += kryptonButtonSend_Click;
+            buttonSend.Dock = DockStyle.Right;
+            buttonSend.Location = new Point(491, 0);
+            buttonSend.Name = "kryptonButtonSend";
+            buttonSend.Size = new Size(53, 46);
+            buttonSend.TabIndex = 2;
+            buttonSend.Text = "Send";
+            buttonSend.Click += ButtonSend_Click;
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
             // 
             // FormTest
             // 
@@ -99,21 +105,20 @@
             Controls.Add(splitContainer1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormTest";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormTest";
-            (splitContainer1.Panel1).EndInit();
             splitContainer1.Panel1.ResumeLayout(false);
-            (splitContainer1.Panel2).EndInit();
             splitContainer1.Panel2.ResumeLayout(false);
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Krypton.Toolkit.KryptonSplitContainer splitContainer1;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBoxMessage;
-        private Krypton.Toolkit.KryptonButton kryptonButtonSend;
+        private SplitContainer splitContainer1;
+        private PoisonTextBox textBoxMessage;
+        private PoisonButton buttonSend;
         private FlowLayoutPanel flowLayoutPanelChat;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

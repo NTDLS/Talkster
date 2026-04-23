@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Talkster.Client.Helpers;
 using Talkster.Library;
 
@@ -7,8 +6,6 @@ namespace Talkster.Client
 {
     static class Program
     {
-        public static KryptonManager ThemeManager = new();
-
         public static Logger Log { get; set; } = new Logger();
 
         [STAThread]

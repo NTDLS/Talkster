@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Forms
+﻿using ReaLTaiizor.Controls;
+
+namespace Talkster.Client.Forms
 {
     partial class FormToast
     {
@@ -28,13 +30,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormToast));
             pictureBoxIcon = new PictureBox();
-            labelHeader = new Label();
-            labelBody = new Label();
+            labelHeader = new PoisonLabel();
+            labelBody = new PoisonLabel();
             pictureBoxClose = new PictureBox();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClose).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxIcon
@@ -73,6 +78,10 @@
             pictureBoxClose.TabIndex = 3;
             pictureBoxClose.TabStop = false;
             // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            // 
             // FormToast
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -96,6 +105,7 @@
             StartPosition = FormStartPosition.Manual;
             ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClose).EndInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,8 +113,9 @@
         #endregion
 
         private PictureBox pictureBoxIcon;
-        private Label labelHeader;
-        private Label labelBody;
+        private PoisonLabel labelHeader;
+        private PoisonLabel labelBody;
         private PictureBox pictureBoxClose;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

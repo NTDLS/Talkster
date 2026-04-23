@@ -1,6 +1,6 @@
-﻿using Krypton.Toolkit;
-using NTDLS.ReliableMessaging;
+﻿using NTDLS.ReliableMessaging;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Client.Helpers;
 using Talkster.Library;
@@ -8,7 +8,8 @@ using Talkster.Library.ReliableMessages;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormCreateAccount : KryptonForm
+    public partial class FormCreateAccount
+        : PoisonForm
     {
         private string _username = string.Empty;
 
@@ -16,7 +17,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             FormClosing += FormCreateAccount_FormClosing;
             AcceptButton = buttonCreate;
@@ -53,10 +57,10 @@ namespace Talkster.Client.Forms
         {
             try
             {
-                var username = textBoxUsername.TextBox.GetAndValidateText("A username is required.");
-                var displayName = textBoxDisplayName.TextBox.GetAndValidateText("A display name is required.");
-                var password = textBoxPassword.TextBox.GetAndValidateText("A password is required.");
-                var confirmPassword = textBoxPassword.TextBox.GetAndValidateText("A confirm password is required.");
+                var username = textBoxUsername.GetAndValidateText("A username is required.");
+                var displayName = textBoxDisplayName.GetAndValidateText("A display name is required.");
+                var password = textBoxPassword.GetAndValidateText("A password is required.");
+                var confirmPassword = textBoxPassword.GetAndValidateText("A confirm password is required.");
 
                 if (!Crypto.IsPasswordComplex(password, out var errorMessage))
                 {

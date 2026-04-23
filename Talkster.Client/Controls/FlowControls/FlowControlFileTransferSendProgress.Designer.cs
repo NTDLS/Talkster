@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Controls
 {
@@ -30,10 +30,10 @@ namespace Talkster.Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            buttonCancel = new Button();
-            progressBarCompletion = new KryptonProgressBar();
-            labelWaitingStatus = new Krypton.Toolkit.KryptonLabel();
-            labelHeaderText = new Krypton.Toolkit.KryptonLabel();
+            buttonCancel = new PoisonButton();
+            progressBarCompletion = new PoisonProgressBar();
+            labelWaitingStatus = new PoisonLabel();
+            labelHeaderText = new PoisonLabel();
             SuspendLayout();
             // 
             // buttonCancel
@@ -60,16 +60,15 @@ namespace Talkster.Client.Controls
             labelWaitingStatus.Name = "labelWaitingStatus";
             labelWaitingStatus.Size = new Size(86, 20);
             labelWaitingStatus.TabIndex = 11;
-            labelWaitingStatus.Values.Text = "WaitingStatus";
+            labelWaitingStatus.Text = "WaitingStatus";
             // 
             // labelHeaderText
             // 
-            labelHeaderText.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             labelHeaderText.Location = new Point(3, 3);
             labelHeaderText.Name = "labelHeaderText";
             labelHeaderText.Size = new Size(78, 20);
             labelHeaderText.TabIndex = 10;
-            labelHeaderText.Values.Text = "HeaderText";
+            labelHeaderText.Text = "HeaderText";
             // 
             // FlowControlFileTransferSendProgress
             // 
@@ -86,9 +85,9 @@ namespace Talkster.Client.Controls
         }
 
         #endregion
-        private Button buttonCancel;
-        private KryptonProgressBar progressBarCompletion;
-        private Krypton.Toolkit.KryptonLabel labelWaitingStatus;
-        private Krypton.Toolkit.KryptonLabel labelHeaderText;
+        private PoisonButton buttonCancel;
+        private PoisonProgressBar progressBarCompletion;
+        private PoisonLabel labelWaitingStatus;
+        private PoisonLabel labelHeaderText;
     }
 }

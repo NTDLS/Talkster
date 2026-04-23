@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -30,18 +30,21 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLog));
-            buttonClear = new KryptonButton();
-            dataGridViewLog = new KryptonDataGridView();
-            splitContainer1 = new SplitContainer();
-            ColumnTimestamp = new KryptonDataGridViewTextBoxColumn();
+            buttonClear = new PoisonButton();
+            dataGridViewLog = new PoisonDataGridView();
+            ColumnTimestamp = new DataGridViewTextBoxColumn();
             ColumnSeverity = new DataGridViewTextBoxColumn();
-            ColumnMessage = new KryptonDataGridViewTextBoxColumn();
+            ColumnMessage = new DataGridViewTextBoxColumn();
+            splitContainer1 = new SplitContainer();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonClear
@@ -50,11 +53,10 @@ namespace Talkster.Client.Forms
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(58, 23);
             buttonClear.TabIndex = 2;
-            buttonClear.Values.DropDownArrowColor = Color.Empty;
-            buttonClear.Values.Text = "Clear";
+            buttonClear.Text = "Clear";
             buttonClear.Click += ButtonClear_Click;
             // 
-            // dataGridViewAccounts
+            // dataGridViewLog
             // 
             dataGridViewLog.AllowUserToAddRows = false;
             dataGridViewLog.AllowUserToDeleteRows = false;
@@ -68,36 +70,15 @@ namespace Talkster.Client.Forms
             dataGridViewLog.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridViewLog.Location = new Point(0, 0);
             dataGridViewLog.MultiSelect = false;
-            dataGridViewLog.Name = "dataGridViewAccounts";
+            dataGridViewLog.Name = "dataGridViewLog";
             dataGridViewLog.ReadOnly = true;
             dataGridViewLog.RowHeadersVisible = false;
             dataGridViewLog.ShowCellErrors = false;
             dataGridViewLog.ShowCellToolTips = false;
             dataGridViewLog.ShowEditingIcon = false;
             dataGridViewLog.ShowRowErrors = false;
-            dataGridViewLog.Size = new Size(726, 361);
+            dataGridViewLog.Size = new Size(686, 326);
             dataGridViewLog.TabIndex = 3;
-            // 
-            // splitContainer1
-            // 
-            splitContainer1.BackColor = Color.Transparent;
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.FixedPanel = FixedPanel.Panel1;
-            splitContainer1.IsSplitterFixed = true;
-            splitContainer1.Location = new Point(0, 0);
-            splitContainer1.Name = "splitContainer1";
-            splitContainer1.Orientation = Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Controls.Add(buttonClear);
-            // 
-            // splitContainer1.Panel2
-            // 
-            splitContainer1.Panel2.Controls.Add(dataGridViewLog);
-            splitContainer1.Size = new Size(726, 405);
-            splitContainer1.SplitterDistance = 40;
-            splitContainer1.TabIndex = 4;
             // 
             // ColumnTimestamp
             // 
@@ -105,6 +86,7 @@ namespace Talkster.Client.Forms
             ColumnTimestamp.HeaderText = "Timestamp";
             ColumnTimestamp.Name = "ColumnTimestamp";
             ColumnTimestamp.ReadOnly = true;
+            ColumnTimestamp.Width = 100;
             // 
             // ColumnSeverity
             // 
@@ -119,34 +101,61 @@ namespace Talkster.Client.Forms
             ColumnMessage.HeaderText = "Message";
             ColumnMessage.Name = "ColumnMessage";
             ColumnMessage.ReadOnly = true;
+            ColumnMessage.Width = 485;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.BackColor = Color.Transparent;
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.FixedPanel = FixedPanel.Panel1;
+            splitContainer1.IsSplitterFixed = true;
+            splitContainer1.Location = new Point(20, 60);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(buttonClear);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(dataGridViewLog);
+            splitContainer1.Size = new Size(686, 370);
+            splitContainer1.SplitterDistance = 40;
+            splitContainer1.TabIndex = 4;
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
             // 
             // FormLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(726, 405);
+            ClientSize = new Size(726, 450);
             Controls.Add(splitContainer1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimumSize = new Size(525, 450);
             Name = "FormLog";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)dataGridViewLog).EndInit();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private KryptonButton buttonClear;
-        private KryptonDataGridView dataGridViewLog;
+        private PoisonButton buttonClear;
+        private PoisonDataGridView dataGridViewLog;
         private SplitContainer splitContainer1;
-        private KryptonDataGridViewTextBoxColumn ColumnTimestamp;
+        private DataGridViewTextBoxColumn ColumnTimestamp;
         private DataGridViewTextBoxColumn ColumnSeverity;
-        private KryptonDataGridViewTextBoxColumn ColumnMessage;
+        private DataGridViewTextBoxColumn ColumnMessage;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

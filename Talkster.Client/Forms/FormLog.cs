@@ -1,10 +1,11 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormLog : KryptonForm
+    public partial class FormLog
+        : PoisonForm
     {
         private readonly Button _cancelButton;
 
@@ -12,7 +13,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             _cancelButton = new Button();
             _cancelButton.Click += CancelButton_Click;

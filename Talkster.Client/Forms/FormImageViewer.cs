@@ -1,11 +1,12 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Client.Helpers;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormImageViewer : KryptonForm
+    public partial class FormImageViewer
+        : PoisonForm
     {
         private readonly Image _image;
 
@@ -18,7 +19,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             _image = image;
 

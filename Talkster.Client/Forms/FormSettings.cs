@@ -13,9 +13,12 @@ namespace Talkster.Client.Forms
     {
         public FormSettings(bool showInTaskbar)
         {
+            InitializeComponent();
+
             Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
             Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            InitializeComponent();
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             if (showInTaskbar)
             {

@@ -1,18 +1,22 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Forms;
 using Talkster.Client.Controls.FlowControls;
 using static Talkster.Library.ScConstants;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormTest : KryptonForm
+    public partial class FormTest
+        : PoisonForm
     {
         public FormTest()
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
-            kryptonTextBoxMessage.Text = $"This is message one. This is message two. This is message three. This is message four. This is message five. This is message six. This is message seven. This is message eight. This is message nine. This is message ten.";
+            textBoxMessage.Text = $"This is message one. This is message two. This is message three. This is message four. This is message five. This is message six. This is message seven. This is message eight. This is message nine. This is message ten.";
 
             Resize += (s, e) =>
             {
@@ -30,8 +34,8 @@ namespace Talkster.Client.Forms
                 flowLayoutPanelChat.Invalidate(true);
             };
 
-            kryptonButtonSend.Focus();
-            this.AcceptButton = kryptonButtonSend;
+            buttonSend.Focus();
+            this.AcceptButton = buttonSend;
         }
 
         private void AddChatBubble(string displayName, ScOrigin origin, string message)
@@ -43,7 +47,7 @@ namespace Talkster.Client.Forms
 
         int number = 0;
 
-        private void kryptonButtonSend_Click(object sender, EventArgs e)
+        private void ButtonSend_Click(object sender, EventArgs e)
         {
             ScOrigin origin = ScOrigin.None;
             string displayName = "Test User";
@@ -61,7 +65,7 @@ namespace Talkster.Client.Forms
 
 
 
-            AddChatBubble(displayName, origin, kryptonTextBoxMessage.Text);
+            AddChatBubble(displayName, origin, textBoxMessage.Text);
         }
     }
 }

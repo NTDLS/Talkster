@@ -1,18 +1,23 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Forms;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormMessageProperties : KryptonForm
+    public partial class FormMessageProperties
+        : PoisonForm
     {
         private ActiveChat _activeChat;
 
         internal FormMessageProperties(ActiveChat activeChat)
         {
             InitializeComponent();
-            _activeChat = activeChat;
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+
+            _activeChat = activeChat;
 
             textBoxAccountId.Text = activeChat.AccountId.ToString();
             textBoxDisplayName.Text = activeChat.DisplayName;

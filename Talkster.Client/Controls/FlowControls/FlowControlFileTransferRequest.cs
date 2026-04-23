@@ -1,15 +1,17 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
+using ReaLTaiizor.Controls;
+using ReaLTaiizor.Manager;
 using System.ComponentModel;
 using Talkster.Client.Controls.FlowControls;
 
 namespace Talkster.Client.Controls
 {
     internal partial class FlowControlFileTransferRequest
-        : UserControl, IFlowControl
+        : PoisonUserControl, IFlowControl
     {
         private readonly FlowLayoutPanel _parent;
         private readonly ActiveChat _activeChat;
+        private readonly PoisonStyleManager _poisonStyleManager;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Guid FileId { get; private set; }
@@ -27,7 +29,15 @@ namespace Talkster.Client.Controls
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            _poisonStyleManager = new PoisonStyleManager()
+            {
+                Owner = this,
+            };
+
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            _poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            _poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             _activeChat = activeChat;
             _parent = parent;

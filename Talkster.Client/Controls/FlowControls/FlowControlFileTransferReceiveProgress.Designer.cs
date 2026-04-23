@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Controls
 {
@@ -30,10 +30,10 @@ namespace Talkster.Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            buttonCancel = new Button();
-            progressBarCompletion = new KryptonProgressBar();
-            labelHeaderText = new Krypton.Toolkit.KryptonLabel();
-            labelWaitingStatus = new Krypton.Toolkit.KryptonLabel();
+            buttonCancel = new PoisonButton();
+            progressBarCompletion = new PoisonProgressBar();
+            labelHeaderText = new PoisonLabel();
+            labelWaitingStatus = new PoisonLabel();
             SuspendLayout();
             // 
             // buttonCancel
@@ -56,12 +56,11 @@ namespace Talkster.Client.Controls
             // 
             // labelHeaderText
             // 
-            labelHeaderText.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             labelHeaderText.Location = new Point(3, 3);
             labelHeaderText.Name = "labelHeaderText";
             labelHeaderText.Size = new Size(78, 20);
             labelHeaderText.TabIndex = 8;
-            labelHeaderText.Values.Text = "HeaderText";
+            labelHeaderText.Text = "HeaderText";
             // 
             // labelWaitingStatus
             // 
@@ -69,7 +68,7 @@ namespace Talkster.Client.Controls
             labelWaitingStatus.Name = "labelWaitingStatus";
             labelWaitingStatus.Size = new Size(86, 20);
             labelWaitingStatus.TabIndex = 9;
-            labelWaitingStatus.Values.Text = "WaitingStatus";
+            labelWaitingStatus.Text = "WaitingStatus";
             // 
             // FlowControlFileTransferReceiveProgress
             // 
@@ -86,9 +85,9 @@ namespace Talkster.Client.Controls
         }
 
         #endregion
-        private Button buttonCancel;
-        private KryptonProgressBar progressBarCompletion;
-        private Krypton.Toolkit.KryptonLabel labelHeaderText;
-        private Krypton.Toolkit.KryptonLabel labelWaitingStatus;
+        private PoisonButton buttonCancel;
+        private PoisonProgressBar progressBarCompletion;
+        private PoisonLabel labelHeaderText;
+        private PoisonLabel labelWaitingStatus;
     }
 }

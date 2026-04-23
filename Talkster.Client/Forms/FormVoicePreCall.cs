@@ -1,13 +1,14 @@
-﻿using Krypton.Toolkit;
-using NAudio.CoreAudioApi;
+﻿using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using Talkster.Client.Audio;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormVoicePreCall : KryptonForm
+    public partial class FormVoicePreCall
+        : PoisonForm
     {
         private AudioPump? _audioPump = null;
 
@@ -22,7 +23,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
         }
 
         private void FormVoicePreCall_Load(object sender, EventArgs e)

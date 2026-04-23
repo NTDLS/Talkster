@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit;
-
-namespace Talkster.Client.Forms
+﻿namespace Talkster.Client.Forms
 {
     partial class FormImageViewer
     {
@@ -30,15 +28,18 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageViewer));
-            pictureBoxImage = new KryptonPictureBox();
+            pictureBoxImage = new PictureBox();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxImage
@@ -55,9 +56,9 @@ namespace Talkster.Client.Forms
             // 
             menuStrip1.Font = new Font("Segoe UI", 9F);
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Location = new Point(20, 60);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(294, 24);
+            menuStrip1.Size = new Size(318, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -71,7 +72,7 @@ namespace Talkster.Client.Forms
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(98, 22);
+            saveToolStripMenuItem.Size = new Size(180, 22);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
             // 
@@ -80,16 +81,20 @@ namespace Talkster.Client.Forms
             panel1.AutoScroll = true;
             panel1.Controls.Add(pictureBoxImage);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 24);
+            panel1.Location = new Point(20, 84);
             panel1.Name = "panel1";
-            panel1.Size = new Size(294, 131);
+            panel1.Size = new Size(318, 141);
             panel1.TabIndex = 2;
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
             // 
             // FormImageViewer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(294, 155);
+            ClientSize = new Size(358, 245);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -102,16 +107,18 @@ namespace Talkster.Client.Forms
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private KryptonPictureBox pictureBoxImage;
+        private PictureBox pictureBoxImage;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private Panel panel1;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

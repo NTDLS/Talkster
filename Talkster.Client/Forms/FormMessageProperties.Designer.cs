@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -30,160 +30,308 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMessageProperties));
-            labelAccountId = new KryptonLabel();
-            textBoxAccountId = new KryptonTextBox();
-            labelDisplayName = new KryptonLabel();
-            textBoxDisplayName = new KryptonTextBox();
-            buttonClose = new KryptonButton();
-            textBoxPublicRsaKey = new KryptonTextBox();
-            labelPublicRsaKey = new KryptonLabel();
-            textBoxSessionId = new KryptonTextBox();
-            LebelSessionId = new KryptonLabel();
-            textBoxSharedSecret = new KryptonTextBox();
-            labelSharedSecret = new KryptonLabel();
-            textBoxPrivateRsaKey = new KryptonTextBox();
-            labelPrivateRsaKey = new KryptonLabel();
-            labelSharedSecretLength = new KryptonLabel();
-            labelPrivateRsaKeyLength = new KryptonLabel();
-            labelPublicRsaKeyLength = new KryptonLabel();
+            labelAccountId = new PoisonLabel();
+            textBoxAccountId = new PoisonTextBox();
+            labelDisplayName = new PoisonLabel();
+            textBoxDisplayName = new PoisonTextBox();
+            buttonClose = new PoisonButton();
+            textBoxPublicRsaKey = new PoisonTextBox();
+            labelPublicRsaKey = new PoisonLabel();
+            textBoxSessionId = new PoisonTextBox();
+            LebelSessionId = new PoisonLabel();
+            textBoxSharedSecret = new PoisonTextBox();
+            labelSharedSecret = new PoisonLabel();
+            textBoxPrivateRsaKey = new PoisonTextBox();
+            labelPrivateRsaKey = new PoisonLabel();
+            labelSharedSecretLength = new PoisonLabel();
+            labelPrivateRsaKeyLength = new PoisonLabel();
+            labelPublicRsaKeyLength = new PoisonLabel();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // labelAccountId
             // 
-            labelAccountId.Location = new Point(12, 57);
+            labelAccountId.AutoSize = true;
+            labelAccountId.Location = new Point(23, 109);
             labelAccountId.Name = "labelAccountId";
-            labelAccountId.Size = new Size(69, 20);
+            labelAccountId.Size = new Size(71, 19);
             labelAccountId.TabIndex = 0;
-            labelAccountId.Values.Text = "Account Id";
+            labelAccountId.Text = "Account Id";
             // 
             // textBoxAccountId
             // 
-            textBoxAccountId.Location = new Point(16, 79);
+            // 
+            // 
+            // 
+            textBoxAccountId.CustomButton.Image = null;
+            textBoxAccountId.CustomButton.Location = new Point(266, 1);
+            textBoxAccountId.CustomButton.Name = "";
+            textBoxAccountId.CustomButton.Size = new Size(21, 21);
+            textBoxAccountId.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxAccountId.CustomButton.TabIndex = 1;
+            textBoxAccountId.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxAccountId.CustomButton.UseSelectable = true;
+            textBoxAccountId.CustomButton.Visible = false;
+            textBoxAccountId.Location = new Point(27, 131);
+            textBoxAccountId.MaxLength = 32767;
             textBoxAccountId.Name = "textBoxAccountId";
+            textBoxAccountId.PasswordChar = '\0';
             textBoxAccountId.ReadOnly = true;
+            textBoxAccountId.ScrollBars = ScrollBars.None;
+            textBoxAccountId.SelectedText = "";
+            textBoxAccountId.SelectionLength = 0;
+            textBoxAccountId.SelectionStart = 0;
+            textBoxAccountId.ShortcutsEnabled = true;
             textBoxAccountId.Size = new Size(288, 23);
             textBoxAccountId.TabIndex = 1;
+            textBoxAccountId.UseSelectable = true;
+            textBoxAccountId.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxAccountId.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelDisplayName
             // 
-            labelDisplayName.Location = new Point(12, 8);
+            labelDisplayName.AutoSize = true;
+            labelDisplayName.Location = new Point(23, 60);
             labelDisplayName.Name = "labelDisplayName";
-            labelDisplayName.Size = new Size(86, 20);
+            labelDisplayName.Size = new Size(90, 19);
             labelDisplayName.TabIndex = 2;
-            labelDisplayName.Values.Text = "Display Name";
+            labelDisplayName.Text = "Display Name";
             // 
             // textBoxDisplayName
             // 
-            textBoxDisplayName.Location = new Point(16, 30);
+            // 
+            // 
+            // 
+            textBoxDisplayName.CustomButton.Image = null;
+            textBoxDisplayName.CustomButton.Location = new Point(266, 1);
+            textBoxDisplayName.CustomButton.Name = "";
+            textBoxDisplayName.CustomButton.Size = new Size(21, 21);
+            textBoxDisplayName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxDisplayName.CustomButton.TabIndex = 1;
+            textBoxDisplayName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxDisplayName.CustomButton.UseSelectable = true;
+            textBoxDisplayName.CustomButton.Visible = false;
+            textBoxDisplayName.Location = new Point(27, 82);
+            textBoxDisplayName.MaxLength = 32767;
             textBoxDisplayName.Name = "textBoxDisplayName";
+            textBoxDisplayName.PasswordChar = '\0';
             textBoxDisplayName.ReadOnly = true;
+            textBoxDisplayName.ScrollBars = ScrollBars.None;
+            textBoxDisplayName.SelectedText = "";
+            textBoxDisplayName.SelectionLength = 0;
+            textBoxDisplayName.SelectionStart = 0;
+            textBoxDisplayName.ShortcutsEnabled = true;
             textBoxDisplayName.Size = new Size(288, 23);
             textBoxDisplayName.TabIndex = 0;
+            textBoxDisplayName.UseSelectable = true;
+            textBoxDisplayName.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxDisplayName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // buttonClose
             // 
-            buttonClose.Location = new Point(229, 304);
+            buttonClose.Location = new Point(240, 356);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(75, 23);
             buttonClose.TabIndex = 5;
-            buttonClose.Values.DropDownArrowColor = Color.Empty;
-            buttonClose.Values.Text = "Close";
+            buttonClose.Text = "Close";
+            buttonClose.UseSelectable = true;
             buttonClose.Click += buttonClose_Click;
             // 
             // textBoxPublicRsaKey
             // 
-            textBoxPublicRsaKey.Location = new Point(16, 177);
+            // 
+            // 
+            // 
+            textBoxPublicRsaKey.CustomButton.Image = null;
+            textBoxPublicRsaKey.CustomButton.Location = new Point(266, 1);
+            textBoxPublicRsaKey.CustomButton.Name = "";
+            textBoxPublicRsaKey.CustomButton.Size = new Size(21, 21);
+            textBoxPublicRsaKey.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxPublicRsaKey.CustomButton.TabIndex = 1;
+            textBoxPublicRsaKey.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxPublicRsaKey.CustomButton.UseSelectable = true;
+            textBoxPublicRsaKey.CustomButton.Visible = false;
+            textBoxPublicRsaKey.Location = new Point(27, 229);
+            textBoxPublicRsaKey.MaxLength = 32767;
             textBoxPublicRsaKey.Name = "textBoxPublicRsaKey";
+            textBoxPublicRsaKey.PasswordChar = '\0';
             textBoxPublicRsaKey.ReadOnly = true;
+            textBoxPublicRsaKey.ScrollBars = ScrollBars.None;
+            textBoxPublicRsaKey.SelectedText = "";
+            textBoxPublicRsaKey.SelectionLength = 0;
+            textBoxPublicRsaKey.SelectionStart = 0;
+            textBoxPublicRsaKey.ShortcutsEnabled = true;
             textBoxPublicRsaKey.Size = new Size(288, 23);
             textBoxPublicRsaKey.TabIndex = 3;
+            textBoxPublicRsaKey.UseSelectable = true;
+            textBoxPublicRsaKey.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxPublicRsaKey.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelPublicRsaKey
             // 
-            labelPublicRsaKey.Location = new Point(12, 155);
+            labelPublicRsaKey.AutoSize = true;
+            labelPublicRsaKey.Location = new Point(23, 207);
             labelPublicRsaKey.Name = "labelPublicRsaKey";
-            labelPublicRsaKey.Size = new Size(103, 20);
+            labelPublicRsaKey.Size = new Size(106, 19);
             labelPublicRsaKey.TabIndex = 9;
-            labelPublicRsaKey.Values.Text = "Public Key (hash)";
+            labelPublicRsaKey.Text = "Public Key (hash)";
             // 
             // textBoxSessionId
             // 
-            textBoxSessionId.Location = new Point(16, 128);
+            // 
+            // 
+            // 
+            textBoxSessionId.CustomButton.Image = null;
+            textBoxSessionId.CustomButton.Location = new Point(266, 1);
+            textBoxSessionId.CustomButton.Name = "";
+            textBoxSessionId.CustomButton.Size = new Size(21, 21);
+            textBoxSessionId.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxSessionId.CustomButton.TabIndex = 1;
+            textBoxSessionId.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxSessionId.CustomButton.UseSelectable = true;
+            textBoxSessionId.CustomButton.Visible = false;
+            textBoxSessionId.Location = new Point(27, 180);
+            textBoxSessionId.MaxLength = 32767;
             textBoxSessionId.Name = "textBoxSessionId";
+            textBoxSessionId.PasswordChar = '\0';
             textBoxSessionId.ReadOnly = true;
+            textBoxSessionId.ScrollBars = ScrollBars.None;
+            textBoxSessionId.SelectedText = "";
+            textBoxSessionId.SelectionLength = 0;
+            textBoxSessionId.SelectionStart = 0;
+            textBoxSessionId.ShortcutsEnabled = true;
             textBoxSessionId.Size = new Size(288, 23);
             textBoxSessionId.TabIndex = 2;
+            textBoxSessionId.UseSelectable = true;
+            textBoxSessionId.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxSessionId.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // LebelSessionId
             // 
-            LebelSessionId.Location = new Point(12, 106);
+            LebelSessionId.AutoSize = true;
+            LebelSessionId.Location = new Point(23, 158);
             LebelSessionId.Name = "LebelSessionId";
-            LebelSessionId.Size = new Size(65, 20);
+            LebelSessionId.Size = new Size(66, 19);
             LebelSessionId.TabIndex = 7;
-            LebelSessionId.Values.Text = "Session Id";
+            LebelSessionId.Text = "Session Id";
             // 
             // textBoxSharedSecret
             // 
-            textBoxSharedSecret.Location = new Point(16, 275);
+            // 
+            // 
+            // 
+            textBoxSharedSecret.CustomButton.Image = null;
+            textBoxSharedSecret.CustomButton.Location = new Point(266, 1);
+            textBoxSharedSecret.CustomButton.Name = "";
+            textBoxSharedSecret.CustomButton.Size = new Size(21, 21);
+            textBoxSharedSecret.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxSharedSecret.CustomButton.TabIndex = 1;
+            textBoxSharedSecret.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxSharedSecret.CustomButton.UseSelectable = true;
+            textBoxSharedSecret.CustomButton.Visible = false;
+            textBoxSharedSecret.Location = new Point(27, 327);
+            textBoxSharedSecret.MaxLength = 32767;
             textBoxSharedSecret.Name = "textBoxSharedSecret";
+            textBoxSharedSecret.PasswordChar = '\0';
             textBoxSharedSecret.ReadOnly = true;
+            textBoxSharedSecret.ScrollBars = ScrollBars.None;
+            textBoxSharedSecret.SelectedText = "";
+            textBoxSharedSecret.SelectionLength = 0;
+            textBoxSharedSecret.SelectionStart = 0;
+            textBoxSharedSecret.ShortcutsEnabled = true;
             textBoxSharedSecret.Size = new Size(288, 23);
             textBoxSharedSecret.TabIndex = 5;
+            textBoxSharedSecret.UseSelectable = true;
+            textBoxSharedSecret.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxSharedSecret.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelSharedSecret
             // 
-            labelSharedSecret.Location = new Point(12, 253);
+            labelSharedSecret.AutoSize = true;
+            labelSharedSecret.Location = new Point(23, 305);
             labelSharedSecret.Name = "labelSharedSecret";
-            labelSharedSecret.Size = new Size(122, 20);
+            labelSharedSecret.Size = new Size(128, 19);
             labelSharedSecret.TabIndex = 13;
-            labelSharedSecret.Values.Text = "Shared Secret (hash)";
+            labelSharedSecret.Text = "Shared Secret (hash)";
             // 
             // textBoxPrivateRsaKey
             // 
-            textBoxPrivateRsaKey.Location = new Point(16, 226);
+            // 
+            // 
+            // 
+            textBoxPrivateRsaKey.CustomButton.Image = null;
+            textBoxPrivateRsaKey.CustomButton.Location = new Point(266, 1);
+            textBoxPrivateRsaKey.CustomButton.Name = "";
+            textBoxPrivateRsaKey.CustomButton.Size = new Size(21, 21);
+            textBoxPrivateRsaKey.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxPrivateRsaKey.CustomButton.TabIndex = 1;
+            textBoxPrivateRsaKey.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxPrivateRsaKey.CustomButton.UseSelectable = true;
+            textBoxPrivateRsaKey.CustomButton.Visible = false;
+            textBoxPrivateRsaKey.Location = new Point(27, 278);
+            textBoxPrivateRsaKey.MaxLength = 32767;
             textBoxPrivateRsaKey.Name = "textBoxPrivateRsaKey";
+            textBoxPrivateRsaKey.PasswordChar = '\0';
             textBoxPrivateRsaKey.ReadOnly = true;
+            textBoxPrivateRsaKey.ScrollBars = ScrollBars.None;
+            textBoxPrivateRsaKey.SelectedText = "";
+            textBoxPrivateRsaKey.SelectionLength = 0;
+            textBoxPrivateRsaKey.SelectionStart = 0;
+            textBoxPrivateRsaKey.ShortcutsEnabled = true;
             textBoxPrivateRsaKey.Size = new Size(288, 23);
             textBoxPrivateRsaKey.TabIndex = 4;
+            textBoxPrivateRsaKey.UseSelectable = true;
+            textBoxPrivateRsaKey.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxPrivateRsaKey.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // labelPrivateRsaKey
             // 
-            labelPrivateRsaKey.Location = new Point(12, 204);
+            labelPrivateRsaKey.AutoSize = true;
+            labelPrivateRsaKey.Location = new Point(23, 256);
             labelPrivateRsaKey.Name = "labelPrivateRsaKey";
-            labelPrivateRsaKey.Size = new Size(107, 20);
+            labelPrivateRsaKey.Size = new Size(111, 19);
             labelPrivateRsaKey.TabIndex = 11;
-            labelPrivateRsaKey.Values.Text = "Private Key (hash)";
+            labelPrivateRsaKey.Text = "Private Key (hash)";
             // 
             // labelSharedSecretLength
             // 
-            labelSharedSecretLength.Location = new Point(140, 253);
+            labelSharedSecretLength.AutoSize = true;
+            labelSharedSecretLength.Location = new Point(261, 305);
             labelSharedSecretLength.Name = "labelSharedSecretLength";
-            labelSharedSecretLength.Size = new Size(50, 20);
+            labelSharedSecretLength.Size = new Size(50, 19);
             labelSharedSecretLength.TabIndex = 14;
-            labelSharedSecretLength.Values.Text = "000bits";
+            labelSharedSecretLength.Text = "000bits";
             // 
             // labelPrivateRsaKeyLength
             // 
-            labelPrivateRsaKeyLength.Location = new Point(140, 204);
+            labelPrivateRsaKeyLength.AutoSize = true;
+            labelPrivateRsaKeyLength.Location = new Point(261, 256);
             labelPrivateRsaKeyLength.Name = "labelPrivateRsaKeyLength";
-            labelPrivateRsaKeyLength.Size = new Size(50, 20);
+            labelPrivateRsaKeyLength.Size = new Size(50, 19);
             labelPrivateRsaKeyLength.TabIndex = 15;
-            labelPrivateRsaKeyLength.Values.Text = "000bits";
+            labelPrivateRsaKeyLength.Text = "000bits";
             // 
             // labelPublicRsaKeyLength
             // 
-            labelPublicRsaKeyLength.Location = new Point(140, 155);
+            labelPublicRsaKeyLength.AutoSize = true;
+            labelPublicRsaKeyLength.Location = new Point(261, 207);
             labelPublicRsaKeyLength.Name = "labelPublicRsaKeyLength";
-            labelPublicRsaKeyLength.Size = new Size(50, 20);
+            labelPublicRsaKeyLength.Size = new Size(50, 19);
             labelPublicRsaKeyLength.TabIndex = 16;
-            labelPublicRsaKeyLength.Values.Text = "000bits";
+            labelPublicRsaKeyLength.Text = "000bits";
+            // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
             // 
             // FormMessageProperties
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(324, 340);
+            ClientSize = new Size(334, 402);
             Controls.Add(textBoxSharedSecret);
             Controls.Add(textBoxPrivateRsaKey);
             Controls.Add(textBoxPublicRsaKey);
@@ -200,13 +348,12 @@ namespace Talkster.Client.Forms
             Controls.Add(labelPublicRsaKeyLength);
             Controls.Add(labelPrivateRsaKeyLength);
             Controls.Add(labelSharedSecretLength);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormMessageProperties";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Talkster";
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,21 +361,22 @@ namespace Talkster.Client.Forms
 
         #endregion
 
-        private KryptonLabel labelAccountId;
-        private KryptonTextBox textBoxAccountId;
-        private KryptonLabel labelDisplayName;
-        private KryptonTextBox textBoxDisplayName;
-        private KryptonButton buttonClose;
-        private KryptonTextBox textBoxPublicRsaKey;
-        private KryptonLabel labelPublicRsaKey;
-        private KryptonTextBox textBoxSessionId;
-        private KryptonLabel LebelSessionId;
-        private KryptonTextBox textBoxSharedSecret;
-        private KryptonLabel labelSharedSecret;
-        private KryptonTextBox textBoxPrivateRsaKey;
-        private KryptonLabel labelPrivateRsaKey;
-        private KryptonLabel labelSharedSecretLength;
-        private KryptonLabel labelPrivateRsaKeyLength;
-        private KryptonLabel labelPublicRsaKeyLength;
+        private PoisonLabel labelAccountId;
+        private PoisonTextBox textBoxAccountId;
+        private PoisonLabel labelDisplayName;
+        private PoisonTextBox textBoxDisplayName;
+        private PoisonButton buttonClose;
+        private PoisonTextBox textBoxPublicRsaKey;
+        private PoisonLabel labelPublicRsaKey;
+        private PoisonTextBox textBoxSessionId;
+        private PoisonLabel LebelSessionId;
+        private PoisonTextBox textBoxSharedSecret;
+        private PoisonLabel labelSharedSecret;
+        private PoisonTextBox textBoxPrivateRsaKey;
+        private PoisonLabel labelPrivateRsaKey;
+        private PoisonLabel labelSharedSecretLength;
+        private PoisonLabel labelPrivateRsaKeyLength;
+        private PoisonLabel labelPublicRsaKeyLength;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

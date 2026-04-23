@@ -497,11 +497,6 @@ namespace Talkster.Client.Helpers
         public void SetProgressValue(int value)
             => _form.SetProgressValue(value);
 
-        /// <summary>
-        /// Sets the progress bar style in a thread safe manner.
-        /// </summary>
-        public void SeProgressStyle(ProgressBarStyle value)
-            => _form.SeProgressStyle(value);
 
         /// <summary>
         /// Enables or disabled cancelation support in a thread safe manner.

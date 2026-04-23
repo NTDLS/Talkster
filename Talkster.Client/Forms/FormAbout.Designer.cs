@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -30,21 +30,24 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
-            pictureBox1 = new KryptonPictureBox();
-            buttonOk = new KryptonButton();
-            linkWebsite = new KryptonLinkLabel();
-            listViewVersions = new KryptonListView();
+            pictureBox1 = new PictureBox();
+            buttonOk = new PoisonButton();
+            linkWebsite = new PoisonLinkLabel();
+            listViewVersions = new PoisonListView();
             columnHeaderApplication = new ColumnHeader();
             columnHeaderVersion = new ColumnHeader();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(35, 35);
+            pictureBox1.Location = new Point(24, 86);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(103, 108);
@@ -54,33 +57,40 @@ namespace Talkster.Client.Forms
             // 
             // buttonOk
             // 
-            buttonOk.Location = new Point(419, 171);
+            buttonOk.Location = new Point(408, 222);
             buttonOk.Margin = new Padding(4, 3, 4, 3);
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(88, 27);
             buttonOk.TabIndex = 7;
-            buttonOk.Values.DropDownArrowColor = Color.Empty;
-            buttonOk.Values.Text = "Ok";
+            buttonOk.Text = "Ok";
+            buttonOk.UseSelectable = true;
             buttonOk.Click += ButtonOk_Click;
             // 
             // linkWebsite
             // 
-            linkWebsite.Location = new Point(170, 171);
+            linkWebsite.AutoSize = true;
+            linkWebsite.Location = new Point(159, 222);
             linkWebsite.Margin = new Padding(4, 0, 4, 0);
             linkWebsite.Name = "linkWebsite";
-            linkWebsite.Size = new Size(164, 20);
+            linkWebsite.Size = new Size(164, 25);
             linkWebsite.TabIndex = 9;
-            linkWebsite.Values.Text = "www.NetworkDLS.com";
-            linkWebsite.LinkClicked += LinkWebsite_LinkClicked;
+            linkWebsite.Text = "www.NetworkDLS.com";
+            linkWebsite.UseSelectable = true;
+            linkWebsite.Click += LinkWebsite_LinkClicked;
             // 
             // listViewVersions
             // 
             listViewVersions.Columns.AddRange(new ColumnHeader[] { columnHeaderApplication, columnHeaderVersion });
-            listViewVersions.HideSelection = false;
-            listViewVersions.Location = new Point(170, 12);
+            listViewVersions.Font = new Font("Segoe UI", 12F);
+            listViewVersions.FullRowSelect = true;
+            listViewVersions.HideSelection = true;
+            listViewVersions.Location = new Point(159, 63);
             listViewVersions.Name = "listViewVersions";
+            listViewVersions.OwnerDraw = true;
             listViewVersions.Size = new Size(337, 153);
             listViewVersions.TabIndex = 12;
+            listViewVersions.UseCompatibleStateImageBehavior = false;
+            listViewVersions.UseSelectable = true;
             listViewVersions.View = View.Details;
             // 
             // columnHeaderApplication
@@ -92,37 +102,41 @@ namespace Talkster.Client.Forms
             // 
             columnHeaderVersion.Text = "Version";
             // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            // 
             // FormAbout
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(545, 204);
+            ClientSize = new Size(514, 267);
             Controls.Add(listViewVersions);
             Controls.Add(linkWebsite);
             Controls.Add(buttonOk);
             Controls.Add(pictureBox1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormAbout";
             SizeGripStyle = SizeGripStyle.Hide;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Talkster";
             Load += FormAbout_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private KryptonPictureBox pictureBox1;
-        private KryptonButton buttonOk;
-        private KryptonLinkLabel linkWebsite;
-        private KryptonListView listViewVersions;
+        private PictureBox pictureBox1;
+        private PoisonButton buttonOk;
+        private PoisonLinkLabel linkWebsite;
+        private PoisonListView listViewVersions;
         private ColumnHeader columnHeaderApplication;
         private ColumnHeader columnHeaderVersion;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

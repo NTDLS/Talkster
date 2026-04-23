@@ -1,7 +1,7 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
 using NTDLS.Persistence;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Client.Helpers;
 using Talkster.Client.Models;
@@ -13,7 +13,8 @@ using static Talkster.Library.ScConstants;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormHome : KryptonForm
+    public partial class FormHome
+        : PoisonForm
     {
         /// <summary>
         /// These are chat message forms per account ID. If they remain open, they will be recycled for subsequent chats.
@@ -27,10 +28,13 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+
             _backgroundForm.Bounds = this.Bounds;
             this.Owner = _backgroundForm;
-
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
 
             this.ResizeBegin += (object? sender, EventArgs e) =>
             {

@@ -1,8 +1,7 @@
-﻿using Krypton.Toolkit;
-
-namespace Talkster.Client.Controls
+﻿namespace Talkster.Client.Controls
 {
-    public class DoubleBufferedTreeView : KryptonTreeView
+    public class DoubleBufferedTreeView
+        : TreeView
     {
         public DoubleBufferedTreeView()
         {
