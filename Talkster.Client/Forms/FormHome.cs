@@ -327,20 +327,6 @@ namespace Talkster.Client.Forms
                 if (ServerConnection.Current != null && ServerConnection.Current.Connection.Client.IsConnected)
                 {
                     Repopulate();
-
-                    var idleTime = Win32s.GetIdleTime();
-                    if (idleTime.TotalMinutes >= Settings.Instance.AutoAwayIdleMinutes)
-                    {
-                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
-                                ServerConnection.Current.AccountId,
-                                ScOnlineState.Away));
-                    }
-                    else
-                    {
-                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
-                                ServerConnection.Current.AccountId,
-                                ServerConnection.Current.ExplicitAway ? ScOnlineState.Away : ScOnlineState.Online));
-                    }
                 }
             }
             catch (Exception ex)
