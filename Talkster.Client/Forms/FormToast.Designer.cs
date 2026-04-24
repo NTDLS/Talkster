@@ -44,7 +44,7 @@ namespace Talkster.Client.Forms
             // 
             labelHeader.AutoSize = true;
             labelHeader.Font = new Font("Segoe UI Light", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            labelHeader.Location = new Point(85, 14);
+            labelHeader.Location = new Point(51, 14);
             labelHeader.Name = "labelHeader";
             labelHeader.Size = new Size(80, 19);
             labelHeader.TabIndex = 1;
@@ -52,9 +52,9 @@ namespace Talkster.Client.Forms
             // 
             // labelBody
             // 
-            labelBody.Location = new Point(85, 33);
+            labelBody.Location = new Point(51, 33);
             labelBody.Name = "labelBody";
-            labelBody.Size = new Size(282, 46);
+            labelBody.Size = new Size(276, 46);
             labelBody.TabIndex = 2;
             labelBody.Text = "labelBody";
             // 
@@ -64,9 +64,11 @@ namespace Talkster.Client.Forms
             // 
             // pictureBoxIcon
             // 
+            pictureBoxIcon.Image = Properties.Resources.AppLogo32;
             pictureBoxIcon.Location = new Point(9, 14);
             pictureBoxIcon.Name = "pictureBoxIcon";
-            pictureBoxIcon.Size = new Size(67, 65);
+            pictureBoxIcon.Size = new Size(36, 38);
+            pictureBoxIcon.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBoxIcon.TabIndex = 4;
             pictureBoxIcon.TabStop = false;
             // 
@@ -74,7 +76,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(379, 94);
+            ClientSize = new Size(350, 94);
             Controls.Add(pictureBoxIcon);
             Controls.Add(labelBody);
             Controls.Add(labelHeader);
