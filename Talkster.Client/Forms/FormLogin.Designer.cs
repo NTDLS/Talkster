@@ -50,7 +50,7 @@ namespace Talkster.Client.Forms
             // labelUsername
             // 
             labelUsername.AutoSize = true;
-            labelUsername.Location = new Point(107, 59);
+            labelUsername.Location = new Point(107, 60);
             labelUsername.Name = "labelUsername";
             labelUsername.Size = new Size(68, 19);
             labelUsername.TabIndex = 0;
@@ -70,7 +70,7 @@ namespace Talkster.Client.Forms
             textBoxUsername.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             textBoxUsername.CustomButton.UseSelectable = true;
             textBoxUsername.CustomButton.Visible = false;
-            textBoxUsername.Location = new Point(111, 77);
+            textBoxUsername.Location = new Point(111, 82);
             textBoxUsername.MaxLength = 32767;
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.PasswordChar = '\0';
@@ -88,7 +88,7 @@ namespace Talkster.Client.Forms
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(107, 107);
+            labelPassword.Location = new Point(107, 108);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(63, 19);
             labelPassword.TabIndex = 2;
@@ -108,7 +108,7 @@ namespace Talkster.Client.Forms
             textBoxPassword.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             textBoxPassword.CustomButton.UseSelectable = true;
             textBoxPassword.CustomButton.Visible = false;
-            textBoxPassword.Location = new Point(111, 125);
+            textBoxPassword.Location = new Point(111, 130);
             textBoxPassword.MaxLength = 32767;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
@@ -135,7 +135,7 @@ namespace Talkster.Client.Forms
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(152, 206);
+            buttonLogin.Location = new Point(156, 211);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(75, 25);
             buttonLogin.TabIndex = 4;
@@ -145,7 +145,7 @@ namespace Talkster.Client.Forms
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(233, 206);
+            buttonCancel.Location = new Point(237, 211);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 25);
             buttonCancel.TabIndex = 5;
@@ -156,7 +156,7 @@ namespace Talkster.Client.Forms
             // linkLabelCreateAccount
             // 
             linkLabelCreateAccount.AutoSize = true;
-            linkLabelCreateAccount.Location = new Point(107, 175);
+            linkLabelCreateAccount.Location = new Point(107, 180);
             linkLabelCreateAccount.Name = "linkLabelCreateAccount";
             linkLabelCreateAccount.Size = new Size(205, 25);
             linkLabelCreateAccount.TabIndex = 3;
@@ -167,7 +167,7 @@ namespace Talkster.Client.Forms
             // checkBoxStayLoggedIn
             // 
             checkBoxStayLoggedIn.AutoSize = true;
-            checkBoxStayLoggedIn.Location = new Point(111, 154);
+            checkBoxStayLoggedIn.Location = new Point(111, 159);
             checkBoxStayLoggedIn.Name = "checkBoxStayLoggedIn";
             checkBoxStayLoggedIn.Size = new Size(103, 15);
             checkBoxStayLoggedIn.TabIndex = 2;
@@ -176,7 +176,7 @@ namespace Talkster.Client.Forms
             // 
             // buttonSettings
             // 
-            buttonSettings.Location = new Point(56, 206);
+            buttonSettings.Location = new Point(60, 211);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Size = new Size(90, 25);
             buttonSettings.TabIndex = 6;
@@ -193,7 +193,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(335, 260);
+            ClientSize = new Size(335, 252);
             Controls.Add(buttonSettings);
             Controls.Add(checkBoxStayLoggedIn);
             Controls.Add(linkLabelCreateAccount);
@@ -209,6 +209,7 @@ namespace Talkster.Client.Forms
             MinimizeBox = false;
             MinimumSize = new Size(335, 240);
             Name = "FormLogin";
+            Resizable = false;
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();

@@ -32,90 +32,75 @@ namespace Talkster.Client.Forms
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormToast));
-            pictureBoxIcon = new PictureBox();
             labelHeader = new PoisonLabel();
             labelBody = new PoisonLabel();
-            pictureBoxClose = new PictureBox();
             poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
-            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxClose).BeginInit();
+            pictureBoxIcon = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBoxIcon
-            // 
-            pictureBoxIcon.Dock = DockStyle.Left;
-            pictureBoxIcon.Location = new Point(0, 0);
-            pictureBoxIcon.Name = "pictureBoxIcon";
-            pictureBoxIcon.Size = new Size(43, 90);
-            pictureBoxIcon.TabIndex = 0;
-            pictureBoxIcon.TabStop = false;
             // 
             // labelHeader
             // 
             labelHeader.AutoSize = true;
-            labelHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            labelHeader.Location = new Point(43, 0);
+            labelHeader.Font = new Font("Segoe UI Light", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelHeader.Location = new Point(85, 14);
             labelHeader.Name = "labelHeader";
-            labelHeader.Size = new Size(74, 15);
+            labelHeader.Size = new Size(80, 19);
             labelHeader.TabIndex = 1;
             labelHeader.Text = "labelHeader";
             // 
             // labelBody
             // 
-            labelBody.Location = new Point(43, 20);
+            labelBody.Location = new Point(85, 33);
             labelBody.Name = "labelBody";
-            labelBody.Size = new Size(307, 70);
+            labelBody.Size = new Size(282, 46);
             labelBody.TabIndex = 2;
             labelBody.Text = "labelBody";
-            // 
-            // pictureBoxClose
-            // 
-            pictureBoxClose.Image = Properties.Resources.ToastClose16;
-            pictureBoxClose.Location = new Point(332, 0);
-            pictureBoxClose.Name = "pictureBoxClose";
-            pictureBoxClose.Size = new Size(18, 22);
-            pictureBoxClose.TabIndex = 3;
-            pictureBoxClose.TabStop = false;
             // 
             // poisonStyleManager
             // 
             poisonStyleManager.Owner = this;
             // 
+            // pictureBoxIcon
+            // 
+            pictureBoxIcon.Location = new Point(9, 14);
+            pictureBoxIcon.Name = "pictureBoxIcon";
+            pictureBoxIcon.Size = new Size(67, 65);
+            pictureBoxIcon.TabIndex = 4;
+            pictureBoxIcon.TabStop = false;
+            // 
             // FormToast
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(350, 90);
-            ControlBox = false;
-            Controls.Add(pictureBoxClose);
+            ClientSize = new Size(379, 94);
+            Controls.Add(pictureBoxIcon);
             Controls.Add(labelBody);
             Controls.Add(labelHeader);
-            Controls.Add(pictureBoxIcon);
             Cursor = Cursors.Hand;
-            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             MinimumSize = new Size(350, 90);
+            Movable = false;
             Name = "FormToast";
             Opacity = 0.9D;
+            Resizable = false;
             ShowIcon = false;
             ShowInTaskbar = false;
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxClose).EndInit();
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBoxIcon;
         private PoisonLabel labelHeader;
         private PoisonLabel labelBody;
-        private PictureBox pictureBoxClose;
         private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
+        private PictureBox pictureBoxIcon;
     }
 }

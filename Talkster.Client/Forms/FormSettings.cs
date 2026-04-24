@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
             {
                 ShowInTaskbar = false;
                 StartPosition = FormStartPosition.CenterParent;
-                TopMost = false;
             }
 
             AcceptButton = buttonSave;

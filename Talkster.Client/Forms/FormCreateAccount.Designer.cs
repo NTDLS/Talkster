@@ -226,7 +226,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(426, 372);
+            ClientSize = new Size(294, 313);
             Controls.Add(textBoxConfirmPassword);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxDisplayName);
@@ -241,6 +241,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormCreateAccount";
+            Resizable = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();

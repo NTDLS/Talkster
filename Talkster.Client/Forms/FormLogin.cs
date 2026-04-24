@@ -29,7 +29,7 @@ namespace Talkster.Client.Forms
 #if DEBUG
             if (TrayApp.IsOnlyInstance)
             {
-                textBoxUsername.Text = "Adrian";
+                //textBoxUsername.Text = "Adrian";
             }
             else
             {
@@ -134,7 +134,7 @@ namespace Talkster.Client.Forms
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
             using var form = new FormSettings(false);
-            form.ShowDialog();
+            form.ShowDialog(this);
         }
     }
 }

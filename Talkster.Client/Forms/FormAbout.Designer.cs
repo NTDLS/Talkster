@@ -120,6 +120,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormAbout";
+            Resizable = false;
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Talkster";
             Load += FormAbout_Load;

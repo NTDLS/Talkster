@@ -352,6 +352,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormMessageProperties";
+            Resizable = false;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);

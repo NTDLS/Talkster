@@ -210,6 +210,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormProfile";
+            Resizable = false;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);

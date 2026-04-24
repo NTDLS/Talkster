@@ -705,7 +705,7 @@ namespace Talkster.Client.Forms
                 try
                 {
                     using var formProfile = new FormProfile(false);
-                    if (formProfile.ShowDialog() == DialogResult.OK)
+                    if (formProfile.ShowDialog(this) == DialogResult.OK)
                     {
                         Repopulate();
                     }
@@ -727,7 +727,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var formAboutOnExit = new FormAbout(false);
-                formAboutOnExit.ShowDialog();
+                formAboutOnExit.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -741,7 +741,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var form = new FormFindPeople();
-                form.ShowDialog();
+                form.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -781,7 +781,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var formSettings = new FormSettings(false);
-                formSettings.ShowDialog();
+                formSettings.ShowDialog(this);
             }
             catch (Exception ex)
             {

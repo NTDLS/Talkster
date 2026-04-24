@@ -21,7 +21,7 @@ namespace Talkster.Client.Forms
             _cancelButton = new Button();
             _cancelButton.Click += CancelButton_Click;
 
-            AcceptButton = buttonClear;
+            AcceptButton = _cancelButton;
             CancelButton = _cancelButton;
 
             dataGridViewLog.Rows.Clear();
@@ -52,7 +52,7 @@ namespace Talkster.Client.Forms
             Close();
         }
 
-        private void ButtonClear_Click(object sender, EventArgs e)
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {

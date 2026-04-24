@@ -144,5 +144,6 @@ namespace Talkster.Client.Forms
                 MessageBox.Show(ex.Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

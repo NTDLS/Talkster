@@ -55,7 +55,7 @@ namespace Talkster.Client.Forms
             comboBoxAudioOutputDevice.DropDownWidth = 457;
             comboBoxAudioOutputDevice.FormattingEnabled = true;
             comboBoxAudioOutputDevice.ItemHeight = 23;
-            comboBoxAudioOutputDevice.Location = new Point(12, 86);
+            comboBoxAudioOutputDevice.Location = new Point(23, 136);
             comboBoxAudioOutputDevice.Name = "comboBoxAudioOutputDevice";
             comboBoxAudioOutputDevice.Size = new Size(457, 29);
             comboBoxAudioOutputDevice.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace Talkster.Client.Forms
             // labelAudioOutputDevice
             // 
             labelAudioOutputDevice.AutoSize = true;
-            labelAudioOutputDevice.Location = new Point(8, 66);
+            labelAudioOutputDevice.Location = new Point(23, 114);
             labelAudioOutputDevice.Name = "labelAudioOutputDevice";
             labelAudioOutputDevice.Size = new Size(127, 19);
             labelAudioOutputDevice.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace Talkster.Client.Forms
             // labelAudioInputDevice
             // 
             labelAudioInputDevice.AutoSize = true;
-            labelAudioInputDevice.Location = new Point(8, 18);
+            labelAudioInputDevice.Location = new Point(23, 60);
             labelAudioInputDevice.Name = "labelAudioInputDevice";
             labelAudioInputDevice.Size = new Size(118, 19);
             labelAudioInputDevice.TabIndex = 3;
@@ -84,7 +84,7 @@ namespace Talkster.Client.Forms
             comboBoxAudioInputDevice.DropDownWidth = 457;
             comboBoxAudioInputDevice.FormattingEnabled = true;
             comboBoxAudioInputDevice.ItemHeight = 23;
-            comboBoxAudioInputDevice.Location = new Point(12, 38);
+            comboBoxAudioInputDevice.Location = new Point(23, 82);
             comboBoxAudioInputDevice.Name = "comboBoxAudioInputDevice";
             comboBoxAudioInputDevice.Size = new Size(457, 29);
             comboBoxAudioInputDevice.TabIndex = 0;
@@ -93,7 +93,7 @@ namespace Talkster.Client.Forms
             // radioButtonBitRateHighFidelity
             // 
             radioButtonBitRateHighFidelity.AutoSize = true;
-            radioButtonBitRateHighFidelity.Location = new Point(0, 78);
+            radioButtonBitRateHighFidelity.Location = new Point(3, 79);
             radioButtonBitRateHighFidelity.Name = "radioButtonBitRateHighFidelity";
             radioButtonBitRateHighFidelity.Size = new Size(141, 15);
             radioButtonBitRateHighFidelity.TabIndex = 5;
@@ -103,7 +103,7 @@ namespace Talkster.Client.Forms
             // radioButtonBitRateBalanced
             // 
             radioButtonBitRateBalanced.AutoSize = true;
-            radioButtonBitRateBalanced.Location = new Point(0, 53);
+            radioButtonBitRateBalanced.Location = new Point(3, 54);
             radioButtonBitRateBalanced.Name = "radioButtonBitRateBalanced";
             radioButtonBitRateBalanced.Size = new Size(122, 15);
             radioButtonBitRateBalanced.TabIndex = 4;
@@ -114,7 +114,7 @@ namespace Talkster.Client.Forms
             // 
             radioButtonBitRateStandard.AutoSize = true;
             radioButtonBitRateStandard.Checked = true;
-            radioButtonBitRateStandard.Location = new Point(0, 28);
+            radioButtonBitRateStandard.Location = new Point(3, 29);
             radioButtonBitRateStandard.Name = "radioButtonBitRateStandard";
             radioButtonBitRateStandard.Size = new Size(121, 15);
             radioButtonBitRateStandard.TabIndex = 3;
@@ -125,7 +125,7 @@ namespace Talkster.Client.Forms
             // radioButtonBitRateLow
             // 
             radioButtonBitRateLow.AutoSize = true;
-            radioButtonBitRateLow.Location = new Point(0, 3);
+            radioButtonBitRateLow.Location = new Point(3, 4);
             radioButtonBitRateLow.Name = "radioButtonBitRateLow";
             radioButtonBitRateLow.Size = new Size(96, 15);
             radioButtonBitRateLow.TabIndex = 2;
@@ -134,7 +134,7 @@ namespace Talkster.Client.Forms
             // 
             // buttonOk
             // 
-            buttonOk.Location = new Point(309, 226);
+            buttonOk.Location = new Point(324, 271);
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(75, 23);
             buttonOk.TabIndex = 10;
@@ -144,7 +144,7 @@ namespace Talkster.Client.Forms
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(390, 226);
+            buttonCancel.Location = new Point(405, 271);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 23);
             buttonCancel.TabIndex = 11;
@@ -156,7 +156,7 @@ namespace Talkster.Client.Forms
             // 
             volumeMeterInput.Amplitude = 0F;
             volumeMeterInput.ForeColor = Color.SpringGreen;
-            volumeMeterInput.Location = new Point(171, 144);
+            volumeMeterInput.Location = new Point(182, 189);
             volumeMeterInput.MaxDb = 18F;
             volumeMeterInput.MinDb = -60F;
             volumeMeterInput.Name = "volumeMeterInput";
@@ -173,7 +173,7 @@ namespace Talkster.Client.Forms
             panel1.HorizontalScrollbarBarColor = true;
             panel1.HorizontalScrollbarHighlightOnWheel = false;
             panel1.HorizontalScrollbarSize = 10;
-            panel1.Location = new Point(12, 144);
+            panel1.Location = new Point(23, 189);
             panel1.Name = "panel1";
             panel1.Size = new Size(153, 105);
             panel1.TabIndex = 13;
@@ -184,7 +184,7 @@ namespace Talkster.Client.Forms
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(8, 123);
+            label1.Location = new Point(23, 167);
             label1.Name = "label1";
             label1.Size = new Size(136, 19);
             label1.TabIndex = 14;
@@ -198,7 +198,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(485, 263);
+            ClientSize = new Size(503, 315);
             Controls.Add(panel1);
             Controls.Add(volumeMeterInput);
             Controls.Add(buttonCancel);
@@ -212,6 +212,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormVoicePreCall";
+            Resizable = false;
             Text = "Talkster";
             Load += FormVoicePreCall_Load;
             panel1.ResumeLayout(false);

@@ -48,7 +48,7 @@ namespace Talkster.Client.Forms
             // buttonCancel
             // 
             buttonCancel.Enabled = false;
-            buttonCancel.Location = new Point(290, 166);
+            buttonCancel.Location = new Point(289, 166);
             buttonCancel.Margin = new Padding(4, 3, 4, 3);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(88, 27);
@@ -63,12 +63,12 @@ namespace Talkster.Client.Forms
             pbProgress.Margin = new Padding(4, 3, 4, 3);
             pbProgress.Name = "pbProgress";
             pbProgress.ProgressBarMarqueeWidth = 103;
-            pbProgress.Size = new Size(311, 27);
+            pbProgress.Size = new Size(310, 27);
             pbProgress.TabIndex = 2;
             // 
             // labelHeader
             // 
-            labelHeader.Location = new Point(64, 60);
+            labelHeader.Location = new Point(67, 60);
             labelHeader.Margin = new Padding(4, 0, 4, 0);
             labelHeader.Name = "labelHeader";
             labelHeader.Size = new Size(314, 20);
@@ -100,7 +100,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 220);
+            ClientSize = new Size(401, 209);
             Controls.Add(labelBody);
             Controls.Add(spinningActivity);
             Controls.Add(labelHeader);
