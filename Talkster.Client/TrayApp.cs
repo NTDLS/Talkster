@@ -1,4 +1,5 @@
-﻿using NTDLS.Helpers;
+﻿using Microsoft.Win32;
+using NTDLS.Helpers;
 using NTDLS.Persistence;
 using NTDLS.ReliableMessaging;
 using System.Diagnostics;
@@ -7,11 +8,13 @@ using Talkster.Client.Helpers;
 using Talkster.Client.Models;
 using Talkster.Client.Properties;
 using Talkster.Library;
+using Talkster.Library.ReliableMessages;
 using static Talkster.Library.ScConstants;
 
 namespace Talkster.Client
 {
-    internal class TrayApp : ApplicationContext
+    internal class TrayApp
+        : ApplicationContext
     {
         public static bool IsOnlyInstance { get; set; } = true;
         public string? DisplayName { get; private set; }
@@ -19,8 +22,9 @@ namespace Talkster.Client
         private bool _isApplicationClosing = false;
         private readonly NotifyIcon _trayIcon;
         private FormLogin? _formLogin;
-        private readonly System.Windows.Forms.Timer? _firstShownTimer = new();
-        private readonly System.Windows.Forms.Timer _reconnectTimer = new();
+        private readonly System.Windows.Forms.Timer? _firstShownTimer;
+        private readonly System.Windows.Forms.Timer _reconnectTimer;
+        private readonly System.Windows.Forms.Timer? _statusUpdateTimer;
 
         /// This is used to determine if the disconnect was intentional or not so we can auto-reconnect.
         private bool _intentionalDisconnect = true;
@@ -48,14 +52,21 @@ namespace Talkster.Client
                 _trayIcon.ContextMenuStrip.Items.Add("Login", null, OnLogin);
                 _trayIcon.ContextMenuStrip.Items.Add("Exit", null, OnExit);
 
+                //Force the handle to be created so we can use the ContextMenuStrip for invoking.
                 _ = _trayIcon.ContextMenuStrip.Handle;
 
-                _firstShownTimer.Interval = 250;
+                _firstShownTimer = new() { Interval = 250 };
                 _firstShownTimer.Tick += FirstShownTimer_Tick;
                 _firstShownTimer.Enabled = true;
 
-                _reconnectTimer.Interval = 10000;
+                _reconnectTimer = new() { Interval = 10 * 1000 };
                 _reconnectTimer.Tick += ReconnectTimer_Tick;
+
+                _statusUpdateTimer = new() { Interval = 10 * 1000 };
+                _statusUpdateTimer.Tick += (object? sender, EventArgs e) => NotifyServerOfStatusUpdate();
+                _statusUpdateTimer.Enabled = true;
+
+                SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
             }
             catch (Exception ex)
             {
@@ -83,6 +94,24 @@ namespace Talkster.Client
             => _trayIcon.ContextMenuStrip.EnsureNotNull().Invoke(method);
 
         #endregion
+
+        private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+            if (e.Mode == PowerModes.Suspend)
+            {
+                UpdateClientState(ScOnlineState.Offline);
+            }
+
+            if (e.Mode == PowerModes.Resume && !_intentionalDisconnect)
+            {
+                // After sleep/wake the TCP connection is in a zombie state: IsConnected still
+                // returns true and OnDisconnected never fires, so we force a clean disconnect
+                // and let the reconnect timer handle re-login.
+                ServerConnection.TerminateCurrent();
+                UpdateClientState(ScOnlineState.Offline);
+                Invoke(() => _reconnectTimer.Start());
+            }
+        }
 
         private void ReconnectTimer_Tick(object? sender, EventArgs e)
         {
@@ -386,7 +415,7 @@ namespace Talkster.Client
                         {
                             _trayIcon.Text = $"{ScConstants.AppName} - {DisplayName}";
                             _trayIcon.Icon = Imaging.LoadIconFromResources(Resources.Online16);
-                            var awayItem = new ToolStripMenuItem("Away", null, OnAway)
+                            var awayItem = new ToolStripMenuItem("Away", null, OnToggleAway)
                             {
                                 Checked = false
                             };
@@ -419,7 +448,7 @@ namespace Talkster.Client
                         {
                             _trayIcon.Text = $"{ScConstants.AppName} - {DisplayName} (away)";
                             _trayIcon.Icon = Imaging.LoadIconFromResources(Resources.Away16);
-                            var awayItem = new ToolStripMenuItem("Away", null, OnAway)
+                            var awayItem = new ToolStripMenuItem("Away", null, OnToggleAway)
                             {
                                 Checked = true
                             };
@@ -445,7 +474,33 @@ namespace Talkster.Client
             }
         }
 
-        private void OnAway(object? sender, EventArgs e)
+        private void NotifyServerOfStatusUpdate()
+        {
+            try
+            {
+                if (ServerConnection.Current != null && ServerConnection.Current.Connection.Client.IsConnected)
+                {
+                    var idleTime = Win32s.GetIdleTime();
+                    if (idleTime.TotalMinutes >= Settings.Instance.AutoAwayIdleMinutes)
+                    {
+                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
+                                ServerConnection.Current.AccountId, ScOnlineState.Away));
+                    }
+                    else
+                    {
+                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
+                                ServerConnection.Current.AccountId,
+                                ServerConnection.Current.ExplicitAway ? ScOnlineState.Away : ScOnlineState.Online));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.Log.Error($"Error in {new StackTrace().GetFrame(0)?.GetMethod()?.Name ?? "Unknown"}.", ex);
+            }
+        }
+
+        private void OnToggleAway(object? sender, EventArgs e)
         {
             try
             {
@@ -465,6 +520,9 @@ namespace Talkster.Client
                     }
 
                     persistedUserState.ExplicitAway = ServerConnection.Current.ExplicitAway;
+
+                    NotifyServerOfStatusUpdate();
+
                     Settings.Save();
                 }
             }
@@ -589,6 +647,7 @@ namespace Talkster.Client
 
             try
             {
+                SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
                 Exceptions.Ignore(() => _formLogin?.Close());
 
                 _trayIcon.Visible = false;

@@ -1,23 +1,24 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
 using NTDLS.Persistence;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
-using Talkster.Client.Controls;
 using Talkster.Client.Helpers;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormSettings : KryptonForm
+    public partial class FormSettings
+        : PoisonForm
     {
         public FormSettings(bool showInTaskbar)
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-
-            kryptonNavigator.SelectedPage = kryptonPageNotifications;
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             if (showInTaskbar)
             {
@@ -29,7 +30,6 @@ namespace Talkster.Client.Forms
             {
                 ShowInTaskbar = false;
                 StartPosition = FormStartPosition.CenterParent;
-                TopMost = false;
             }
 
             AcceptButton = buttonSave;
@@ -53,6 +53,8 @@ namespace Talkster.Client.Forms
             checkBoxFlashWindowWhenMessageReceived.Checked = Settings.Instance.FlashWindowWhenMessageReceived;
             checkBoxAlertToastWhenMyOnlineStatusChanges.Checked = Settings.Instance.AlertToastWhenMyOnlineStatusChanges;
             checkBoxAlertToastErrorMessages.Checked = Settings.Instance.AlertToastErrorMessages;
+            poisonRadioButtonDark.Checked = Settings.Instance.IsthemeDark;
+            poisonRadioButtonLight.Checked = !Settings.Instance.IsthemeDark;
 
             textBoxFontSample.Text = "John: Hey, how's is been going?\r\nJane: Pretty good. I've about to head out.\r\nJohn: Wanna grab some lunch?\r\nJane: Thai?\r\nJohn: Are you kidding me? Absolutely!\r\n";
 
@@ -61,62 +63,10 @@ namespace Talkster.Client.Forms
                 comboBoxFont.Items.Add(font.Name);
             }
             comboBoxFont.Text = Settings.Instance.Font;
-            numericUpDownFontSize.Value = (decimal)Settings.Instance.FontSize;
+            poisonComboBoxFontSize.SelectedValue = Settings.Instance.FontSize;
 
-            numericUpDownFontSize.ValueChanged += (object? sender, EventArgs e) => UpdateFontSample();
+            poisonComboBoxFontSize.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
             comboBoxFont.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
-
-            #region Themes.
-
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Black (Dark)", PaletteMode.Microsoft365BlackDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Blue (Light)", PaletteMode.Microsoft365Blue));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Gray (Dark)", PaletteMode.Microsoft365Black));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Gray (Light)", PaletteMode.Microsoft365Silver));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Refuge (Dark)", PaletteMode.Microsoft365BlackDarkModeAlternate));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Silver (Dark)", PaletteMode.Microsoft365SilverDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Silver (Light)", PaletteMode.Microsoft365SilverLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Stark (Light)", PaletteMode.Microsoft365BlueDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud Vibrant (Light)", PaletteMode.Microsoft365BlueLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Cloud White (Light)", PaletteMode.Microsoft365White));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Classic (Light)", PaletteMode.ProfessionalOffice2003));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Azure (Light)", PaletteMode.Office2010Blue));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Black (Dark)", PaletteMode.Office2010BlackDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Blue (Light)", PaletteMode.Office2010BlueDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Blue (Light)", PaletteMode.Office2010BlueLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Gray (Dark)", PaletteMode.Office2010Black));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Silver (Dark)", PaletteMode.Office2010SilverDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Silver (Light)", PaletteMode.Office2010SilverLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro Vibrant (Light)", PaletteMode.Office2010Silver));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Metro White (Light)", PaletteMode.Office2010White));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Modern (Light)", PaletteMode.Office2013White));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Azure (Light)", PaletteMode.Office2007Blue));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Black (Dark)", PaletteMode.Office2007BlackDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Blue (Light)", PaletteMode.Office2007BlueLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Gray (Dark)", PaletteMode.Office2007Black));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Gray (Light)", PaletteMode.Office2007Silver));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Silver (Dark)", PaletteMode.Office2007SilverDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Silver (Light)", PaletteMode.Office2007SilverLightMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate Vibrant (Light)", PaletteMode.Office2007BlueDarkMode));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Office Slate White (Light)", PaletteMode.Office2007White));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Professional (Light)", PaletteMode.ProfessionalSystem));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Sparkle Blue (Dark)", PaletteMode.SparkleBlue));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Sparkle Orange (Dark)", PaletteMode.SparkleOrange));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Sparkle Purple (Dark)", PaletteMode.SparklePurple));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Studio Render Cloud (Light)", PaletteMode.VisualStudio2010Render365));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Studio Render Metro (Light)", PaletteMode.VisualStudio2010Render2010));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Studio Render Modern (Light)", PaletteMode.VisualStudio2010Render2013));
-            kryptonComboBoxTheme.Items.Add(new ThemeComboItem("Studio Render Slate (Light)", PaletteMode.VisualStudio2010Render2007));
-
-            foreach (var item in kryptonComboBoxTheme.Items)
-            {
-                if (item is ThemeComboItem themeItem && themeItem.Mode == Settings.Instance.Theme)
-                {
-                    kryptonComboBoxTheme.SelectedItem = item;
-                    break;
-                }
-            }
-
-            #endregion
 
             UpdateFontSample();
         }
@@ -128,10 +78,10 @@ namespace Talkster.Client.Forms
             {
                 try
                 {
-                    var fontSize = numericUpDownFontSize.Value;
+                    var fontSize = poisonComboBoxFontSize.SelectedValue as int?;
                     if (fontSize > 0)
                     {
-                        textBoxFontSample.StateCommon.Content.Font = new Font(selectedFontName, (float)fontSize);
+                        textBoxFontSample.Font = new Font(selectedFontName, (float)fontSize);
                     }
                 }
                 catch { }
@@ -144,20 +94,18 @@ namespace Talkster.Client.Forms
             {
                 var settings = LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
 
-                settings.Theme = (kryptonComboBoxTheme.SelectedItem as ThemeComboItem)?.Mode
-                    ?? throw new ArgumentNullException("Theme must be selected.");
-
-                settings.ServerAddress = textBoxServerAddress.TextBox.GetAndValidateText("Server address must not be empty.");
+                settings.IsthemeDark = poisonRadioButtonDark.Checked;
+                settings.ServerAddress = textBoxServerAddress.GetAndValidateText("Server address must not be empty.");
                 settings.Font = comboBoxFont.Text;
-                settings.FontSize = (float)numericUpDownFontSize.Value;
-                settings.ServerPort = textBoxServerPort.TextBox.GetAndValidateNumeric(1, 65535, "Server port must be between [min] and [max].");
-                settings.AutoAwayIdleMinutes = textBoxAutoAwayIdleMinutes.TextBox.GetAndValidateNumeric(1, 1440, "Auto-away idle minutes must be between [min] and [max].");
-                settings.MaxMessages = textBoxMaxMessages.TextBox.GetAndValidateNumeric(10, 10000, "Max messages must be between [min] and [max].");
-                settings.RsaKeySize = textBoxRsaKeySize.TextBox.GetAndValidateNumeric(1024, 4096, "Max messages must be between [min] and [max].");
-                settings.AesKeySize = textBoxAesKeySize.TextBox.GetAndValidateNumeric(128, 256, "Max messages must be between [min] and [max].");
-                settings.EndToEndKeySize = textBoxEndToEndKeySize.TextBox.GetAndValidateNumeric(128, 10240, "Max messages must be between [min] and [max].");
-                settings.FileTransferChunkSize = textBoxFileTransferChunkSize.TextBox.GetAndValidateNumeric(128, 1024 * 1024, "File transfer chunk size must be between [min] and [max].");
-                settings.ToastTimeoutSeconds = textBoxToastTimeoutSeconds.TextBox.GetAndValidateNumeric(1, 300, "Duration of visual alerts (seconds) must be between [min] and [max].");
+                settings.FontSize = (poisonComboBoxFontSize.SelectedValue as int?) ?? ScConstants.DefaultFontSize;
+                settings.ServerPort = textBoxServerPort.GetAndValidateNumeric(1, 65535, "Server port must be between [min] and [max].");
+                settings.AutoAwayIdleMinutes = textBoxAutoAwayIdleMinutes.GetAndValidateNumeric(1, 1440, "Auto-away idle minutes must be between [min] and [max].");
+                settings.MaxMessages = textBoxMaxMessages.GetAndValidateNumeric(10, 10000, "Max messages must be between [min] and [max].");
+                settings.RsaKeySize = textBoxRsaKeySize.GetAndValidateNumeric(1024, 4096, "Max messages must be between [min] and [max].");
+                settings.AesKeySize = textBoxAesKeySize.GetAndValidateNumeric(128, 256, "Max messages must be between [min] and [max].");
+                settings.EndToEndKeySize = textBoxEndToEndKeySize.GetAndValidateNumeric(128, 10240, "Max messages must be between [min] and [max].");
+                settings.FileTransferChunkSize = textBoxFileTransferChunkSize.GetAndValidateNumeric(128, 1024 * 1024, "File transfer chunk size must be between [min] and [max].");
+                settings.ToastTimeoutSeconds = textBoxToastTimeoutSeconds.GetAndValidateNumeric(1, 300, "Duration of visual alerts (seconds) must be between [min] and [max].");
 
                 settings.AlertToastWhenContactComesOnline = checkBoxAlertToastWhenContactComesOnline.Checked;
                 settings.AlertToastWhenMessageReceived = checkBoxAlertToastWhenMessageReceived.Checked;
@@ -208,36 +156,12 @@ namespace Talkster.Client.Forms
         {
             try
             {
-                //On cancel, we need to reset the theme to the original value.
-                Program.ThemeManager.GlobalPaletteMode = Settings.Instance.Theme;
-                foreach (Form form in Application.OpenForms)
-                {
-                    form.BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-                }
             }
             catch
             {
             }
 
             this.InvokeClose(DialogResult.Cancel);
-        }
-
-        private void kryptonComboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (kryptonComboBoxTheme.SelectedItem is ThemeComboItem item)
-            {
-                Program.ThemeManager.GlobalPaletteMode = item.Mode;
-                try
-                {
-                    foreach (Form form in Application.OpenForms)
-                    {
-                        form.BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-                    }
-                }
-                catch
-                {
-                }
-            }
         }
     }
 }

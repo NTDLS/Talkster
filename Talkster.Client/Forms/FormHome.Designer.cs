@@ -30,9 +30,10 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             treeViewContacts = new DoubleBufferedTreeView();
-            menuStrip1 = new MenuStrip();
+            menuStrip = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             profileToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripSeparator();
@@ -44,28 +45,30 @@ namespace Talkster.Client.Forms
             settingsToolStripMenuItem1 = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
+            menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // treeViewContacts
             // 
             treeViewContacts.Dock = DockStyle.Fill;
             treeViewContacts.HotTracking = true;
-            treeViewContacts.Location = new Point(5, 29);
+            treeViewContacts.Location = new Point(5, 84);
             treeViewContacts.Name = "treeViewContacts";
             treeViewContacts.ShowRootLines = false;
-            treeViewContacts.Size = new Size(346, 521);
+            treeViewContacts.Size = new Size(360, 466);
             treeViewContacts.TabIndex = 0;
             // 
             // menuStrip1
             // 
-            menuStrip1.Font = new Font("Segoe UI", 9F);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, contactsToolStripMenuItem, preferencesToolStripMenuItem, helpToolStripMenuItem });
-            menuStrip1.Location = new Point(5, 5);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(346, 24);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Font = new Font("Segoe UI", 9F);
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, contactsToolStripMenuItem, preferencesToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip.Location = new Point(5, 60);
+            menuStrip.Name = "menuStrip1";
+            menuStrip.Size = new Size(360, 24);
+            menuStrip.TabIndex = 1;
+            menuStrip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -142,25 +145,29 @@ namespace Talkster.Client.Forms
             aboutToolStripMenuItem.Text = "About";
             aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
             // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            // 
             // FormHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(356, 555);
+            ClientSize = new Size(370, 555);
             Controls.Add(treeViewContacts);
-            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = menuStrip;
             MaximizeBox = false;
             MinimumSize = new Size(370, 200);
             Name = "FormHome";
             Opacity = 0.7D;
-            Padding = new Padding(5);
+            Padding = new Padding(5, 60, 5, 5);
             SizeGripStyle = SizeGripStyle.Show;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Talkster";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -168,7 +175,7 @@ namespace Talkster.Client.Forms
         #endregion
 
         private DoubleBufferedTreeView treeViewContacts;
-        private MenuStrip menuStrip1;
+        private MenuStrip menuStrip;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem closeToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
@@ -180,5 +187,6 @@ namespace Talkster.Client.Forms
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem preferencesToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem1;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

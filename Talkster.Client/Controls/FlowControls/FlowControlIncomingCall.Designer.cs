@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Controls
+﻿using ReaLTaiizor.Controls;
+
+namespace Talkster.Client.Controls
 {
     partial class FlowControlIncomingCall
     {
@@ -28,9 +30,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonDecline = new Button();
-            buttonAccept = new Button();
-            labelIncomingCallFrom = new Krypton.Toolkit.KryptonLabel();
+            buttonDecline = new PoisonButton();
+            buttonAccept = new PoisonButton();
+            labelIncomingCallFrom = new PoisonLabel();
             SuspendLayout();
             // 
             // buttonDecline
@@ -57,12 +59,11 @@
             // 
             // labelIncomingCallFrom
             // 
-            labelIncomingCallFrom.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             labelIncomingCallFrom.Location = new Point(3, 3);
             labelIncomingCallFrom.Name = "labelIncomingCallFrom";
             labelIncomingCallFrom.Size = new Size(117, 20);
             labelIncomingCallFrom.TabIndex = 10;
-            labelIncomingCallFrom.Values.Text = "IncomingCallFrom";
+            labelIncomingCallFrom.Text = "IncomingCallFrom";
             // 
             // FlowControlIncomingCall
             // 
@@ -78,8 +79,8 @@
         }
 
         #endregion
-        private Button buttonDecline;
-        private Button buttonAccept;
-        private Krypton.Toolkit.KryptonLabel labelIncomingCallFrom;
+        private PoisonButton buttonDecline;
+        private PoisonButton buttonAccept;
+        private PoisonLabel labelIncomingCallFrom;
     }
 }

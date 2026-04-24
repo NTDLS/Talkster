@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit;
-using NTDLS.WinFormsHelpers.Controls;
+﻿using NTDLS.WinFormsHelpers.Controls;
+using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -34,94 +34,99 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThemedProgress));
-            buttonCancel = new KryptonButton();
-            pbProgress = new KryptonProgressBar();
-            labelHeader = new KryptonLabel();
-            labelBody = new KryptonLabel();
+            buttonCancel = new PoisonButton();
+            pbProgress = new PoisonProgressBar();
+            labelHeader = new PoisonLabel();
+            labelBody = new PoisonLabel();
             spinningActivity = new ActivityIndicator();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonCancel
             // 
             buttonCancel.Enabled = false;
-            buttonCancel.Location = new Point(282, 120);
+            buttonCancel.Location = new Point(289, 166);
             buttonCancel.Margin = new Padding(4, 3, 4, 3);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(88, 27);
             buttonCancel.TabIndex = 1;
-            buttonCancel.Values.DropDownArrowColor = Color.Empty;
-            buttonCancel.Values.Text = "Cancel";
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseSelectable = true;
             buttonCancel.Click += ButtonCancel_Click;
             // 
             // pbProgress
             // 
-            pbProgress.Location = new Point(59, 87);
+            pbProgress.Location = new Point(67, 133);
             pbProgress.Margin = new Padding(4, 3, 4, 3);
             pbProgress.Name = "pbProgress";
-            pbProgress.Size = new Size(311, 27);
-            pbProgress.Style = ProgressBarStyle.Marquee;
+            pbProgress.ProgressBarMarqueeWidth = 103;
+            pbProgress.Size = new Size(310, 27);
             pbProgress.TabIndex = 2;
-            pbProgress.Values.Text = "";
             // 
             // labelHeader
             // 
-            labelHeader.Location = new Point(56, 14);
+            labelHeader.Location = new Point(67, 60);
             labelHeader.Margin = new Padding(4, 0, 4, 0);
             labelHeader.Name = "labelHeader";
-            labelHeader.Size = new Size(79, 20);
+            labelHeader.Size = new Size(314, 20);
             labelHeader.TabIndex = 3;
-            labelHeader.Values.Text = "Please wait...";
+            labelHeader.Text = "Please wait...";
             // 
             // labelBody
             // 
-            labelBody.Location = new Point(56, 52);
+            labelBody.Location = new Point(64, 98);
             labelBody.Margin = new Padding(4, 0, 4, 0);
             labelBody.Name = "labelBody";
-            labelBody.Size = new Size(79, 20);
+            labelBody.Size = new Size(314, 20);
             labelBody.TabIndex = 4;
-            labelBody.Values.Text = "Please wait...";
+            labelBody.Text = "Please wait...";
             // 
             // spinningActivity
             // 
-            spinningActivity.Location = new Point(13, 20);
+            spinningActivity.Location = new Point(21, 66);
             spinningActivity.Margin = new Padding(4, 0, 4, 0);
             spinningActivity.Name = "spinningActivity";
             spinningActivity.Size = new Size(35, 32);
             spinningActivity.TabIndex = 4;
             // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            // 
             // FormThemedProgress
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(383, 159);
+            ClientSize = new Size(401, 209);
             Controls.Add(labelBody);
             Controls.Add(spinningActivity);
             Controls.Add(labelHeader);
             Controls.Add(pbProgress);
             Controls.Add(buttonCancel);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            MaximumSize = new Size(397, 204);
             MinimizeBox = false;
-            MinimumSize = new Size(397, 204);
             Name = "FormThemedProgress";
+            Resizable = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Talkster";
             Shown += FormProgress_Shown;
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private KryptonButton buttonCancel;
-        private KryptonProgressBar pbProgress;
-        private KryptonLabel labelHeader;
-        private KryptonLabel labelBody;
+        private PoisonButton buttonCancel;
+        private PoisonProgressBar pbProgress;
+        private PoisonLabel labelHeader;
+        private PoisonLabel labelBody;
         private ActivityIndicator spinningActivity;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

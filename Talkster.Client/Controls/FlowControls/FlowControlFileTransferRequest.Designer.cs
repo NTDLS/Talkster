@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Controls
+﻿using ReaLTaiizor.Controls;
+
+namespace Talkster.Client.Controls
 {
     partial class FlowControlFileTransferRequest
     {
@@ -28,10 +30,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonDecline = new Button();
-            buttonAccept = new Button();
-            labelHeader = new Krypton.Toolkit.KryptonLabel();
-            labelFileName = new Krypton.Toolkit.KryptonLabel();
+            buttonDecline = new PoisonButton();
+            buttonAccept = new PoisonButton();
+            labelHeader = new PoisonLabel();
+            labelFileName = new PoisonLabel();
             SuspendLayout();
             // 
             // buttonDecline
@@ -58,12 +60,11 @@
             // 
             // labelHeader
             // 
-            labelHeader.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
             labelHeader.Location = new Point(3, 3);
             labelHeader.Name = "labelHeader";
             labelHeader.Size = new Size(53, 20);
             labelHeader.TabIndex = 9;
-            labelHeader.Values.Text = "Header";
+            labelHeader.Text = "Header";
             // 
             // labelFileName
             // 
@@ -71,7 +72,7 @@
             labelFileName.Name = "labelFileName";
             labelFileName.Size = new Size(62, 20);
             labelFileName.TabIndex = 10;
-            labelFileName.Values.Text = "FileName";
+            labelFileName.Text = "FileName";
             // 
             // FlowControlFileTransferRequest
             // 
@@ -88,9 +89,9 @@
         }
 
         #endregion
-        private Button buttonDecline;
-        private Button buttonAccept;
-        private Krypton.Toolkit.KryptonLabel labelHeader;
-        private Krypton.Toolkit.KryptonLabel labelFileName;
+        private PoisonButton buttonDecline;
+        private PoisonButton buttonAccept;
+        private PoisonLabel labelHeader;
+        private PoisonLabel labelFileName;
     }
 }

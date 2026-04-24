@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
 using Talkster.Client.Helpers;
 
 namespace Talkster.Client.Controls.FlowControls
@@ -12,8 +11,6 @@ namespace Talkster.Client.Controls.FlowControls
 
         public FlowControlInformationText(FlowLayoutPanel parent, string message, Color requestedForeColor)
         {
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
-
             var foreColor = Theming.ShiftToContrast(requestedForeColor, BackColor);
 
             _parent = parent;

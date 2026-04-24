@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit;
-using NTDLS.WinFormsHelpers;
+﻿using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Library;
 using Talkster.Library.Models;
@@ -7,7 +7,8 @@ using Talkster.Library.ReliableMessages;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormFindPeople : KryptonForm
+    public partial class FormFindPeople
+        : PoisonForm
     {
         private readonly Button _cancelButton;
 
@@ -15,7 +16,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             _cancelButton = new Button();
             _cancelButton.Click += CancelButton_Click;
@@ -37,7 +41,7 @@ namespace Talkster.Client.Forms
                     return;
                 }
 
-                if (e.RowIndex >= 0 && dataGridViewAccounts.Columns[e.ColumnIndex] is KryptonDataGridViewButtonColumn)
+                if (e.RowIndex >= 0 && dataGridViewAccounts.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
                     if (dataGridViewAccounts.Rows[e.RowIndex].Tag is AccountSearchModel account)
                     {
@@ -140,5 +144,6 @@ namespace Talkster.Client.Forms
                 MessageBox.Show(ex.Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

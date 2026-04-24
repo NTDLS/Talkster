@@ -1,10 +1,10 @@
-﻿using Krypton.Toolkit;
-using System.Drawing.Drawing2D;
+﻿using ReaLTaiizor.Forms;
 using static Talkster.Client.Helpers.Notifications;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormToast : Form
+    public partial class FormToast
+        : PoisonForm
     {
         public delegate void ToastClickActionParameterized(object? param);
         public delegate void ToastClickAction();
@@ -17,10 +17,16 @@ namespace Talkster.Client.Forms
         private ToastClickActionParameterized? _parameterizedAction;
         private ToastClickAction? _action;
         private object? _actionParameter;
+        private bool _closing = false;
 
         public FormToast()
         {
             InitializeComponent();
+
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             TopMost = true;
             StartPosition = FormStartPosition.Manual;
@@ -29,8 +35,6 @@ namespace Talkster.Client.Forms
 
             _timer.Tick += Timer_Tick;
             _timer.Interval = 10;
-
-            pictureBoxClose.Click += LabelClose_Click;
 
             Click += FormToast_Click;
             labelBody.Click += FormToast_Click;
@@ -45,14 +49,18 @@ namespace Talkster.Client.Forms
             labelBody.Height = this.Height - labelBody.Top;
             labelBody.Width = this.Width - labelBody.Left - 10;
 
-            pictureBoxClose.Top = 10;
-            pictureBoxClose.Left = this.Width - pictureBoxClose.Width - 10;
+            this.FormClosing += FormToast_FormClosing;
+
+            _closing = false;
         }
 
-        private void LabelClose_Click(object? sender, EventArgs e)
+        private void FormToast_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            //Trigger the fade-out immediately.
-            _startTimeUTC = DateTime.UtcNow.AddMilliseconds(-_duration);
+            if (!_closing)
+            {
+                _startTimeUTC = DateTime.UtcNow.AddMilliseconds(-_duration);
+                e.Cancel = true; //Cancel the close, we'll hide it after the fade-out completes.
+            }
         }
 
         public void InvokePopup(ToastStyle style, string headerText, string bodyText,
@@ -99,12 +107,11 @@ namespace Talkster.Client.Forms
 
         private void Popup(ToastStyle style, string headerText, string bodyText, int duration = 3000, ToastPosition position = ToastPosition.BottomRight)
         {
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
             Opacity = 0;
+            _closing = false;
 
             _duration = duration;
 
-            labelHeader.ForeColor = KryptonManager.CurrentGlobalPalette.GetContentShortTextColor1(PaletteContentStyle.LabelTitlePanel, PaletteState.Normal);
             labelHeader.BackColor = Color.Transparent;
             labelHeader.Text = headerText;
 
@@ -167,6 +174,7 @@ namespace Talkster.Client.Forms
             _parameterizedAction?.Invoke(_actionParameter);
         }
 
+        /*
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -193,6 +201,7 @@ namespace Talkster.Client.Forms
             path.CloseFigure();
             return path;
         }
+        */
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -207,6 +216,7 @@ namespace Talkster.Client.Forms
                 if (Opacity == 0)
                 {
                     _timer.Stop();
+                    _closing = true;
                     Hide();
                 }
                 else

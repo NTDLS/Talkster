@@ -1,27 +1,34 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using System.Reflection;
 using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormAbout : KryptonForm
+    public partial class FormAbout
+        : PoisonForm
     {
-        readonly Assembly assembly = Assembly.GetExecutingAssembly();
+        private readonly Assembly _assembly = Assembly.GetExecutingAssembly();
 
         public FormAbout()
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
         }
 
         public FormAbout(bool showInTaskbar)
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             if (showInTaskbar)
             {
@@ -45,12 +52,12 @@ namespace Talkster.Client.Forms
             var serverVersion = (Assembly.GetEntryAssembly()?.GetName().Version).EnsureNotNull();
             Text = $"{ScConstants.AppName} v{serverVersion}";
 
-            if (assembly == null || assembly.Location == null)
+            if (_assembly == null || _assembly.Location == null)
             {
                 return;
             }
 
-            string? path = Path.GetDirectoryName(assembly.Location);
+            string? path = Path.GetDirectoryName(_assembly.Location);
             if (path == null)
             {
                 return;
@@ -67,8 +74,7 @@ namespace Talkster.Client.Forms
             listViewVersions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewVersions.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            listViewVersions.ForeColor = KryptonManager.CurrentGlobalPalette
-                .GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
+            listViewVersions.ForeColor = Theming.InvertColor(listViewVersions.BackColor);
             foreach (ListViewItem item in listViewVersions.Items)
             {
                 item.ForeColor = listViewVersions.ForeColor;

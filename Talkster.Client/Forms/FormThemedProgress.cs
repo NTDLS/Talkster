@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Forms;
 using System.ComponentModel;
 using Talkster.Client.Helpers;
 
@@ -7,7 +7,8 @@ namespace Talkster.Client.Forms
     /// <summary>
     /// Progress form used for multi-threaded progress reporting.
     /// </summary>
-    internal partial class FormThemedProgress : KryptonForm
+    internal partial class FormThemedProgress
+        : PoisonForm
     {
         #region Events
 
@@ -39,7 +40,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             labelBody.Text = "";
             buttonCancel.Enabled = false;
@@ -151,11 +155,6 @@ namespace Talkster.Client.Forms
                 return;
             }
 
-            if (pbProgress.Style == ProgressBarStyle.Marquee)
-            {
-                pbProgress.Style = ProgressBarStyle.Continuous;
-            }
-
             pbProgress.Minimum = value;
         }
 
@@ -171,11 +170,6 @@ namespace Talkster.Client.Forms
                 return;
             }
 
-            if (pbProgress.Style == ProgressBarStyle.Marquee)
-            {
-                pbProgress.Style = ProgressBarStyle.Continuous;
-            }
-
             pbProgress.Maximum = value;
         }
 
@@ -188,11 +182,6 @@ namespace Talkster.Client.Forms
             {
                 Invoke(new Action(IncrementProgressValue));
                 return;
-            }
-
-            if (pbProgress.Style == ProgressBarStyle.Marquee)
-            {
-                pbProgress.Style = ProgressBarStyle.Continuous;
             }
 
             pbProgress.Value++;
@@ -210,27 +199,7 @@ namespace Talkster.Client.Forms
                 return;
             }
 
-            if (pbProgress.Style == ProgressBarStyle.Marquee)
-            {
-                pbProgress.Style = ProgressBarStyle.Continuous;
-            }
-
             pbProgress.Value = value;
-        }
-
-        /// <summary>
-        /// Sets the progress bar style in a thread safe manner.
-        /// </summary>
-        /// <param name="value"></param>
-        public void SeProgressStyle(ProgressBarStyle value)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action<ProgressBarStyle>(SeProgressStyle), value);
-                return;
-            }
-
-            pbProgress.Style = value;
         }
 
         /// <summary>

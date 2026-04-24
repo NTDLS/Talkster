@@ -1,7 +1,7 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
 using NTDLS.Persistence;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Client.Helpers;
 using Talkster.Client.Models;
@@ -13,7 +13,8 @@ using static Talkster.Library.ScConstants;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormHome : KryptonForm
+    public partial class FormHome
+        : PoisonForm
     {
         /// <summary>
         /// These are chat message forms per account ID. If they remain open, they will be recycled for subsequent chats.
@@ -27,10 +28,13 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+
             _backgroundForm.Bounds = this.Bounds;
             this.Owner = _backgroundForm;
-
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
 
             this.ResizeBegin += (object? sender, EventArgs e) =>
             {
@@ -323,20 +327,6 @@ namespace Talkster.Client.Forms
                 if (ServerConnection.Current != null && ServerConnection.Current.Connection.Client.IsConnected)
                 {
                     Repopulate();
-
-                    var idleTime = Win32s.GetIdleTime();
-                    if (idleTime.TotalMinutes >= Settings.Instance.AutoAwayIdleMinutes)
-                    {
-                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
-                                ServerConnection.Current.AccountId,
-                                ScOnlineState.Away));
-                    }
-                    else
-                    {
-                        ServerConnection.Current.Connection.Client.Notify(new UpdateAccountStateNotification(
-                                ServerConnection.Current.AccountId,
-                                ServerConnection.Current.ExplicitAway ? ScOnlineState.Away : ScOnlineState.Online));
-                    }
                 }
             }
             catch (Exception ex)
@@ -715,7 +705,7 @@ namespace Talkster.Client.Forms
                 try
                 {
                     using var formProfile = new FormProfile(false);
-                    if (formProfile.ShowDialog() == DialogResult.OK)
+                    if (formProfile.ShowDialog(this) == DialogResult.OK)
                     {
                         Repopulate();
                     }
@@ -737,7 +727,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var formAboutOnExit = new FormAbout(false);
-                formAboutOnExit.ShowDialog();
+                formAboutOnExit.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -751,7 +741,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var form = new FormFindPeople();
-                form.ShowDialog();
+                form.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -791,7 +781,7 @@ namespace Talkster.Client.Forms
             try
             {
                 using var formSettings = new FormSettings(false);
-                formSettings.ShowDialog();
+                formSettings.ShowDialog(this);
             }
             catch (Exception ex)
             {

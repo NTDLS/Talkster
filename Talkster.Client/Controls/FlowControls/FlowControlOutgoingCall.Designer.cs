@@ -1,4 +1,6 @@
-﻿namespace Talkster.Client.Controls
+﻿using ReaLTaiizor.Controls;
+
+namespace Talkster.Client.Controls
 {
     partial class FlowControlOutgoingCall
     {
@@ -28,8 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelOutgoingCallTo = new Label();
-            buttonCancel = new Button();
+            labelOutgoingCallTo = new PoisonLabel();
+            buttonCancel = new PoisonButton();
             SuspendLayout();
             // 
             // labelOutgoingCallTo
@@ -67,7 +69,7 @@
 
         #endregion
 
-        private Label labelOutgoingCallTo;
-        private Button buttonCancel;
+        private PoisonLabel labelOutgoingCallTo;
+        private PoisonButton buttonCancel;
     }
 }

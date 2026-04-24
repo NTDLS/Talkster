@@ -85,8 +85,8 @@ namespace Talkster.Server
         {
             Log.Information("Stopping service.");
             _rmServer.Stop();
-            _dmServer.Stop();
-            Log.Information("Message stopped successfully.");
+            _dmServer.Stop(false);
+            Log.Information("Service stopped successfully.");
         }
 
         public void RegisterSession(Guid connectionId, Guid peerConnectionId, ReliableCryptographyProvider baselineCryptographyProvider)

@@ -1,7 +1,7 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Persistence;
+﻿using NTDLS.Persistence;
 using NTDLS.ReliableMessaging;
 using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Client.Helpers;
 using Talkster.Client.Models;
@@ -9,7 +9,8 @@ using Talkster.Library;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormLogin : KryptonForm
+    public partial class FormLogin
+        : PoisonForm
     {
         private LoginResult? _loginResult;
 
@@ -17,7 +18,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             AcceptButton = buttonLogin;
             CancelButton = buttonCancel;
@@ -25,7 +29,7 @@ namespace Talkster.Client.Forms
 #if DEBUG
             if (TrayApp.IsOnlyInstance)
             {
-                textBoxUsername.Text = "Adrian";
+                //textBoxUsername.Text = "Adrian";
             }
             else
             {
@@ -71,7 +75,7 @@ namespace Talkster.Client.Forms
 
             try
             {
-                var username = textBoxUsername.TextBox.GetAndValidateText("A username is required.");
+                var username = textBoxUsername.GetAndValidateText("A username is required.");
                 var passwordHash = Crypto.ComputeSha256Hash(textBoxPassword.Text);
                 using var progressForm = new ThemedProgressForm(ScConstants.AppName, "Please wait...");
 
@@ -130,7 +134,7 @@ namespace Talkster.Client.Forms
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
             using var form = new FormSettings(false);
-            form.ShowDialog();
+            form.ShowDialog(this);
         }
     }
 }

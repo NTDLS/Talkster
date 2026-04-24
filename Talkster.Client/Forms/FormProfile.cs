@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit;
-using NTDLS.WinFormsHelpers;
+﻿using NTDLS.WinFormsHelpers;
+using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Library;
 using Talkster.Library.Models;
@@ -7,13 +7,17 @@ using Talkster.Library.ReliableMessages;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormProfile : KryptonForm
+    public partial class FormProfile
+        : PoisonForm
     {
         public FormProfile(bool showInTaskbar)
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             if (ServerConnection.Current?.Connection.Client.IsConnected != true)
             {
@@ -49,12 +53,12 @@ namespace Talkster.Client.Forms
                     return;
                 }
 
-                var displayName = textBoxDisplayName.TextBox.GetAndValidateText("A display is required.");
+                var displayName = textBoxDisplayName.GetAndValidateText("A display is required.");
 
                 var profile = new AccountProfileModel
                 {
-                    Tagline = textBoxTagline.TextBox.GetAndValidateText(0, 100, "If a tagline is supplied, it must not exceed [max] characters."),
-                    Biography = textBoxBiography.TextBox.GetAndValidateText(0, 2500, "If a biography is supplied, it must not exceed [max] characters.")
+                    Tagline = textBoxTagline.GetAndValidateText(0, 100, "If a tagline is supplied, it must not exceed [max] characters."),
+                    Biography = textBoxBiography.GetAndValidateText(0, 2500, "If a biography is supplied, it must not exceed [max] characters.")
                 };
 
                 var result = ServerConnection.Current.Connection.Client.Query(new UpdateAccountProfileQuery(displayName, profile));

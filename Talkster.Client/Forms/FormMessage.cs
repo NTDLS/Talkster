@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit;
-using NTDLS.Helpers;
+﻿using NTDLS.Helpers;
+using ReaLTaiizor.Forms;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -10,7 +10,8 @@ using static Talkster.Library.ScConstants;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormMessage : KryptonForm
+    public partial class FormMessage
+        : PoisonForm
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsRecycled { get; private set; } = false;
@@ -27,7 +28,10 @@ namespace Talkster.Client.Forms
         {
             InitializeComponent();
 
-            BackColor = KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.PanelClient, PaletteState.Normal);
+            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
+            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
 
             try
             {

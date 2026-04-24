@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+﻿using ReaLTaiizor.Controls;
 
 namespace Talkster.Client.Forms
 {
@@ -30,11 +30,12 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMessage));
-            splitContainer1 = new KryptonSplitContainer();
+            splitContainer1 = new SplitContainer();
             flowPanel = new FlowLayoutPanel();
-            textBoxMessage = new KryptonTextBox();
-            buttonSend = new KryptonButton();
+            textBoxMessage = new PoisonTextBox();
+            buttonSend = new PoisonButton();
             toolStrip1 = new ToolStrip();
             toolStripButtonTerminate = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -44,19 +45,19 @@ namespace Talkster.Client.Forms
             toolStripSeparator2 = new ToolStripSeparator();
             toolStripButtonExport = new ToolStripButton();
             toolStripButtonProperties = new ToolStripButton();
+            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            (splitContainer1.Panel1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
-            (splitContainer1.Panel2).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel2;
-            splitContainer1.Location = new Point(5, 25);
+            splitContainer1.Location = new Point(5, 85);
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // 
@@ -67,8 +68,8 @@ namespace Talkster.Client.Forms
             // 
             splitContainer1.Panel2.Controls.Add(textBoxMessage);
             splitContainer1.Panel2.Controls.Add(buttonSend);
-            splitContainer1.Size = new Size(534, 451);
-            splitContainer1.SplitterDistance = 393;
+            splitContainer1.Size = new Size(534, 391);
+            splitContainer1.SplitterDistance = 333;
             splitContainer1.TabIndex = 2;
             // 
             // flowPanel
@@ -82,7 +83,7 @@ namespace Talkster.Client.Forms
             flowPanel.FlowDirection = FlowDirection.TopDown;
             flowPanel.Location = new Point(0, 0);
             flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(534, 393);
+            flowPanel.Size = new Size(534, 333);
             flowPanel.TabIndex = 2;
             flowPanel.WrapContents = false;
             // 
@@ -102,15 +103,14 @@ namespace Talkster.Client.Forms
             buttonSend.Name = "buttonSend";
             buttonSend.Size = new Size(57, 53);
             buttonSend.TabIndex = 1;
-            buttonSend.Values.DropDownArrowColor = Color.Empty;
-            buttonSend.Values.Text = "Send";
+            buttonSend.Text = "Send";
             buttonSend.Click += ButtonSend_Click;
             // 
             // toolStrip1
             // 
             toolStrip1.Font = new Font("Segoe UI", 9F);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonTerminate, toolStripSeparator1, toolStripButtonAttachFile, toolStripButtonVoiceCall, toolStripButtonVoiceCallEnd, toolStripSeparator2, toolStripButtonExport, toolStripButtonProperties });
-            toolStrip1.Location = new Point(5, 0);
+            toolStrip1.Location = new Point(5, 60);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(534, 25);
             toolStrip1.TabIndex = 4;
@@ -188,6 +188,10 @@ namespace Talkster.Client.Forms
             toolStripButtonProperties.Text = "Properties";
             toolStripButtonProperties.Click += ToolStripButtonProperties_Click;
             // 
+            // poisonStyleManager
+            // 
+            poisonStyleManager.Owner = this;
+            // 
             // FormMessage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -199,27 +203,26 @@ namespace Talkster.Client.Forms
             MinimumSize = new Size(400, 400);
             Name = "FormMessage";
             Opacity = 0.95D;
-            Padding = new Padding(5, 0, 5, 5);
+            Padding = new Padding(5, 60, 5, 5);
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.Manual;
             Text = "Talkster";
-            (splitContainer1.Panel1).EndInit();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
-            (splitContainer1.Panel2).EndInit();
             splitContainer1.Panel2.ResumeLayout(false);
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private KryptonSplitContainer splitContainer1;
-        private KryptonTextBox textBoxMessage;
-        private KryptonButton buttonSend;
+        private SplitContainer splitContainer1;
+        private PoisonTextBox textBoxMessage;
+        private PoisonButton buttonSend;
         private FlowLayoutPanel flowPanel;
         private ToolStrip toolStrip1;
         private ToolStripButton toolStripButtonAttachFile;
@@ -230,5 +233,6 @@ namespace Talkster.Client.Forms
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton toolStripButtonExport;
         private ToolStripButton toolStripButtonVoiceCallEnd;
+        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

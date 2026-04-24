@@ -1,7 +1,4 @@
-﻿using Krypton.Toolkit;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using NTDLS.Persistence;
+﻿using NTDLS.Persistence;
 using Talkster.Client.Models;
 using Talkster.Library;
 
@@ -17,7 +14,14 @@ namespace Talkster.Client
         {
             get
             {
-                _instance ??= LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
+                if (_instance == null)
+                {
+                    _instance = LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
+
+                    //Set any runtime defined default settings.
+                    _instance.IsthemeDark = Theming.IsWindowsDarkMode();
+                }
+
                 return _instance;
             }
             set
@@ -32,8 +36,7 @@ namespace Talkster.Client
             LocalUserApplicationData.SaveToDisk(ScConstants.AppName, Instance);
         }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PaletteMode Theme { get; set; } = Theming.IsWindowsDarkMode() ? PaletteMode.Microsoft365BlackDarkModeAlternate : PaletteMode.ProfessionalSystem;
+        public bool IsthemeDark { get; set; }
 
         public string ServerAddress { get; set; } = ScConstants.DefaultServerAddress;
         public string Font { get; set; } = ScConstants.DefaultFont;
