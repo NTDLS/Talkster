@@ -1,4 +1,5 @@
-﻿using NTDLS.Helpers;
+﻿using Microsoft.Win32;
+using NTDLS.Helpers;
 using NTDLS.Persistence;
 using NTDLS.ReliableMessaging;
 using System.Diagnostics;
@@ -56,6 +57,8 @@ namespace Talkster.Client
 
                 _reconnectTimer.Interval = 10000;
                 _reconnectTimer.Tick += ReconnectTimer_Tick;
+
+                SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
             }
             catch (Exception ex)
             {
@@ -83,6 +86,19 @@ namespace Talkster.Client
             => _trayIcon.ContextMenuStrip.EnsureNotNull().Invoke(method);
 
         #endregion
+
+        private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+            if (e.Mode == PowerModes.Resume && !_intentionalDisconnect)
+            {
+                // After sleep/wake the TCP connection is in a zombie state: IsConnected still
+                // returns true and OnDisconnected never fires, so we force a clean disconnect
+                // and let the reconnect timer handle re-login.
+                ServerConnection.TerminateCurrent();
+                UpdateClientState(ScOnlineState.Offline);
+                Invoke(() => _reconnectTimer.Start());
+            }
+        }
 
         private void ReconnectTimer_Tick(object? sender, EventArgs e)
         {
@@ -589,6 +605,7 @@ namespace Talkster.Client
 
             try
             {
+                SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
                 Exceptions.Ignore(() => _formLogin?.Close());
 
                 _trayIcon.Visible = false;
