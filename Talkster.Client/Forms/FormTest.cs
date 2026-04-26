@@ -10,11 +10,7 @@ namespace Talkster.Client.Forms
         public FormTest()
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             textBoxMessage.Text = $"This is message one. This is message two. This is message three. This is message four. This is message five. This is message six. This is message seven. This is message eight. This is message nine. This is message ten.";
 

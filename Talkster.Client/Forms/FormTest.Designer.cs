@@ -30,17 +30,15 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTest));
             splitContainer1 = new SplitContainer();
             flowLayoutPanelChat = new FlowLayoutPanel();
             textBoxMessage = new PoisonTextBox();
             buttonSend = new PoisonButton();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -48,13 +46,14 @@ namespace Talkster.Client.Forms
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel2;
             splitContainer1.Location = new Point(20, 60);
+            splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
-            // 
+            // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(flowLayoutPanelChat);
             // 
-            // 
+            // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(textBoxMessage);
             splitContainer1.Panel2.Controls.Add(buttonSend);
@@ -74,28 +73,47 @@ namespace Talkster.Client.Forms
             flowLayoutPanelChat.TabIndex = 0;
             flowLayoutPanelChat.WrapContents = false;
             // 
-            // kryptonTextBoxMessage
+            // textBoxMessage
             // 
+            // 
+            // 
+            // 
+            textBoxMessage.CustomButton.Image = null;
+            textBoxMessage.CustomButton.Location = new Point(445, 1);
+            textBoxMessage.CustomButton.Name = "";
+            textBoxMessage.CustomButton.Size = new Size(45, 45);
+            textBoxMessage.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxMessage.CustomButton.TabIndex = 1;
+            textBoxMessage.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxMessage.CustomButton.UseSelectable = true;
+            textBoxMessage.CustomButton.Visible = false;
             textBoxMessage.Dock = DockStyle.Fill;
             textBoxMessage.Location = new Point(0, 0);
+            textBoxMessage.MaxLength = 32767;
             textBoxMessage.Multiline = true;
-            textBoxMessage.Name = "kryptonTextBoxMessage";
-            textBoxMessage.Size = new Size(491, 46);
+            textBoxMessage.Name = "textBoxMessage";
+            textBoxMessage.PasswordChar = '\0';
+            textBoxMessage.ScrollBars = ScrollBars.None;
+            textBoxMessage.SelectedText = "";
+            textBoxMessage.SelectionLength = 0;
+            textBoxMessage.SelectionStart = 0;
+            textBoxMessage.ShortcutsEnabled = true;
+            textBoxMessage.Size = new Size(491, 47);
             textBoxMessage.TabIndex = 1;
+            textBoxMessage.UseSelectable = true;
+            textBoxMessage.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxMessage.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
-            // kryptonButtonSend
+            // buttonSend
             // 
             buttonSend.Dock = DockStyle.Right;
             buttonSend.Location = new Point(491, 0);
-            buttonSend.Name = "kryptonButtonSend";
-            buttonSend.Size = new Size(53, 46);
+            buttonSend.Name = "buttonSend";
+            buttonSend.Size = new Size(53, 47);
             buttonSend.TabIndex = 2;
             buttonSend.Text = "Send";
+            buttonSend.UseSelectable = true;
             buttonSend.Click += ButtonSend_Click;
-            // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
             // 
             // FormTest
             // 
@@ -108,9 +126,8 @@ namespace Talkster.Client.Forms
             Text = "FormTest";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
-            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -119,6 +136,5 @@ namespace Talkster.Client.Forms
         private PoisonTextBox textBoxMessage;
         private PoisonButton buttonSend;
         private FlowLayoutPanel flowLayoutPanelChat;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

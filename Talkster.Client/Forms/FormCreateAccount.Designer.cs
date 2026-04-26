@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateAccount));
             buttonCreate = new PoisonButton();
             buttonCancel = new PoisonButton();
@@ -42,8 +41,6 @@ namespace Talkster.Client.Forms
             textBoxPassword = new PoisonTextBox();
             textBoxConfirmPassword = new PoisonTextBox();
             labelConfirmPassword = new PoisonLabel();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonCreate
@@ -218,10 +215,6 @@ namespace Talkster.Client.Forms
             labelConfirmPassword.TabIndex = 9;
             labelConfirmPassword.Text = "Confirm Password";
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormCreateAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -244,7 +237,6 @@ namespace Talkster.Client.Forms
             Resizable = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Talkster";
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -261,6 +253,5 @@ namespace Talkster.Client.Forms
         private PoisonTextBox textBoxPassword;
         private PoisonTextBox textBoxConfirmPassword;
         private PoisonLabel labelConfirmPassword;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

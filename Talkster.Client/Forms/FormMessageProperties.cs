@@ -11,11 +11,7 @@ namespace Talkster.Client.Forms
         internal FormMessageProperties(ActiveChat activeChat)
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             _activeChat = activeChat;
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
 
 namespace Talkster.Client
 {
@@ -34,6 +36,44 @@ namespace Talkster.Client
             }
 
             return false;
+        }
+
+        private static Dictionary<PoisonForm, PoisonStyleManager> _styleManagers = new();
+
+        public static void SetupTheme(PoisonForm form)
+        {
+            var themeStyle = Settings.Instance.IsThemeDark ? ReaLTaiizor.Enum.Poison.ThemeStyle.Dark : ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            var colorStyle = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+
+            _styleManagers[form] = new PoisonStyleManager()
+            {
+                Owner = form,
+                Style = colorStyle,
+                Theme = themeStyle
+            };
+
+            form.Theme = themeStyle;
+            form.Style = colorStyle;
+
+            form.FormClosed += (object? sender, FormClosedEventArgs e) =>
+            {
+                _styleManagers.Remove(form);
+            };
+        }
+
+        public static void ApplyTheme(bool? IsThemeDark = null)
+        {
+            var themeStyle = IsThemeDark ?? Settings.Instance.IsThemeDark
+                ? ReaLTaiizor.Enum.Poison.ThemeStyle.Dark
+                : ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+
+            foreach (var (form, manager) in _styleManagers)
+            {
+                manager.Theme = themeStyle;
+                form.Theme = themeStyle;
+                form.Style = manager.Style;
+                form.Refresh();
+            }
         }
 
         public static Color InvertColor(Color color)

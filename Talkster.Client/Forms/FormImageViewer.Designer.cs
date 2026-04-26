@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageViewer));
             pictureBoxImage = new PictureBox();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxImage
@@ -47,7 +44,7 @@
             pictureBoxImage.Location = new Point(20, 84);
             pictureBoxImage.Name = "pictureBoxImage";
             pictureBoxImage.Size = new Size(318, 141);
-            pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxImage.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBoxImage.TabIndex = 0;
             pictureBoxImage.TabStop = false;
             // 
@@ -71,13 +68,9 @@
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(180, 22);
+            saveToolStripMenuItem.Size = new Size(98, 22);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
-            // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
             // 
             // FormImageViewer
             // 
@@ -95,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,6 +98,5 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

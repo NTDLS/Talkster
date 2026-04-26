@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMessageProperties));
             labelAccountId = new PoisonLabel();
             textBoxAccountId = new PoisonTextBox();
@@ -48,8 +47,6 @@ namespace Talkster.Client.Forms
             labelSharedSecretLength = new PoisonLabel();
             labelPrivateRsaKeyLength = new PoisonLabel();
             labelPublicRsaKeyLength = new PoisonLabel();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // labelAccountId
@@ -323,10 +320,6 @@ namespace Talkster.Client.Forms
             labelPublicRsaKeyLength.TabIndex = 16;
             labelPublicRsaKeyLength.Text = "000bits";
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormMessageProperties
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -354,7 +347,6 @@ namespace Talkster.Client.Forms
             Name = "FormMessageProperties";
             Resizable = false;
             Text = "Talkster";
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -378,6 +370,5 @@ namespace Talkster.Client.Forms
         private PoisonLabel labelSharedSecretLength;
         private PoisonLabel labelPrivateRsaKeyLength;
         private PoisonLabel labelPublicRsaKeyLength;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

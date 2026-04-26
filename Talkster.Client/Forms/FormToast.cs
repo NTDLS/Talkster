@@ -22,11 +22,7 @@ namespace Talkster.Client.Forms
         public FormToast()
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             TopMost = true;
             StartPosition = FormStartPosition.Manual;

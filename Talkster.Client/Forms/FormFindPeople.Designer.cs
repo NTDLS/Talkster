@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -42,9 +41,7 @@ namespace Talkster.Client.Forms
             ColumnName = new DataGridViewTextBoxColumn();
             ColumnState = new DataGridViewTextBoxColumn();
             Invite = new DataGridViewButtonColumn();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccounts).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // textBoxDisplayName
@@ -171,10 +168,6 @@ namespace Talkster.Client.Forms
             Invite.ReadOnly = true;
             Invite.Width = 80;
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormFindPeople
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -191,7 +184,6 @@ namespace Talkster.Client.Forms
             Resizable = false;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccounts).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -205,6 +197,5 @@ namespace Talkster.Client.Forms
         private DataGridViewTextBoxColumn ColumnName;
         private DataGridViewTextBoxColumn ColumnState;
         private DataGridViewButtonColumn Invite;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

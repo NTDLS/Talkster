@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             labelUsername = new PoisonLabel();
             textBoxUsername = new PoisonTextBox();
@@ -42,9 +41,7 @@ namespace Talkster.Client.Forms
             linkLabelCreateAccount = new PoisonLinkLabel();
             checkBoxStayLoggedIn = new PoisonCheckBox();
             buttonSettings = new PoisonButton();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // labelUsername
@@ -184,11 +181,6 @@ namespace Talkster.Client.Forms
             buttonSettings.UseSelectable = true;
             buttonSettings.Click += ButtonSettings_Click;
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -213,7 +205,6 @@ namespace Talkster.Client.Forms
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -231,6 +222,5 @@ namespace Talkster.Client.Forms
         private PoisonLinkLabel linkLabelCreateAccount;
         private PoisonCheckBox checkBoxStayLoggedIn;
         private PoisonButton buttonSettings;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

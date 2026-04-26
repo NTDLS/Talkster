@@ -33,7 +33,6 @@ namespace Talkster.Client.Forms
 
         private void InitializeComponent()
         {
-            components = new Container();
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FormSettings));
             buttonSave = new PoisonButton();
             buttonCancel = new PoisonButton();
@@ -78,7 +77,6 @@ namespace Talkster.Client.Forms
             tabPage4 = new PoisonTabPage();
             tabPage5 = new PoisonTabPage();
             tabPage6 = new PoisonTabPage();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             poisonTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -87,7 +85,6 @@ namespace Talkster.Client.Forms
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
             tabPage6.SuspendLayout();
-            ((ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonSave
@@ -642,7 +639,6 @@ namespace Talkster.Client.Forms
             // 
             poisonComboBoxFontSize.FormattingEnabled = true;
             poisonComboBoxFontSize.ItemHeight = 23;
-            poisonComboBoxFontSize.Items.AddRange(new object[] { "5", "6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28" });
             poisonComboBoxFontSize.Location = new Point(363, 33);
             poisonComboBoxFontSize.Name = "poisonComboBoxFontSize";
             poisonComboBoxFontSize.Size = new Size(61, 29);
@@ -656,9 +652,9 @@ namespace Talkster.Client.Forms
             tabPage3.HorizontalScrollbarBarColor = true;
             tabPage3.HorizontalScrollbarHighlightOnWheel = false;
             tabPage3.HorizontalScrollbarSize = 10;
-            tabPage3.Location = new Point(4, 38);
+            tabPage3.Location = new Point(4, 35);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(477, 291);
+            tabPage3.Size = new Size(477, 294);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "UI";
             tabPage3.VerticalScrollbarBarColor = true;
@@ -699,6 +695,7 @@ namespace Talkster.Client.Forms
             poisonRadioButtonDark.TabIndex = 3;
             poisonRadioButtonDark.Text = "Dark";
             poisonRadioButtonDark.UseSelectable = true;
+            poisonRadioButtonDark.CheckedChanged += RadioButtonDark_CheckedChanged;
             // 
             // poisonRadioButtonLight
             // 
@@ -709,6 +706,7 @@ namespace Talkster.Client.Forms
             poisonRadioButtonLight.TabIndex = 4;
             poisonRadioButtonLight.Text = "Light";
             poisonRadioButtonLight.UseSelectable = true;
+            poisonRadioButtonLight.CheckedChanged += RadioButtonLight_CheckedChanged;
             // 
             // tabPage4
             // 
@@ -719,9 +717,9 @@ namespace Talkster.Client.Forms
             tabPage4.HorizontalScrollbarBarColor = true;
             tabPage4.HorizontalScrollbarHighlightOnWheel = false;
             tabPage4.HorizontalScrollbarSize = 10;
-            tabPage4.Location = new Point(4, 38);
+            tabPage4.Location = new Point(4, 35);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(477, 291);
+            tabPage4.Size = new Size(477, 294);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Server";
             tabPage4.VerticalScrollbarBarColor = true;
@@ -737,9 +735,9 @@ namespace Talkster.Client.Forms
             tabPage5.HorizontalScrollbarBarColor = true;
             tabPage5.HorizontalScrollbarHighlightOnWheel = false;
             tabPage5.HorizontalScrollbarSize = 10;
-            tabPage5.Location = new Point(4, 38);
+            tabPage5.Location = new Point(4, 35);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(477, 291);
+            tabPage5.Size = new Size(477, 294);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Advanced";
             tabPage5.UseVisualStyleBackColor = true;
@@ -758,19 +756,14 @@ namespace Talkster.Client.Forms
             tabPage6.HorizontalScrollbarBarColor = true;
             tabPage6.HorizontalScrollbarHighlightOnWheel = false;
             tabPage6.HorizontalScrollbarSize = 10;
-            tabPage6.Location = new Point(4, 38);
+            tabPage6.Location = new Point(4, 35);
             tabPage6.Name = "tabPage6";
-            tabPage6.Size = new Size(477, 291);
+            tabPage6.Size = new Size(477, 294);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Cryptography";
             tabPage6.VerticalScrollbarBarColor = true;
             tabPage6.VerticalScrollbarHighlightOnWheel = false;
             tabPage6.VerticalScrollbarSize = 10;
-            // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
             // 
             // FormSettings
             // 
@@ -801,7 +794,6 @@ namespace Talkster.Client.Forms
             tabPage5.PerformLayout();
             tabPage6.ResumeLayout(false);
             tabPage6.PerformLayout();
-            ((ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
         }
         private PoisonButton buttonSave;
@@ -842,7 +834,6 @@ namespace Talkster.Client.Forms
         private PoisonTabPage tabPage4;
         private PoisonTabPage tabPage5;
         private PoisonTabPage tabPage6;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
         private PoisonRadioButton poisonRadioButtonLight;
         private PoisonRadioButton poisonRadioButtonDark;
         private PoisonLabel poisonLabelTheme;

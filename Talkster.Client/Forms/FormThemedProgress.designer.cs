@@ -34,15 +34,12 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThemedProgress));
             buttonCancel = new PoisonButton();
             pbProgress = new PoisonProgressBar();
             labelHeader = new PoisonLabel();
             labelBody = new PoisonLabel();
             spinningActivity = new ActivityIndicator();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // buttonCancel
@@ -92,10 +89,6 @@ namespace Talkster.Client.Forms
             spinningActivity.Size = new Size(35, 32);
             spinningActivity.TabIndex = 4;
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormThemedProgress
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -116,7 +109,6 @@ namespace Talkster.Client.Forms
             StartPosition = FormStartPosition.CenterParent;
             Text = "Talkster";
             Shown += FormProgress_Shown;
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
         }
 
@@ -127,6 +119,5 @@ namespace Talkster.Client.Forms
         private PoisonLabel labelHeader;
         private PoisonLabel labelBody;
         private ActivityIndicator spinningActivity;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

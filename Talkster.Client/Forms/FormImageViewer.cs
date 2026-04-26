@@ -18,11 +18,7 @@ namespace Talkster.Client.Forms
         public FormImageViewer(Image image)
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             _image = image;
 

@@ -11,14 +11,21 @@ namespace Talkster.Client.Forms
     public partial class FormSettings
         : PoisonForm
     {
+        private class FontSizeItem
+        {
+            public float Size { get; set; }
+            public override string ToString() => Size.ToString("N1");
+
+            public FontSizeItem(float size)
+            {
+                Size = size;
+            }
+        }
+
         public FormSettings(bool showInTaskbar)
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             if (showInTaskbar)
             {
@@ -34,6 +41,8 @@ namespace Talkster.Client.Forms
 
             AcceptButton = buttonSave;
             CancelButton = buttonCancel;
+
+            textBoxFontSample.UseCustomFont = true;
 
             Exceptions.Ignore(() => checkBoxAutoStartAtWindowsLogin.Checked = RegistryHelper.IsAutoStartEnabled());
 
@@ -53,8 +62,8 @@ namespace Talkster.Client.Forms
             checkBoxFlashWindowWhenMessageReceived.Checked = Settings.Instance.FlashWindowWhenMessageReceived;
             checkBoxAlertToastWhenMyOnlineStatusChanges.Checked = Settings.Instance.AlertToastWhenMyOnlineStatusChanges;
             checkBoxAlertToastErrorMessages.Checked = Settings.Instance.AlertToastErrorMessages;
-            poisonRadioButtonDark.Checked = Settings.Instance.IsthemeDark;
-            poisonRadioButtonLight.Checked = !Settings.Instance.IsthemeDark;
+            poisonRadioButtonDark.Checked = Settings.Instance.IsThemeDark;
+            poisonRadioButtonLight.Checked = !Settings.Instance.IsThemeDark;
 
             textBoxFontSample.Text = "John: Hey, how's is been going?\r\nJane: Pretty good. I've about to head out.\r\nJohn: Wanna grab some lunch?\r\nJane: Thai?\r\nJohn: Are you kidding me? Absolutely!\r\n";
 
@@ -63,7 +72,32 @@ namespace Talkster.Client.Forms
                 comboBoxFont.Items.Add(font.Name);
             }
             comboBoxFont.Text = Settings.Instance.Font;
-            poisonComboBoxFontSize.SelectedValue = Settings.Instance.FontSize;
+
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(5));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(6));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(7));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(8));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(9));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(10));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(11));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(12));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(14));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(16));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(18));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(20));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(22));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(24));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(26));
+            poisonComboBoxFontSize.Items.Add(new FontSizeItem(28));
+
+            foreach(var item in poisonComboBoxFontSize.Items)
+            {
+                if (item is FontSizeItem fontSizeItem && fontSizeItem.Size == Settings.Instance.FontSize)
+                {
+                    poisonComboBoxFontSize.SelectedItem = item;
+                    break;
+                }
+            }
 
             poisonComboBoxFontSize.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
             comboBoxFont.SelectedIndexChanged += (object? sender, EventArgs e) => UpdateFontSample();
@@ -78,10 +112,10 @@ namespace Talkster.Client.Forms
             {
                 try
                 {
-                    var fontSize = poisonComboBoxFontSize.SelectedValue as int?;
-                    if (fontSize > 0)
+                    var fontSize = poisonComboBoxFontSize.SelectedItem as FontSizeItem;
+                    if (fontSize?.Size > 0)
                     {
-                        textBoxFontSample.Font = new Font(selectedFontName, (float)fontSize);
+                        textBoxFontSample.Font = new Font(selectedFontName, fontSize.Size);
                     }
                 }
                 catch { }
@@ -94,7 +128,7 @@ namespace Talkster.Client.Forms
             {
                 var settings = LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
 
-                settings.IsthemeDark = poisonRadioButtonDark.Checked;
+                settings.IsThemeDark = poisonRadioButtonDark.Checked;
                 settings.ServerAddress = textBoxServerAddress.GetAndValidateText("Server address must not be empty.");
                 settings.Font = comboBoxFont.Text;
                 settings.FontSize = (poisonComboBoxFontSize.SelectedValue as int?) ?? ScConstants.DefaultFontSize;
@@ -143,6 +177,8 @@ namespace Talkster.Client.Forms
 
                 Settings.Instance = settings;
 
+                Invoke(() => Theming.ApplyTheme());
+
                 this.InvokeClose(DialogResult.OK);
             }
             catch (Exception ex)
@@ -156,12 +192,23 @@ namespace Talkster.Client.Forms
         {
             try
             {
+                Invoke(() => Theming.ApplyTheme());
             }
             catch
             {
             }
 
             this.InvokeClose(DialogResult.Cancel);
+        }
+
+        private void RadioButtonLight_CheckedChanged(object sender, EventArgs e)
+        {
+            Invoke(() => Theming.ApplyTheme(false));
+        }
+
+        private void RadioButtonDark_CheckedChanged(object sender, EventArgs e)
+        {
+            Invoke(() => Theming.ApplyTheme(true));
         }
     }
 }

@@ -30,13 +30,10 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormToast));
             labelHeader = new PoisonLabel();
             labelBody = new PoisonLabel();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             pictureBoxIcon = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).BeginInit();
             SuspendLayout();
             // 
@@ -57,10 +54,6 @@ namespace Talkster.Client.Forms
             labelBody.Size = new Size(276, 46);
             labelBody.TabIndex = 2;
             labelBody.Text = "labelBody";
-            // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
             // 
             // pictureBoxIcon
             // 
@@ -93,7 +86,6 @@ namespace Talkster.Client.Forms
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -102,7 +94,6 @@ namespace Talkster.Client.Forms
         #endregion
         private PoisonLabel labelHeader;
         private PoisonLabel labelBody;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
         private PictureBox pictureBoxIcon;
     }
 }

@@ -1,4 +1,7 @@
 ﻿using NTDLS.Persistence;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
+using Talkster.Client.Forms;
 using Talkster.Client.Models;
 using Talkster.Library;
 
@@ -19,7 +22,7 @@ namespace Talkster.Client
                     _instance = LocalUserApplicationData.LoadFromDisk(ScConstants.AppName, new Settings());
 
                     //Set any runtime defined default settings.
-                    _instance.IsthemeDark = Theming.IsWindowsDarkMode();
+                    _instance.IsThemeDark = Theming.IsWindowsDarkMode();
                 }
 
                 return _instance;
@@ -36,7 +39,7 @@ namespace Talkster.Client
             LocalUserApplicationData.SaveToDisk(ScConstants.AppName, Instance);
         }
 
-        public bool IsthemeDark { get; set; }
+        public bool IsThemeDark { get; set; }
 
         public string ServerAddress { get; set; } = ScConstants.DefaultServerAddress;
         public string Font { get; set; } = ScConstants.DefaultFont;

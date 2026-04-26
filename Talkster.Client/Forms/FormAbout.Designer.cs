@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
             pictureBox1 = new PictureBox();
             buttonOk = new PoisonButton();
@@ -38,9 +37,7 @@ namespace Talkster.Client.Forms
             listViewVersions = new PoisonListView();
             columnHeaderApplication = new ColumnHeader();
             columnHeaderVersion = new ColumnHeader();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -102,10 +99,6 @@ namespace Talkster.Client.Forms
             // 
             columnHeaderVersion.Text = "Version";
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormAbout
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -125,7 +118,6 @@ namespace Talkster.Client.Forms
             Text = "Talkster";
             Load += FormAbout_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,6 +130,5 @@ namespace Talkster.Client.Forms
         private PoisonListView listViewVersions;
         private ColumnHeader columnHeaderApplication;
         private ColumnHeader columnHeaderVersion;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

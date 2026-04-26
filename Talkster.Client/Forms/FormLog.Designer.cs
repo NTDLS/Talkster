@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -39,12 +38,10 @@ namespace Talkster.Client.Forms
             ColumnTimestamp = new DataGridViewTextBoxColumn();
             ColumnSeverity = new DataGridViewTextBoxColumn();
             ColumnMessage = new DataGridViewTextBoxColumn();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             menuStrip = new MenuStrip();
             actionsToolStripMenuItem = new ToolStripMenuItem();
             clearToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLog).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,10 +123,6 @@ namespace Talkster.Client.Forms
             ColumnMessage.Name = "ColumnMessage";
             ColumnMessage.ReadOnly = true;
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // menuStrip
             // 
             menuStrip.Items.AddRange(new ToolStripItem[] { actionsToolStripMenuItem });
@@ -149,7 +142,7 @@ namespace Talkster.Client.Forms
             // clearToolStripMenuItem
             // 
             clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            clearToolStripMenuItem.Size = new Size(180, 22);
+            clearToolStripMenuItem.Size = new Size(101, 22);
             clearToolStripMenuItem.Text = "Clear";
             clearToolStripMenuItem.Click += clearToolStripMenuItem_Click;
             // 
@@ -167,7 +160,6 @@ namespace Talkster.Client.Forms
             Name = "FormLog";
             Text = "Talkster";
             ((System.ComponentModel.ISupportInitialize)dataGridViewLog).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             ResumeLayout(false);
@@ -179,7 +171,6 @@ namespace Talkster.Client.Forms
         private DataGridViewTextBoxColumn ColumnTimestamp;
         private DataGridViewTextBoxColumn ColumnSeverity;
         private DataGridViewTextBoxColumn ColumnMessage;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
         private MenuStrip menuStrip;
         private ToolStripMenuItem actionsToolStripMenuItem;
         private ToolStripMenuItem clearToolStripMenuItem;

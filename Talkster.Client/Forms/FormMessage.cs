@@ -27,11 +27,7 @@ namespace Talkster.Client.Forms
         internal FormMessage(ActiveChat activeChat)
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             try
             {
@@ -106,6 +102,7 @@ namespace Talkster.Client.Forms
                 flowPanel.DragDrop += TextBoxMessage_DragDrop;
                 textBoxMessage.Focus();
                 textBoxMessage.MaxLength = ScConstants.MaxTextMessageSize;
+                textBoxMessage.UseCustomFont = true;
                 textBoxMessage.Font = new Font(Settings.Instance.Font, (float)Settings.Instance.FontSize);
 
                 _timer = new System.Windows.Forms.Timer

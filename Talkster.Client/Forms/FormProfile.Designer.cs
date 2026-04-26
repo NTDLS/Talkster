@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProfile));
             labelWarning = new PoisonLabel();
             labelDisplayName = new PoisonLabel();
@@ -41,8 +40,6 @@ namespace Talkster.Client.Forms
             buttonCancel = new PoisonButton();
             textBoxBiography = new PoisonTextBox();
             labelBiography = new PoisonLabel();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // labelWarning
@@ -188,10 +185,6 @@ namespace Talkster.Client.Forms
             labelBiography.TabIndex = 9;
             labelBiography.Text = "Biography";
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -212,7 +205,6 @@ namespace Talkster.Client.Forms
             Name = "FormProfile";
             Resizable = false;
             Text = "Talkster";
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,6 +220,5 @@ namespace Talkster.Client.Forms
         private PoisonButton buttonCancel;
         private PoisonTextBox textBoxBiography;
         private PoisonLabel labelBiography;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

@@ -12,11 +12,7 @@ namespace Talkster.Client.Forms
         public FormLog()
         {
             InitializeComponent();
-
-            Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            poisonStyleManager.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Dark;
-            poisonStyleManager.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            Theming.SetupTheme(this);
 
             _cancelButton = new Button();
             _cancelButton.Click += CancelButton_Click;
@@ -56,6 +52,12 @@ namespace Talkster.Client.Forms
         {
             try
             {
+                if (MessageBox.Show("Are you sure you want clear the log?",
+                    ScConstants.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 Program.Log.Clear();
                 dataGridViewLog.Rows.Clear();
             }

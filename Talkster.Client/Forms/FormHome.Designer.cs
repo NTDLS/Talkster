@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             treeViewContacts = new DoubleBufferedTreeView();
             menuStrip = new MenuStrip();
@@ -45,9 +44,7 @@ namespace Talkster.Client.Forms
             settingsToolStripMenuItem1 = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // treeViewContacts
@@ -60,12 +57,12 @@ namespace Talkster.Client.Forms
             treeViewContacts.Size = new Size(360, 466);
             treeViewContacts.TabIndex = 0;
             // 
-            // menuStrip1
+            // menuStrip
             // 
             menuStrip.Font = new Font("Segoe UI", 9F);
             menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, contactsToolStripMenuItem, preferencesToolStripMenuItem, helpToolStripMenuItem });
             menuStrip.Location = new Point(5, 60);
-            menuStrip.Name = "menuStrip1";
+            menuStrip.Name = "menuStrip";
             menuStrip.Size = new Size(360, 24);
             menuStrip.TabIndex = 1;
             menuStrip.Text = "menuStrip1";
@@ -145,10 +142,6 @@ namespace Talkster.Client.Forms
             aboutToolStripMenuItem.Text = "About";
             aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -167,7 +160,6 @@ namespace Talkster.Client.Forms
             Text = "Talkster";
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,6 +179,5 @@ namespace Talkster.Client.Forms
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem preferencesToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem1;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }

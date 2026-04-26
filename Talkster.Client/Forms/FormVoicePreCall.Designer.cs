@@ -30,7 +30,6 @@ namespace Talkster.Client.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVoicePreCall));
             comboBoxAudioOutputDevice = new PoisonComboBox();
             labelAudioOutputDevice = new PoisonLabel();
@@ -45,9 +44,7 @@ namespace Talkster.Client.Forms
             volumeMeterInput = new NAudio.Gui.VolumeMeter();
             panel1 = new PoisonPanel();
             label1 = new PoisonLabel();
-            poisonStyleManager = new ReaLTaiizor.Manager.PoisonStyleManager(components);
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
             // 
             // comboBoxAudioOutputDevice
@@ -190,10 +187,6 @@ namespace Talkster.Client.Forms
             label1.TabIndex = 14;
             label1.Text = "Quality (Sample Rate)";
             // 
-            // poisonStyleManager
-            // 
-            poisonStyleManager.Owner = this;
-            // 
             // FormVoicePreCall
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -217,7 +210,6 @@ namespace Talkster.Client.Forms
             Load += FormVoicePreCall_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,6 +229,5 @@ namespace Talkster.Client.Forms
         private NAudio.Gui.VolumeMeter volumeMeterInput;
         private PoisonPanel panel1;
         private PoisonLabel label1;
-        private ReaLTaiizor.Manager.PoisonStyleManager poisonStyleManager;
     }
 }
