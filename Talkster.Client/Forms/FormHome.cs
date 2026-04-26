@@ -485,7 +485,8 @@ namespace Talkster.Client.Forms
                     }
                     catch (Exception ex)
                     {
-                        this.InvokeMessageBox(ex.GetBaseException().Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        Program.Log.Error($"Error in {new StackTrace().GetFrame(0)?.GetMethod()?.Name ?? "Unknown"}.", ex);
+                        //this.InvokeMessageBox(ex.GetBaseException().Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         _repopulateInProgress = false;
                     }
                 });
