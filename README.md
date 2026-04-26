@@ -1,5 +1,7 @@
 # Talkster
-Talkster is a solution to secure private messaging, employing multiple layers of encryption and stream compression.
+Talkster is a solution for secure private messaging, employing multiple layers of encryption and stream compression.
+
+The problem with applications like WhatsApp, Telegram and even Signal is clear: If they are not open source, can you really be sure they are secure? For other third-party apps, there’s the risk of dependency injection – so we wrote Talkster using clear readable libraries for TCP framing, UPD management, Diffie-Hellman key exchanges, encryption and a self-hostable server. So, we highly encourage anyone and everyone to dig through the code then report any concerns (or better yet, submit a pull request).
 
 ## Want to chat? 🗨️
 If you want to chat with me, download the client, navigate to the "Contacts" menu and click "Find People". Search for me: NOP.
@@ -15,10 +17,10 @@ Each client connects to a central server using two pairs of 4096-bit RSA public-
 Accounts are stored at the server (which you can easily host, or use mine). The only thing stored is your preferred username, the SHA-256 of your chosen password, and your status (if you choose to have one).
 
 ### Login
-![image](https://github.com/user-attachments/assets/7ac1f26b-bef6-47e2-9314-e457814cce82)
+<img width="332" height="245" alt="image" src="https://github.com/user-attachments/assets/d96cdc21-665f-4bfd-ae8b-6b29d8ec48d7" />
 
 ### Contacts
-![image](https://github.com/user-attachments/assets/47612d1c-9736-48f0-81fc-e96add2a6649)
+<img width="370" height="558" alt="image" src="https://github.com/user-attachments/assets/a0fd48c0-3912-4b6d-8726-47d5b1e85bbd" />
 
 ### Messaging
 ![image](https://github.com/user-attachments/assets/b3f73059-fd74-43a8-8113-4da6b7043f29)
