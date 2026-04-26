@@ -88,8 +88,6 @@ namespace Talkster.Client.Controls.FlowControls
         {
             if (_lastWidth != _parent.Width)
             {
-                int alignmentPadding = _parent.Width / 3;
-
                 /*
                 if (_origin == ScOrigin.Local)
                 {
@@ -114,7 +112,7 @@ namespace Talkster.Client.Controls.FlowControls
                 {
                     //We do some special stuff here to allow the label logic to perform its magic auto-wrapping and sizing.
                     MaximumSize = new Size(_parent.Width - 30, 0);
-                    _childControl.MaximumSize = new Size(_parent.Width - alignmentPadding - 40, 0);
+                    _childControl.MaximumSize = new Size(_parent.Width - 40, 0);
 
                     Width = Math.Max(_childControl.Right + 5, _labelDisplayName?.Right + 5 ?? 0);
                     _lastWidth = _parent.Width;
@@ -124,7 +122,7 @@ namespace Talkster.Client.Controls.FlowControls
                     Width = Math.Max(_parent.Width - 30, 100);
                 }
 
-                _statusImage.Left = alignmentPadding + 10;
+                _statusImage.Left = 10;
                 _statusImage.Top = _childControl.Bottom + 5;
 
                 Height = _statusImage.Bottom + 5;
