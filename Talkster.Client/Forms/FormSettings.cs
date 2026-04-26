@@ -31,7 +31,6 @@ namespace Talkster.Client.Forms
             {
                 ShowInTaskbar = true;
                 StartPosition = FormStartPosition.CenterScreen;
-                TopMost = true;
             }
             else
             {

@@ -15,7 +15,7 @@ namespace Talkster.Library.ReliableMessages
     }
 
     public class AccountSearchQueryReply
-        : IRmQueryReply
+        : IReplyWithStatus
     {
         public bool IsSuccess { get; set; }
         public List<AccountSearchModel> Accounts { get; set; }

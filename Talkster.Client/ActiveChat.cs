@@ -483,7 +483,7 @@ namespace Talkster.Client
             try
             {
                 ServerConnection.Current?.Connection.Client.Query(new FileTransferBeginQuery(
-                    SessionId, PeerConnectionId, ftc.Transfer.FileId, ftc.Transfer.FileName, ftc.Transfer.FileSize, ftc.Transfer.IsImage));
+                    SessionId, PeerConnectionId, ftc.Transfer.FileId, ftc.Transfer.FileName, ftc.Transfer.FileSize, ftc.Transfer.IsImage)).ThrowIfFailed();
 
                 double totalBytesSent = 0;
 

@@ -189,7 +189,7 @@ namespace Talkster.Client.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(302, 338);
+            ClientSize = new Size(300, 338);
             Controls.Add(textBoxBiography);
             Controls.Add(buttonCancel);
             Controls.Add(buttonSave);

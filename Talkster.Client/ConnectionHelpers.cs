@@ -22,7 +22,7 @@ namespace Talkster.Client
                 throw new Exception("Connection to the server was lost.");
             }
 
-            var accountProfile = ServerConnection.Current.Connection.Client.Query(new GetAccountProfileQuery(accountId));
+            var accountProfile = ServerConnection.Current.Connection.Client.Query(new GetAccountProfileQuery(accountId)).ThrowIfFailed();
             if (accountProfile?.Account == null)
             {
                 throw new Exception("The requested account was not found.");
@@ -37,7 +37,8 @@ namespace Talkster.Client
 
             //The first thing we do when we get a connection is start a new key exchange process.
             var queryRequestKeyExchangeReply = ServerConnection.Current.Connection.Client.Query(
-                new InitiatePeerToPeerSessionQuery(sessionId, ServerConnection.Current.AccountId, accountId, ServerConnection.Current.DisplayName, negotiationToken));
+                new InitiatePeerToPeerSessionQuery(sessionId, ServerConnection.Current.AccountId, accountId, ServerConnection.Current.DisplayName, negotiationToken))
+                .ThrowIfFailed();
 
             if (queryRequestKeyExchangeReply != null)
             {
@@ -141,12 +142,7 @@ namespace Talkster.Client
 
                 //Send our public key to the server and wait on a reply of their public key.
                 var keyExchangeResult = rmClient.Query(new ExchangePublicKeyQuery(rmClient.ConnectionId.EnsureNotNull(), clientVersion,
-                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize));
-
-                if (!keyExchangeResult.IsSuccess)
-                {
-                    throw new Exception(string.IsNullOrEmpty(keyExchangeResult.ErrorMessage) ? "Unknown negotiation error." : keyExchangeResult.ErrorMessage);
-                }
+                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize)).ThrowIfFailed();
 
                 if (keyExchangeResult.ServerVersion < ScConstants.MinServerVersion)
                     throw new Exception($"Server version is unsupported, use version {ScConstants.MinServerVersion} or greater.");

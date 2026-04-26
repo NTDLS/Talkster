@@ -18,7 +18,7 @@ namespace Talkster.Library.ReliableMessages
     }
 
     public class CreateAccountQueryReply
-        : IRmQueryReply
+        : IReplyWithStatus
     {
         public bool IsSuccess { get; set; }
         public Guid AccountId { get; set; }

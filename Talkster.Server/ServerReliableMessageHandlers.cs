@@ -483,6 +483,8 @@ namespace Talkster.Server
         /// <summary>
         /// The remote service is letting us know that they are about to start using the
         /// cryptography provider, so we need to apply the one that we have ready on this end.
+        /// 
+        /// Unfortunately we have no way to report errors back to the other client because they have already started using the cryptography provider.
         /// </summary>
         public InitializeServerClientCryptographyQueryReply InitializeServerClientCryptographyQuery(RmContext context, InitializeServerClientCryptographyQuery param)
         {

@@ -183,7 +183,7 @@ namespace Talkster.Client.Forms
                     {
                         try
                         {
-                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(contact.Id));
+                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(contact.Id)).ThrowIfFailed();
                         }
                         catch (Exception ex)
                         {
@@ -215,7 +215,7 @@ namespace Talkster.Client.Forms
                     {
                         try
                         {
-                            ServerConnection.Current.Connection.Client.Query(new AcceptContactInviteQuery(contact.Id));
+                            ServerConnection.Current.Connection.Client.Query(new AcceptContactInviteQuery(contact.Id)).ThrowIfFailed();
                         }
                         catch (Exception ex)
                         {
@@ -479,7 +479,7 @@ namespace Talkster.Client.Forms
                 {
                     try
                     {
-                        var results = ServerConnection.Current.Connection.Client.Query(new GetContactsQuery(), TimeSpan.FromSeconds(5));
+                        var results = ServerConnection.Current.Connection.Client.Query(new GetContactsQuery(), TimeSpan.FromSeconds(5)).ThrowIfFailed();
                         DeltaRepopulateTree(results.Contacts);
                         _repopulateInProgress = false;
                     }
@@ -694,6 +694,30 @@ namespace Talkster.Client.Forms
 
         #region Toolbar clicks.
 
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    using var formAccount = new FormAccount(false);
+                    if (formAccount.ShowDialog(this) == DialogResult.OK)
+                    {
+                        Repopulate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Program.Log.Error($"Error in {new StackTrace().GetFrame(0)?.GetMethod()?.Name ?? "Unknown"}.", ex);
+                    MessageBox.Show(ex.Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.Log.Error($"Error in {new StackTrace().GetFrame(0)?.GetMethod()?.Name ?? "Unknown"}.", ex);
+            }
+        }
+
         private void ProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -787,5 +811,7 @@ namespace Talkster.Client.Forms
         }
 
         #endregion
+
+
     }
 }

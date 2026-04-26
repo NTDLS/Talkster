@@ -41,7 +41,7 @@ namespace Talkster.Library.ReliableMessages
     }
 
     public class InitiatePeerToPeerSessionQueryReply
-        : IRmQueryReply
+        : IReplyWithStatus
     {
         public bool IsSuccess { get; set; }
         public string? ErrorMessage { get; set; }

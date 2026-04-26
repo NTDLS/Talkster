@@ -26,13 +26,11 @@ namespace Talkster.Client.Forms
             {
                 ShowInTaskbar = true;
                 StartPosition = FormStartPosition.CenterScreen;
-                TopMost = true;
             }
             else
             {
                 ShowInTaskbar = false;
                 StartPosition = FormStartPosition.CenterParent;
-                TopMost = false;
             }
         }
 

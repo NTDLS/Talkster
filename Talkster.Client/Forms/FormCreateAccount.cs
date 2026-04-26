@@ -56,7 +56,7 @@ namespace Talkster.Client.Forms
                 var username = textBoxUsername.GetAndValidateText("A username is required.");
                 var displayName = textBoxDisplayName.GetAndValidateText("A display name is required.");
                 var password = textBoxPassword.GetAndValidateText("A password is required.");
-                var confirmPassword = textBoxPassword.GetAndValidateText("A confirm password is required.");
+                var confirmPassword = textBoxConfirmPassword.GetAndValidateText("A confirm password is required.");
 
                 if (!Crypto.IsPasswordComplex(password, out var errorMessage))
                 {
@@ -83,7 +83,7 @@ namespace Talkster.Client.Forms
                         {
                             progressForm.SetHeaderText("Creating account...");
 
-                            var result = connection.Client.Query(new CreateAccountQuery(username, displayName, passwordHash));
+                            var result = connection.Client.Query(new CreateAccountQuery(username, displayName, passwordHash)).ThrowIfFailed();
                             _username = result.IsSuccess ? username : string.Empty;
 
                             this.InvokeClose(result.IsSuccess ? DialogResult.OK : DialogResult.Cancel);

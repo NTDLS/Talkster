@@ -45,7 +45,7 @@ namespace Talkster.Client.Forms
                         {
                             dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Sending";
 
-                            ServerConnection.Current.Connection.Client.Query(new InviteContactQuery(account.Id));
+                            ServerConnection.Current.Connection.Client.Query(new InviteContactQuery(account.Id)).ThrowIfFailed();
                             Invoke(() =>
                             {
                                 dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Remove";
@@ -57,7 +57,7 @@ namespace Talkster.Client.Forms
                         {
                             dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Removing";
 
-                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(account.Id));
+                            ServerConnection.Current.Connection.Client.Query(new RemoveContactQuery(account.Id)).ThrowIfFailed();
                             Invoke(() =>
                             {
                                 dataGridViewAccounts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Invite";
@@ -99,7 +99,7 @@ namespace Talkster.Client.Forms
                     return;
                 }
 
-                var results = ServerConnection.Current.Connection.Client.Query(new AccountSearchQuery(displayName));
+                var results = ServerConnection.Current.Connection.Client.Query(new AccountSearchQuery(displayName)).ThrowIfFailed();
                 Invoke(() =>
                 {
                     foreach (var account in results.Accounts)

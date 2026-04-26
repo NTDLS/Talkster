@@ -2,15 +2,14 @@
 using ReaLTaiizor.Forms;
 using System.Diagnostics;
 using Talkster.Library;
-using Talkster.Library.Models;
 using Talkster.Library.ReliableMessages;
 
 namespace Talkster.Client.Forms
 {
-    public partial class FormProfile
+    public partial class FormAccount
         : PoisonForm
     {
-        public FormProfile(bool showInTaskbar)
+        public FormAccount(bool showInTaskbar)
         {
             InitializeComponent();
             Theming.SetupTheme(this);
@@ -31,9 +30,9 @@ namespace Talkster.Client.Forms
                 StartPosition = FormStartPosition.CenterParent;
             }
 
-            textBoxDisplayName.Text = ServerConnection.Current.DisplayName;
-            textBoxTagline.Text = ServerConnection.Current.Profile.Tagline;
-            textBoxBiography.Text = ServerConnection.Current.Profile.Biography;
+            textBoxUsername.Text = ServerConnection.Current.Username;
+            textBoxPassword.Text = string.Empty;
+            textBoxConfirmPassword.Text = string.Empty;
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -47,17 +46,20 @@ namespace Talkster.Client.Forms
                     return;
                 }
 
-                var displayName = textBoxDisplayName.GetAndValidateText("A display is required.");
+                var password = textBoxPassword.GetAndValidateText("A password is required.");
+                var confirmPassword = textBoxConfirmPassword.GetAndValidateText("A confirm password is required.");
 
-                var profile = new AccountProfileModel
+                if (!Crypto.IsPasswordComplex(password, out var errorMessage))
                 {
-                    Tagline = textBoxTagline.GetAndValidateText(0, 100, "If a tagline is supplied, it must not exceed [max] characters."),
-                    Biography = textBoxBiography.GetAndValidateText(0, 2500, "If a biography is supplied, it must not exceed [max] characters.")
-                };
+                    throw new Exception(errorMessage);
+                }
 
-                var result = ServerConnection.Current.Connection.Client.Query(new UpdateAccountProfileQuery(displayName, profile)).ThrowIfFailed();
-                ServerConnection.Current.DisplayName = displayName;
-                ServerConnection.Current.Profile = profile;
+                if (password != confirmPassword)
+                {
+                    throw new Exception("Passwords do not match.");
+                }
+
+                ServerConnection.Current.Connection.Client.Query(new UpdateAccountPasswordQuery(Crypto.ComputeSha256Hash(password))).ThrowIfFailed();
 
                 this.InvokeClose(DialogResult.OK);
             }

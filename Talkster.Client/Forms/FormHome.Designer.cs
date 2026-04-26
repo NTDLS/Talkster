@@ -44,6 +44,7 @@ namespace Talkster.Client.Forms
             settingsToolStripMenuItem1 = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
+            accountToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +70,7 @@ namespace Talkster.Client.Forms
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, toolStripMenuItem1, logoutToolStripMenuItem, closeToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { accountToolStripMenuItem, profileToolStripMenuItem, toolStripMenuItem1, logoutToolStripMenuItem, closeToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(36, 20);
             fileToolStripMenuItem.Text = "My";
@@ -77,26 +78,26 @@ namespace Talkster.Client.Forms
             // profileToolStripMenuItem
             // 
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(112, 22);
+            profileToolStripMenuItem.Size = new Size(180, 22);
             profileToolStripMenuItem.Text = "Profile";
             profileToolStripMenuItem.Click += ProfileToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(109, 6);
+            toolStripMenuItem1.Size = new Size(177, 6);
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(112, 22);
+            logoutToolStripMenuItem.Size = new Size(180, 22);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += LogoutToolStripMenuItem_Click;
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(112, 22);
+            closeToolStripMenuItem.Size = new Size(180, 22);
             closeToolStripMenuItem.Text = "Close";
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
             // 
@@ -142,6 +143,13 @@ namespace Talkster.Client.Forms
             aboutToolStripMenuItem.Text = "About";
             aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
             // 
+            // accountToolStripMenuItem
+            // 
+            accountToolStripMenuItem.Name = "accountToolStripMenuItem";
+            accountToolStripMenuItem.Size = new Size(180, 22);
+            accountToolStripMenuItem.Text = "Account";
+            accountToolStripMenuItem.Click += accountToolStripMenuItem_Click;
+            // 
             // FormHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -180,5 +188,6 @@ namespace Talkster.Client.Forms
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem preferencesToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem1;
+        private ToolStripMenuItem accountToolStripMenuItem;
     }
 }
