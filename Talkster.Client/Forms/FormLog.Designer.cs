@@ -158,7 +158,7 @@ namespace Talkster.Client.Forms
             MaximizeBox = false;
             MinimumSize = new Size(525, 450);
             Name = "FormLog";
-            Text = "Talkster";
+            Text = "Talkster : Log";
             ((System.ComponentModel.ISupportInitialize)dataGridViewLog).EndInit();
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();

@@ -182,7 +182,7 @@ namespace Talkster.Client.Forms
             MinimumSize = new Size(525, 450);
             Name = "FormFindPeople";
             Resizable = false;
-            Text = "Talkster";
+            Text = "Talkster : People Search";
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccounts).EndInit();
             ResumeLayout(false);
             PerformLayout();

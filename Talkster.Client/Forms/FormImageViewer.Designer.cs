@@ -84,7 +84,7 @@
             MinimumSize = new Size(300, 200);
             Name = "FormImageViewer";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Talkster";
+            Text = "Talkster : Image";
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

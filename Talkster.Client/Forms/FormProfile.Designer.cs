@@ -204,7 +204,7 @@ namespace Talkster.Client.Forms
             MinimizeBox = false;
             Name = "FormProfile";
             Resizable = false;
-            Text = "Talkster";
+            Text = "Talkster : Profile";
             ResumeLayout(false);
             PerformLayout();
         }

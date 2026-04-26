@@ -206,7 +206,7 @@ namespace Talkster.Client.Forms
             MinimizeBox = false;
             Name = "FormVoicePreCall";
             Resizable = false;
-            Text = "Talkster";
+            Text = "Talkster : Call Setup";
             Load += FormVoicePreCall_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -346,7 +346,7 @@ namespace Talkster.Client.Forms
             MinimizeBox = false;
             Name = "FormMessageProperties";
             Resizable = false;
-            Text = "Talkster";
+            Text = "Talkster : Properties";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -236,7 +236,7 @@ namespace Talkster.Client.Forms
             Name = "FormCreateAccount";
             Resizable = false;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Talkster";
+            Text = "Talkster : Signup";
             ResumeLayout(false);
             PerformLayout();
         }

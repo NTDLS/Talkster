@@ -106,7 +106,7 @@ namespace Talkster.Client.Forms
             textBoxPassword.Location = new Point(8, 147);
             textBoxPassword.MaxLength = 32767;
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.PasswordChar = '\0';
+            textBoxPassword.PasswordChar = '*';
             textBoxPassword.ScrollBars = ScrollBars.None;
             textBoxPassword.SelectedText = "";
             textBoxPassword.SelectionLength = 0;
@@ -155,7 +155,7 @@ namespace Talkster.Client.Forms
             textBoxConfirmPassword.Location = new Point(8, 195);
             textBoxConfirmPassword.MaxLength = 32767;
             textBoxConfirmPassword.Name = "textBoxConfirmPassword";
-            textBoxConfirmPassword.PasswordChar = '\0';
+            textBoxConfirmPassword.PasswordChar = '*';
             textBoxConfirmPassword.ScrollBars = ScrollBars.None;
             textBoxConfirmPassword.SelectedText = "";
             textBoxConfirmPassword.SelectionLength = 0;
@@ -194,7 +194,7 @@ namespace Talkster.Client.Forms
             MinimizeBox = false;
             Name = "FormAccount";
             Resizable = false;
-            Text = "Talkster";
+            Text = "Talkster : Account";
             ResumeLayout(false);
             PerformLayout();
         }
