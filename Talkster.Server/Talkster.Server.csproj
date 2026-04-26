@@ -9,7 +9,7 @@
 
     <Company>NetworkDLS</Company>
     <Copyright>Copyright © 2026 NetworkDLS</Copyright>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <Authors>NetworkDLS</Authors>
   </PropertyGroup>
 
@@ -32,6 +32,7 @@
     <EmbeddedResource Include="SqlQueries\CreateAccount.sql" />
     <EmbeddedResource Include="SqlQueries\GetAccountIdByDisplayName.sql" />
     <EmbeddedResource Include="SqlQueries\AccountSearch.sql" />
+    <EmbeddedResource Include="SqlQueries\UpdateAccountPassword.sql" />
     <EmbeddedResource Include="SqlQueries\UpdateAccountProfile.sql" />
     <EmbeddedResource Include="SqlQueries\UpdateAccountDisplayName.sql" />
     <EmbeddedResource Include="SqlQueries\UpdateAccountLastSeen.sql" />

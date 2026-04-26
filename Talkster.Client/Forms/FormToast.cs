@@ -12,7 +12,6 @@ namespace Talkster.Client.Forms
         private int _duration = 0;
         private System.Windows.Forms.Timer _timer = new();
         private DateTime _startTimeUTC;
-        private readonly int _cornerRadius = 10;
 
         private ToastClickActionParameterized? _parameterizedAction;
         private ToastClickAction? _action;
@@ -169,35 +168,6 @@ namespace Talkster.Client.Forms
             _action?.Invoke();
             _parameterizedAction?.Invoke(_actionParameter);
         }
-
-        /*
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            var bounds = new Rectangle(0, 0, this.Width, this.Height);
-            var path = GetRoundedRectPath(bounds, _cornerRadius);
-            this.Region = new Region(path);
-        }
-
-        private GraphicsPath GetRoundedRectPath(Rectangle bounds, int radius)
-        {
-            int diameter = radius * 2;
-            var path = new GraphicsPath();
-            path.StartFigure();
-
-            // Top left arc
-            path.AddArc(bounds.X, bounds.Y, diameter, diameter, 180, 90);
-            // Top right arc
-            path.AddArc(bounds.Right - diameter, bounds.Y, diameter, diameter, 270, 90);
-            // Bottom right arc
-            path.AddArc(bounds.Right - diameter, bounds.Bottom - diameter, diameter, diameter, 0, 90);
-            // Bottom left arc
-            path.AddArc(bounds.X, bounds.Bottom - diameter, diameter, diameter, 90, 90);
-
-            path.CloseFigure();
-            return path;
-        }
-        */
 
         private void Timer_Tick(object? sender, EventArgs e)
         {

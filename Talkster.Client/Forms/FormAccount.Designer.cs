@@ -59,7 +59,7 @@ namespace Talkster.Client.Forms
             labelPassword.TabIndex = 2;
             labelPassword.Text = "Password";
             // 
-            // textBoxUsernameName
+            // textBoxUsername
             // 
             // 
             // 
@@ -75,7 +75,7 @@ namespace Talkster.Client.Forms
             textBoxUsername.CustomButton.Visible = false;
             textBoxUsername.Location = new Point(8, 82);
             textBoxUsername.MaxLength = 32767;
-            textBoxUsername.Name = "textBoxUsernameName";
+            textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.PasswordChar = '\0';
             textBoxUsername.ReadOnly = true;
             textBoxUsername.ScrollBars = ScrollBars.None;
@@ -84,7 +84,7 @@ namespace Talkster.Client.Forms
             textBoxUsername.SelectionStart = 0;
             textBoxUsername.ShortcutsEnabled = true;
             textBoxUsername.Size = new Size(273, 23);
-            textBoxUsername.TabIndex = 5;
+            textBoxUsername.TabIndex = 0;
             textBoxUsername.UseSelectable = true;
             textBoxUsername.WaterMarkColor = Color.FromArgb(109, 109, 109);
             textBoxUsername.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
@@ -113,7 +113,7 @@ namespace Talkster.Client.Forms
             textBoxPassword.SelectionStart = 0;
             textBoxPassword.ShortcutsEnabled = true;
             textBoxPassword.Size = new Size(273, 23);
-            textBoxPassword.TabIndex = 6;
+            textBoxPassword.TabIndex = 1;
             textBoxPassword.UseSelectable = true;
             textBoxPassword.WaterMarkColor = Color.FromArgb(109, 109, 109);
             textBoxPassword.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
@@ -123,7 +123,7 @@ namespace Talkster.Client.Forms
             buttonSave.Location = new Point(125, 224);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(75, 23);
-            buttonSave.TabIndex = 7;
+            buttonSave.TabIndex = 3;
             buttonSave.Text = "Save";
             buttonSave.UseSelectable = true;
             buttonSave.Click += ButtonSave_Click;
@@ -133,12 +133,12 @@ namespace Talkster.Client.Forms
             buttonCancel.Location = new Point(206, 224);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 23);
-            buttonCancel.TabIndex = 8;
+            buttonCancel.TabIndex = 4;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseSelectable = true;
             buttonCancel.Click += ButtonCancel_Click;
             // 
-            // TextBoxConfirmPassword
+            // textBoxConfirmPassword
             // 
             // 
             // 
@@ -154,7 +154,7 @@ namespace Talkster.Client.Forms
             textBoxConfirmPassword.CustomButton.Visible = false;
             textBoxConfirmPassword.Location = new Point(8, 195);
             textBoxConfirmPassword.MaxLength = 32767;
-            textBoxConfirmPassword.Name = "TextBoxConfirmPassword";
+            textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             textBoxConfirmPassword.PasswordChar = '\0';
             textBoxConfirmPassword.ScrollBars = ScrollBars.None;
             textBoxConfirmPassword.SelectedText = "";
@@ -162,7 +162,7 @@ namespace Talkster.Client.Forms
             textBoxConfirmPassword.SelectionStart = 0;
             textBoxConfirmPassword.ShortcutsEnabled = true;
             textBoxConfirmPassword.Size = new Size(273, 23);
-            textBoxConfirmPassword.TabIndex = 10;
+            textBoxConfirmPassword.TabIndex = 2;
             textBoxConfirmPassword.UseSelectable = true;
             textBoxConfirmPassword.WaterMarkColor = Color.FromArgb(109, 109, 109);
             textBoxConfirmPassword.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);

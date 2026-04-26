@@ -53,6 +53,16 @@ namespace Talkster.Server
                 });
         }
 
+        public void UpdateAccountPassword(Guid accountId, string passwordHash)
+        {
+            _dbFactory.Execute(@"SqlQueries\UpdateAccountPassword.sql",
+                new
+                {
+                    Id = accountId,
+                    PasswordHash = passwordHash
+                });
+        }
+
         public void UpdateAccountDisplayName(Guid accountId, string displayName)
         {
             var existingAccountId = GetAccountIdByDisplayName(displayName);

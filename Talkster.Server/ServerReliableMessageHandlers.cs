@@ -145,6 +145,28 @@ namespace Talkster.Server
         }
 
         /// <summary>
+        /// Client is sending an update to their password.
+        /// </summary>
+        public UpdateAccountPasswordQueryReply UpdateAccountPasswordQuery(RmContext context, UpdateAccountPasswordQuery param)
+        {
+            try
+            {
+                var accountConnection = VerifyAndGetAccountConnection(context);
+
+                var account = _dbRepository.GetAccountById(accountConnection.AccountId.EnsureNotNull());
+
+                _dbRepository.UpdateAccountPassword(accountConnection.AccountId.EnsureNotNull(), param.PasswordHash);
+
+                return new UpdateAccountPasswordQueryReply();
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error in {new StackTrace().GetFrame(0)?.GetMethod()?.Name ?? "Unknown"}.", ex);
+                return new UpdateAccountPasswordQueryReply(ex);
+            }
+        }
+
+        /// <summary>
         /// Client is sending an update to their display name and/or profile
         /// </summary>
         public UpdateAccountProfileQueryReply UpdateAccountProfileQuery(RmContext context, UpdateAccountProfileQuery param)
