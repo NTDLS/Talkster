@@ -90,6 +90,7 @@ namespace Talkster.Client.Controls.FlowControls
             {
                 int alignmentPadding = _parent.Width / 3;
 
+                /*
                 if (_origin == ScOrigin.Local)
                 {
                     //Right align the bubble.
@@ -101,13 +102,13 @@ namespace Talkster.Client.Controls.FlowControls
                 }
                 else
                 {
-                    //Left align the bubble.
-                    if (_labelDisplayName != null)
-                    {
-                        _labelDisplayName.Left = 10;
-                    }
-                    _childControl.Left = 10;
+                    */
+                //Left align the bubble.
+                _labelDisplayName?.Left = 10;
+                _childControl.Left = 10;
+                /*
                 }
+                */
 
                 if (_childControl is Label)
                 {

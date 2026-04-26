@@ -54,7 +54,7 @@ namespace Talkster.Client.Forms
             treeViewContacts.Location = new Point(5, 84);
             treeViewContacts.Name = "treeViewContacts";
             treeViewContacts.ShowRootLines = false;
-            treeViewContacts.Size = new Size(360, 466);
+            treeViewContacts.Size = new Size(360, 451);
             treeViewContacts.TabIndex = 0;
             // 
             // menuStrip
@@ -155,7 +155,8 @@ namespace Talkster.Client.Forms
             MinimumSize = new Size(370, 200);
             Name = "FormHome";
             Opacity = 0.7D;
-            Padding = new Padding(5, 60, 5, 5);
+            Padding = new Padding(5, 60, 5, 20);
+            PoisonBorderStyle = ReaLTaiizor.Enum.Poison.FormBorderStyle.FixedSingle;
             SizeGripStyle = SizeGripStyle.Show;
             Text = "Talkster";
             menuStrip.ResumeLayout(false);

@@ -49,6 +49,7 @@ namespace Talkster.Client.Forms
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).BeginInit();
             SuspendLayout();
@@ -58,18 +59,19 @@ namespace Talkster.Client.Forms
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel2;
             splitContainer1.Location = new Point(5, 85);
+            splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
-            // 
+            // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(flowPanel);
             // 
-            // 
+            // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(textBoxMessage);
             splitContainer1.Panel2.Controls.Add(buttonSend);
-            splitContainer1.Size = new Size(534, 391);
-            splitContainer1.SplitterDistance = 333;
+            splitContainer1.Size = new Size(534, 376);
+            splitContainer1.SplitterDistance = 318;
             splitContainer1.TabIndex = 2;
             // 
             // flowPanel
@@ -83,27 +85,50 @@ namespace Talkster.Client.Forms
             flowPanel.FlowDirection = FlowDirection.TopDown;
             flowPanel.Location = new Point(0, 0);
             flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(534, 333);
+            flowPanel.Size = new Size(534, 318);
             flowPanel.TabIndex = 2;
             flowPanel.WrapContents = false;
             // 
             // textBoxMessage
             // 
+            // 
+            // 
+            // 
+            textBoxMessage.CustomButton.Image = null;
+            textBoxMessage.CustomButton.Location = new Point(425, 2);
+            textBoxMessage.CustomButton.Name = "";
+            textBoxMessage.CustomButton.Size = new Size(49, 49);
+            textBoxMessage.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            textBoxMessage.CustomButton.TabIndex = 1;
+            textBoxMessage.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            textBoxMessage.CustomButton.UseSelectable = true;
+            textBoxMessage.CustomButton.Visible = false;
             textBoxMessage.Dock = DockStyle.Fill;
             textBoxMessage.Location = new Point(0, 0);
+            textBoxMessage.MaxLength = 32767;
             textBoxMessage.Multiline = true;
             textBoxMessage.Name = "textBoxMessage";
-            textBoxMessage.Size = new Size(477, 53);
+            textBoxMessage.PasswordChar = '\0';
+            textBoxMessage.ScrollBars = ScrollBars.None;
+            textBoxMessage.SelectedText = "";
+            textBoxMessage.SelectionLength = 0;
+            textBoxMessage.SelectionStart = 0;
+            textBoxMessage.ShortcutsEnabled = true;
+            textBoxMessage.Size = new Size(477, 54);
             textBoxMessage.TabIndex = 0;
+            textBoxMessage.UseSelectable = true;
+            textBoxMessage.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            textBoxMessage.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             // 
             // buttonSend
             // 
             buttonSend.Dock = DockStyle.Right;
             buttonSend.Location = new Point(477, 0);
             buttonSend.Name = "buttonSend";
-            buttonSend.Size = new Size(57, 53);
+            buttonSend.Size = new Size(57, 54);
             buttonSend.TabIndex = 1;
             buttonSend.Text = "Send";
+            buttonSend.UseSelectable = true;
             buttonSend.Click += ButtonSend_Click;
             // 
             // toolStrip1
@@ -203,15 +228,16 @@ namespace Talkster.Client.Forms
             MinimumSize = new Size(400, 400);
             Name = "FormMessage";
             Opacity = 0.95D;
-            Padding = new Padding(5, 60, 5, 5);
+            Padding = new Padding(5, 60, 5, 20);
+            PoisonBorderStyle = ReaLTaiizor.Enum.Poison.FormBorderStyle.FixedSingle;
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.Manual;
             Text = "Talkster";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
-            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)poisonStyleManager).EndInit();
