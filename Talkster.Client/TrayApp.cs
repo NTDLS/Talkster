@@ -29,6 +29,7 @@ namespace Talkster.Client
         /// This is used to determine if the disconnect was intentional or not so we can auto-reconnect.
         private bool _intentionalDisconnect = true;
         private bool _IsBusyLoggingIn = false;
+        private CancellationTokenSource? _loginCancellation;
 
         public TrayApp()
         {
@@ -99,14 +100,20 @@ namespace Talkster.Client
         {
             if (e.Mode == PowerModes.Suspend)
             {
+                // Cancel any in-flight login so it doesn't hold _IsBusyLoggingIn across sleep.
+                _loginCancellation?.Cancel();
+                _loginCancellation = null;
+                _IsBusyLoggingIn = false;
                 UpdateClientState(ScOnlineState.Offline);
             }
 
             if (e.Mode == PowerModes.Resume && !_intentionalDisconnect)
             {
-                // After sleep/wake the TCP connection is in a zombie state: IsConnected still
-                // returns true and OnDisconnected never fires, so we force a clean disconnect
-                // and let the reconnect timer handle re-login.
+                // Cancel any leftover login attempt from before sleep, then force a clean
+                // teardown of the zombie TCP connection and schedule a fresh reconnect.
+                _loginCancellation?.Cancel();
+                _loginCancellation = null;
+                _IsBusyLoggingIn = false;
                 ServerConnection.TerminateCurrent();
                 UpdateClientState(ScOnlineState.Offline);
                 Invoke(() => _reconnectTimer.Start());
@@ -212,9 +219,14 @@ namespace Talkster.Client
                     {
                         UpdateClientState(ScOnlineState.Connecting);
 
+                        _loginCancellation?.Cancel();
+                        var loginCts = _loginCancellation = new CancellationTokenSource();
+
                         Task.Run(() =>
                         {
-                            loginResult = ConnectionHelpers.CreateLoggedInConnection(autoLogin.Username, autoLogin.PasswordHash, RmExceptionHandler);
+                            loginResult = ConnectionHelpers.CreateLoggedInConnection(
+                                autoLogin.Username, autoLogin.PasswordHash, RmExceptionHandler,
+                                cancellationToken: loginCts.Token);
 
                             if (loginResult != null)
                             {
@@ -288,9 +300,10 @@ namespace Talkster.Client
         {
             _intentionalDisconnect = false;
 
-            loginResult.Connection.Client.OnDisconnected += RmClient_OnDisconnected;
-            loginResult.Connection.Client.OnException += RmExceptionHandler;
-            loginResult.Connection.Client.AddHandler(new ClientReliableMessageHandlers());
+            var capturedClient = loginResult.Connection.Client;
+            capturedClient.OnDisconnected += (RmContext context) => RmClient_OnDisconnected(context, capturedClient);
+            capturedClient.OnException += RmExceptionHandler;
+            capturedClient.AddHandler(new ClientReliableMessageHandlers());
 
             //Yea, I am using the ContextMenuStrips thread for form creation.
             var formHome = Invoke(() =>
@@ -339,12 +352,21 @@ namespace Talkster.Client
             //MessageBox.Show(ex.Message, ScConstants.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void RmClient_OnDisconnected(RmContext context)
+        private void RmClient_OnDisconnected(RmContext context, RmClient sourceClient)
         {
             if (_isApplicationClosing)
             {
                 return;
             }
+
+            // Ignore stale disconnect events from connections we have already terminated.
+            // This prevents a zombie TCP connection's deferred OnDisconnected from tearing
+            // down a freshly established session after sleep/resume.
+            if (ServerConnection.Current?.Connection.Client != sourceClient)
+            {
+                return;
+            }
+
             try
             {
                 ServerConnection.TerminateCurrent();

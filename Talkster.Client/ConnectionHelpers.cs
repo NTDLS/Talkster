@@ -63,9 +63,10 @@ namespace Talkster.Client
         /// The exceptionEvent is only used to communicate RmClient exceptions to the caller and is unsubscribed from the RmClient when the method is done.
         /// </summary>
         internal static LoginResult? CreateLoggedInConnection(string username, string passwordHash,
-            RmClient.ExceptionEvent exceptionEvent, ThemedProgressForm? progressForm = null)
+            RmClient.ExceptionEvent exceptionEvent, ThemedProgressForm? progressForm = null,
+            CancellationToken cancellationToken = default)
         {
-            var connection = CreateEncryptedConnection(exceptionEvent, progressForm);
+            var connection = CreateEncryptedConnection(exceptionEvent, progressForm, cancellationToken);
 
             try
             {
@@ -81,7 +82,7 @@ namespace Talkster.Client
 
                 progressForm?.SetHeaderText("Logging in...");
 
-                var loginReply = connection.Client.Query(new LoginQuery(username, passwordHash, explicitAway));
+                var loginReply = connection.Client.Query(new LoginQuery(username, passwordHash, explicitAway), cancellationToken);
                 if (!loginReply.IsSuccess)
                 {
                     connection.Client.Disconnect();
@@ -114,7 +115,8 @@ namespace Talkster.Client
         /// Creates a new encrypted RmClient and negotiates the cryptography with the server.
         /// The exceptionEvent is only used to communicate RmClient exceptions to the caller and is unsubscribed from the RmClient when the method is done.
         /// </summary>
-        internal static NegotiatedConnection CreateEncryptedConnection(RmClient.ExceptionEvent exceptionEvent, ThemedProgressForm? progressForm = null)
+        internal static NegotiatedConnection CreateEncryptedConnection(RmClient.ExceptionEvent exceptionEvent,
+            ThemedProgressForm? progressForm = null, CancellationToken cancellationToken = default)
         {
             progressForm?.SetHeaderText("Negotiating cryptography...");
 
@@ -134,7 +136,7 @@ namespace Talkster.Client
 
             try
             {
-                rmClient.Connect(Settings.Instance.ServerAddress, Settings.Instance.ServerPort);
+                rmClient.Connect(Settings.Instance.ServerAddress, Settings.Instance.ServerPort, cancellationToken);
 
                 var keyPair = Crypto.GeneratePublicPrivateKeyPair(Settings.Instance.RsaKeySize);
 
@@ -142,7 +144,7 @@ namespace Talkster.Client
 
                 //Send our public key to the server and wait on a reply of their public key.
                 var keyExchangeResult = rmClient.Query(new ExchangePublicKeyQuery(rmClient.ConnectionId.EnsureNotNull(), clientVersion,
-                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize)).ThrowIfFailed();
+                    keyPair.PublicRsaKey, Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize), cancellationToken).ThrowIfFailed();
 
                 if (keyExchangeResult.ServerVersion < ScConstants.MinServerVersion)
                     throw new Exception($"Server version is unsupported, use version {ScConstants.MinServerVersion} or greater.");
@@ -151,7 +153,7 @@ namespace Talkster.Client
                 {
                     rmClient.SetCryptographyProvider(new ReliableCryptographyProvider(
                         Settings.Instance.RsaKeySize, Settings.Instance.AesKeySize, keyExchangeResult.PublicRsaKey, keyPair.PrivateRsaKey));
-                });
+                }, cancellationToken);
 
                 return new NegotiatedConnection(rmClient, keyExchangeResult.ServerVersion);
             }
