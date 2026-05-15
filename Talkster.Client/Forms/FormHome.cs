@@ -596,7 +596,7 @@ namespace Talkster.Client.Forms
                         {
                             if (node?.Tag is ContactModel contactsModel)
                             {
-                                var matchingContact = contacts.FirstOrDefault(o => o.IsAccepted == false && o.Id == contactsModel.Id);
+                                var matchingContact = contacts.FirstOrDefault(o => o.IsAccepted == false  && o.Id == contactsModel.Id);
                                 if (matchingContact == null)
                                 {
                                     //Queue node for removal if it is missing from the fresh contact list.
@@ -612,7 +612,7 @@ namespace Talkster.Client.Forms
                         }
                         nodesToRemove.Clear();
 
-                        foreach (var contact in contacts.Where(o => o.IsAccepted == false))
+                        foreach (var contact in contacts.Where(o => o.IsAccepted == false && o.RequestedByMe == true))
                         {
                             var existingNode = ContactTree.FindNodeByAccountId(requestedRootNode, contact.Id);
                             if (existingNode == null)
@@ -665,7 +665,7 @@ namespace Talkster.Client.Forms
                         }
                         nodesToRemove.Clear();
 
-                        foreach (var contact in contacts.Where(o => o.IsAccepted == false))
+                        foreach (var contact in contacts.Where(o => o.IsAccepted == false && o.RequestedByMe == false))
                         {
                             var existingNode = ContactTree.FindNodeByAccountId(invitesRootNode, contact.Id);
                             if (existingNode == null)
